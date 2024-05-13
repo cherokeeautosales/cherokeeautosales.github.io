@@ -1,0 +1,67 @@
+---
+import Review, { type ReviewProps } from "../pieces/Review.astro";
+
+import allReviews from "../../data/reviews.csv?raw";
+import { parse } from 'csv-parse/sync';
+const reviews = parse(allReviews, {
+	columns: true,
+	skip_empty_lines: true
+}) as ReviewProps[];
+
+import "swiper/css";
+---
+
+<style lang="scss">
+    .reviews {
+        font-family: "Fira Sans Condensed", sans-serif;
+        width: 100%;
+        padding: 2rem;
+    }
+</style>
+
+<section
+    id="testimonials"
+    class="reviews"
+    style={{ maxWidth: "100%", minWidth: "100%", overflowX: "hidden" }}
+>
+    <swiper-container
+        slides-per-view={5}
+        space-between={30}
+        loop
+        id="reviewSwiper"
+        init="false"
+        speed={1000}
+        style={{
+            minWidth: "2000px",
+            marginLeft: "50%",
+            transform: "translateX(-50%)",
+        }}
+    >
+        {
+            reviews.map((review, index) => (
+                <swiper-slide>
+                    <Review {...review} />
+                </swiper-slide>
+            ))
+        }
+    </swiper-container>
+
+    <script>
+        import { register as registerSwiper } from "swiper/element/bundle";
+        import { Autoplay } from "swiper/modules";
+
+        registerSwiper();
+
+        const swiperEl = document.getElementById("reviewSwiper");
+
+        const params = {
+            modules: [Autoplay],
+            autoplay: {
+                delay: 2500,
+            },
+        };
+
+        // @ts-ignore
+        Object.assign(swiperEl, params); swiperEl.initialize();
+    </script>
+</section>

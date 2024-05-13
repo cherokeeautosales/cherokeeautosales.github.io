@@ -1,0 +1,86 @@
+---
+export interface ReviewProps {
+	name: string;
+	source: "facebook" | "google";
+	href: string;
+	stars: number;
+	content: string;
+}
+
+type props = ReviewProps;
+
+const { name, source, stars, content, href } = Astro.props;
+
+import { FaStarHalf, FaStar } from "react-icons/fa";
+import { SocialIcon } from "react-social-icons";
+
+---
+
+<style lang="scss">
+.review-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.review {
+	background: #f9f9f9;
+	padding: 1rem;
+	margin: 1rem 0;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+
+	width: 100%;
+	max-width: 300px;
+	height: 300px;
+
+	display: grid;
+	grid-template-columns: 3fr 100px;
+	grid-template-rows: min-content 1fr;
+	gap: 1rem;
+}
+
+.l-header {
+}
+
+.stars {
+	display: flex;
+	color: #f1c40f;
+	font-size: 30px;
+}
+
+.r-header {
+	aspect-ratio: 1;
+	// center
+	display: flex;
+	justify-content: center;
+}
+
+.content {
+	grid-column: 1 / -1;
+}
+</style>
+
+<div class="review-wrapper">
+	<div class="review">
+		<div class="l-header">
+			<h2>
+				{name}
+			</h2>
+			<div class="stars">
+				{
+					Array.from({ length: stars }).map((_, i) => (
+						<FaStar/>
+					)).concat(
+						stars % 1 >= 0.5 ? <FaStarHalf/> : []
+					)
+				}
+			</div>
+		</div>
+		<div class="r-header">
+			{<SocialIcon url={href}/>}
+		</div>
+		<p class="content">
+			{content}
+		</p>
+	</div>
+</div>

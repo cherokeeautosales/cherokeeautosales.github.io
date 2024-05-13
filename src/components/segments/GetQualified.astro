@@ -1,0 +1,67 @@
+---
+import { Row, Col } from "react-bootstrap";
+---
+
+<style lang="scss">
+    .get-qualified {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        font-family: "Fira Sans Condensed", sans-serif;
+        width: 100%;
+        padding: 2rem;
+        background: var(--dark-blue);
+
+        div {
+            color: white;
+            text-align: right;
+            font-weight: bold;
+
+            @media screen and (max-width: 768px) {
+                text-align: center;
+            }
+        }
+
+        .neo-verify {
+            height: 100%;
+        }
+
+        .neo-verify-iframe {
+            position: relative;
+            float: left;
+            width: 356px;
+            height: 100%;
+            border: none;
+
+            @media screen and (max-width: 768px) {
+                margin-left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+    .label {
+        font-size: 3rem;
+    }
+    .sublabel {
+        font-size: 2rem;
+    }
+</style>
+
+<section class="get-qualified" id="get-qualified">
+    <Row className="justify-content-center align-items-center">
+        <Col>
+            <div class="label">Get Pre Approved</div>
+            <div class="sublabel">
+                Fill Out Our Application Form To Get Pre-Qualified
+            </div>
+        </Col>
+        <Col class="neo-verify" style={{ height: 520 }}>
+            <iframe
+                class="neo-verify-iframe"
+                src="https://cherokeeautosalestn.neoverify.com/quick_lead?referral_source=Website&"
+            ></iframe>
+        </Col>
+    </Row>
+</section>

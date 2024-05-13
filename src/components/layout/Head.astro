@@ -1,0 +1,76 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+	<meta property="og:url" content="https://cherokeeautosalestn.com/" />
+	<meta property="og:type" content="website" />
+	<meta name="generator" content={Astro.generator} />
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "AutoDealer",
+			"name": "Cherokee Auto Sales TN",
+			"image": "https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/305309310_496322739171460_1001956815122140136_n.png?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Me7Ki46-erYQ7kNvgFuKcMQ&_nc_ht=scontent-ord5-1.xx&oh=00_AYBWEMg65sC0-5qJEMmxbRtVl_XUBCS_R1mKWk8GpXNvyA&oe=6646FAB3",
+			"@id": "",
+			"url": "https://cherokeeautosalestn.com",
+			"telephone": "8656877100",
+			"priceRange": "$500-$7000",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "3423 North Broadway St",
+				"addressLocality": "Knoxville",
+				"addressRegion": "TN",
+				"postalCode": "37917",
+				"addressCountry": "US"
+			},
+			"geo": {
+				"@type": "GeoCoordinates",
+				"latitude": 36.0032478,
+				"longitude": -83.9269679
+			},
+			"openingHoursSpecification": {
+				"@type": "OpeningHoursSpecification",
+				"dayOfWeek": [
+					"Monday",
+					"Tuesday",
+					"Wednesday",
+					"Thursday",
+					"Friday",
+					"Saturday"
+				],
+				"opens": "09:00",
+				"closes": "18:00"
+			},
+			"sameAs": [
+				"https://www.facebook.com/cherokeeautosales/",
+				"https://www.youtube.com/@cherokeeautosales5096",
+				"https://www.instagram.com/cherokeeautosales/?hl=af"
+			]
+		}
+	</script>
+	<style lang="scss" is:global>
+		:root {
+			--max-width: 1320px;
+			--red: #eb0b2d;
+			--light-blue: #0056b3;
+			--blue: #0b1eeb;
+			--dark-blue: #022759;
+		}
+
+		body {
+			position: relative;
+			margin: 0;
+			padding: 0;
+			min-height: 100vh;
+		}
+	</style>
+	<title>{title}</title>
+</head>

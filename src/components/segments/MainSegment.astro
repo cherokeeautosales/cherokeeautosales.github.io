@@ -1,0 +1,35 @@
+---
+import Button from "react-bootstrap/Button";
+---
+
+<style lang="scss">
+    .main-seg {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fira Sans Condensed", sans-serif;
+        min-height: calc(100vh - 90px);
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+            url("/images/happyguy.jpg") no-repeat 50% 55% / cover;
+
+        div {
+            color: white;
+            font-weight: bold;
+            font-size: 5rem;
+            text-align: center;
+        }
+    }
+</style>
+
+<section class="main-seg" id="home">
+    <div>Cherokee Auto Sales</div>
+    <Button
+        href="https://cherokeeautosalestn.neoverify.com/quick_credit"
+        target="_blank"
+        size="lg"
+    >
+        Get Financed
+    </Button>
+</section>

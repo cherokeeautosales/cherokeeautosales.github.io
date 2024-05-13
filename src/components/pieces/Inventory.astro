@@ -1,0 +1,34 @@
+---
+import inventory from "../../data/inventory.csv?raw";
+import { parse } from 'csv-parse/sync';
+import type { CarProps } from "./CarCard.astro";
+
+import CarCard from "./CarCard.astro";
+
+const cars = parse(inventory, {
+	skip_empty_lines: true,
+    delimiter: ',',
+    columns: ["stockNumber", "year", "make", "model", "vin", "mileage", "color", "cost", "date", "image", "link"]
+}).splice(1) as CarProps[];
+
+---
+
+<style lang="scss">
+    .car-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+    }
+
+    h2 {
+        color: white;
+        text-align: center;
+    }
+</style>
+
+<h2>Current Inventory:</h2>
+<div class="car-list">
+    {cars.map((car) => (
+        <CarCard {...car} />
+    ))}
+</div>
