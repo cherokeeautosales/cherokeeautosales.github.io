@@ -10,13 +10,15 @@ import Card from "./FactCard.astro";
     .icons {
         display: grid;
 
-        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
         justify-content: center;
     }
 
     svg {
         width: 80px;
+        max-width: 50%;
         height: 80px;
+        max-height: 50%;
         color: var(--color-primary);
     }
 </style>

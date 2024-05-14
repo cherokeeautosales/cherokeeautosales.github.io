@@ -9,10 +9,13 @@ import Button from "react-bootstrap/Button";
         justify-content: center;
         align-items: center;
         font-family: "Fira Sans Condensed", sans-serif;
-        min-height: calc(100vh - 90px);
+        min-height: calc(50vh - 90px);
+        // container should contain the background image
+
         background:
             linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-            url("/images/happyguy.jpg") no-repeat 50% 55% / cover;
+            url("/images/happyguy.jpg") no-repeat center center/cover;
+            // url("/images/happyguy.jpg") no-repeat contain;
 
         div {
             color: white;
