@@ -5,5 +5,5 @@ import react from "@astrojs/react";
 export default defineConfig({
   integrations: [react()],
   site: 'https://gcrois.github.io/',
-  base: 'CherokeeAuto',
+  base: '/CherokeeAuto/',
 });

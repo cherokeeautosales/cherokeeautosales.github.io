@@ -7,7 +7,7 @@ function NavBar(props: {}) {
 		<Container>
 			<Navbar.Brand href="#home">
 				<img
-					src="/images/logo.png"
+					src="./images/logo.png"
 					width="30"
 					height="30"
 					className="d-inline-block align-top"
