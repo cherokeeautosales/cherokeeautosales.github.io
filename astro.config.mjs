@@ -4,6 +4,6 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
-  site: 'gcrois.github.io/',
+  site: 'https://gcrois.github.io/',
   base: 'CherokeeAuto',
 });
