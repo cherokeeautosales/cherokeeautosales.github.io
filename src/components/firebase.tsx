@@ -14,7 +14,7 @@ import {
 import { firebaseConfig } from "../../key.js";
 
 import type { CarProps } from "../components/pieces/CarCard.astro";
-import CarCard from "../components/pieces/CarCard.astro";
+import CarCard from "./react/ReactCarCard";
 
 export function Firebase() {
     const app = initializeApp(firebaseConfig);
@@ -55,10 +55,13 @@ export function Firebase() {
                 <div>Loading...</div>
             ) : (
                 <div>
-                    {vehicles.map((vehicle) => (
-                        // <p key={index}>{vehicle.year}</p> //lol fix this with car cards :(
-                        <CarCard {...vehicle} />
-                    ))}
+                    {
+                        vehicles.map((vehicle, index) => {
+                            console.log(vehicle);
+                            // return <p key={index}>{vehicle.year}</p> //lol fix this with car cards :(
+                            return <CarCard {...vehicle} client:load/>
+                        }
+                    )}
                 </div>
             )}
         </div>
