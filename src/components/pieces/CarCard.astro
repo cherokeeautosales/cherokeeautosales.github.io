@@ -7,11 +7,15 @@ export interface CarProps {
     color: string;
     image: string;
     link: string;
+    vin: string;
+    stockNumber: string;
+    cost: string;
+    date: string;
 }
 
 type props = CarProps;
 
-const { year, make, model, mileage, color, image, link }: props =  Astro.props as CarProps;
+const { year, make, model, mileage, color, image, link, vin, stockNumber, cost, date}: props =  Astro.props as CarProps;
 
 const mileageInt = parseInt(mileage);
 ---
