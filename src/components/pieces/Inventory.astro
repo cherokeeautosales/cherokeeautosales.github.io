@@ -3,7 +3,7 @@ import inventory from "../../data/inventory.csv?raw";
 import { parse } from 'csv-parse/sync';
 import type { CarProps } from "./CarCard.astro";
 
-import CarCard from "./CarCard.astro";
+import CarCard from "../react/ReactCarCard";
 
 const cars = parse(inventory, {
 	skip_empty_lines: true,
