@@ -59,7 +59,7 @@ export function Firebase() {
                         vehicles.map((vehicle, index) => {
                             console.log(vehicle);
                             // return <p key={index}>{vehicle.year}</p> //lol fix this with car cards :(
-                            return <CarCard {...vehicle} client:load/>
+                            return <CarCard {...vehicle}/>
                         }
                     )}
                 </div>
@@ -93,7 +93,7 @@ export function Login() {
     });
 
     const [editingVin, setEditingVin] = useState("");
-    const [editedFields, setEditedFields] = useState({});
+    const [editedFields, setEditedFields] = useState<Partial<CarProps>>({});
 
     const handleLogin = async () => {
         try {
