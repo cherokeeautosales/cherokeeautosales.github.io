@@ -1,6 +1,7 @@
 import { useState, type SetStateAction } from "react";
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { auth, db, storage } from "../firebase";
+// import { initializeApp } from "firebase/app";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import {
     getFirestore,
     collection,
@@ -9,16 +10,30 @@ import {
     updateDoc,
     deleteDoc,
     doc,
+    setDoc,
 } from "firebase/firestore";
 
-import { firebaseConfig } from "../../key.js";
+import {
+    ref,
+    getDownloadURL,
+    uploadBytes,
+    deleteObject,
+} from "firebase/storage";
 
-import type { CarProps } from "../components/pieces/CarCard.astro";
-import CarCard from "./react/ReactCarCard";
+// import { firebaseConfig } from "../../key.js";
+
+import type { CarProps } from "./pieces/CarCard.astro";
+import CarCard from "./react/ReactCarCard.js";
+
+import { useUploadFile, useDownloadURL } from 'react-firebase-hooks/storage';
+
+// import inventory from "../data/inventory.csv?raw";
+// // import { parse } from 'csv-parse/sync';
+// import Papa from 'papaparse';
 
 export function Firebase() {
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    // const app = initializeApp(firebaseConfig);
+    // const db = getFirestore(app);
 
     const collectionRef = "vehicles";
 
@@ -37,6 +52,17 @@ export function Firebase() {
     //   const vehicleRef = doc(db, collectionRef, vin);
     //   await setDoc(vehicleRef, row);
     // });
+
+    // const { data } = Papa.parse(inventory, {
+    //     header: true,
+    //     skipEmptyLines: true
+    // });
+    
+    // for (const row of data as any[]) {
+    //     const { vin } = row;
+    //     const vehicleRef = doc(db, collectionRef, vin);
+    //     await setDoc(vehicleRef, row);
+    // }
 
     const fetchData = async () => {
         const querySnapshot = await getDocs(collection(db, collectionRef));
@@ -69,9 +95,9 @@ export function Firebase() {
 }
 
 export function Login() {
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const auth = getAuth(app);
+    // const app = initializeApp(firebaseConfig);
+    // const db = getFirestore(app);
+    // const auth = getAuth(app);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
