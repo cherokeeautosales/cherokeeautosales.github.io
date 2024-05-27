@@ -1,6 +1,5 @@
-import { useState, type SetStateAction } from "react";
+import { useState } from "react";
 import { auth, db, storage } from "../firebase";
-// import { initializeApp } from "firebase/app";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {
     getFirestore,
@@ -20,21 +19,17 @@ import {
     deleteObject,
 } from "firebase/storage";
 
-// import { firebaseConfig } from "../../key.js";
 
 import type { CarProps } from "./pieces/CarCard.astro";
 import CarCard from "./react/ReactCarCard.js";
 
-import { useUploadFile, useDownloadURL } from 'react-firebase-hooks/storage';
+import { useUploadFile, useDownloadURL } from "react-firebase-hooks/storage";
 
 // import inventory from "../data/inventory.csv?raw";
 // // import { parse } from 'csv-parse/sync';
 // import Papa from 'papaparse';
 
-export function Firebase() {
-    // const app = initializeApp(firebaseConfig);
-    // const db = getFirestore(app);
-
+export function Inventory() {
     const collectionRef = "vehicles";
 
     const [vehicles, setVehicles] = useState<CarProps[]>([]);
@@ -57,7 +52,7 @@ export function Firebase() {
     //     header: true,
     //     skipEmptyLines: true
     // });
-    
+
     // for (const row of data as any[]) {
     //     const { vin } = row;
     //     const vehicleRef = doc(db, collectionRef, vin);
@@ -73,32 +68,27 @@ export function Firebase() {
         setLoading(false);
     };
     fetchData();
-    console.log(vehicles);
 
     return (
         <div>
             {loading ? (
                 <div>Loading...</div>
             ) : (
-                <div>
-                    {
-                        vehicles.map((vehicle, index) => {
-                            console.log(vehicle);
-                            // return <p key={index}>{vehicle.year}</p> //lol fix this with car cards :(
-                            return <CarCard {...vehicle}/>
-                        }
-                    )}
-                </div>
+                <>
+                    <h2>Current Inventory:</h2>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1rem" }}
+                    >
+                        {vehicles.map((car) => (
+                            <CarCard {...car} />
+                        ))}
+                    </div>
+                </>
             )}
         </div>
     );
 }
 
 export function Login() {
-    // const app = initializeApp(firebaseConfig);
-    // const db = getFirestore(app);
-    // const auth = getAuth(app);
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -116,6 +106,7 @@ export function Login() {
         date: "",
         image: "",
         link: "",
+        filePath: "",
     });
 
     const [editingVin, setEditingVin] = useState("");
@@ -147,8 +138,10 @@ export function Login() {
 
     const addVehicle = async (vehicle: CarProps) => {
         try {
-            const docRef = await addDoc(collection(db, "vehicles"), vehicle);
-            const newVehicle = { ...vehicle, id: docRef.id };
+            const carDoc = doc(db, "vehicles", String(vehicle.vin));
+            await setDoc(carDoc, vehicle);
+            // const docRef = await addDoc(collection(db, "vehicles"), vehicle);
+            const newVehicle = { ...vehicle, id: carDoc.id };
             setVehicles([...vehicles, newVehicle]);
         } catch (error) {
             console.error("Add vehicle error:", error);
@@ -174,22 +167,99 @@ export function Login() {
         }
     };
 
-    const deleteVehicle = async (vin: string) => {
+    const deleteVehicle = async (vehicle: CarProps) => {
         try {
-            await deleteDoc(doc(db, "vehicles", vin));
+            await deleteDoc(doc(db, "vehicles", vehicle.vin));
+            try {
+                const imageRef = ref(storage, vehicle.filePath);
+                await deleteObject(imageRef);
+            } catch (error) {
+                // console.error("Delete image error:", error);
+            }
             setVehicles((prevVehicles) =>
-                prevVehicles.filter((vehicle) => vehicle.vin !== vin)
+                prevVehicles.filter(
+                    (prevVehicle) => prevVehicle.vin !== vehicle.vin
+                )
             );
         } catch (error) {
             console.error("Delete vehicle error:", error);
         }
     };
 
-    const handleChange = (field: string, value: string) => {
+    const handleChange = async (field: string, value: string) => {
         setEditedFields((prevState) => ({
             ...prevState,
             [field]: value,
         }));
+
+        // await updateDoc(doc(db, "vehicles", editedFields.vin), {
+        //     [field]: value,
+        // });
+    };
+
+    const [uploadFile] = useUploadFile();
+
+    const handleImageUpload = async (
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const file = e.target.files ? e.target.files[0] : undefined;
+        const filePath = file ? `vehicleImages/${Date.now()}_${file.name}` : "";
+        const imageRef = ref(storage, filePath);
+        if (file) {
+            const result = await uploadFile(imageRef, file, {
+                contentType: "image/jpeg",
+            });
+        }
+        const imageUrl = await getDownloadURL(imageRef);
+        setNewVehicle({
+            ...newVehicle,
+            image: imageUrl,
+            filePath: filePath,
+        });
+    };
+
+    const handleEditImageUpload = async (
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const file = e.target.files ? e.target.files[0] : undefined;
+        const filePath = file ? `vehicleImages/${Date.now()}_${file.name}` : "";
+        const imageRef = ref(storage, filePath);
+        if (file) {
+            const result = await uploadFile(imageRef, file, {
+                contentType: "image/jpeg",
+            });
+        }
+        const imageUrl = await getDownloadURL(imageRef);
+        setEditedFields((prevState) => ({
+            ...prevState,
+            image: imageUrl,
+            filePath: filePath,
+        }));
+    };
+
+    const handleDeleteImage = async (vehicle: CarProps) => {
+        const imageRef = ref(storage, vehicle.filePath);
+        await deleteObject(imageRef);
+        setEditedFields((prevState) => ({
+            ...prevState,
+            image: "",
+            filePath: "",
+        }));
+
+        await updateDoc(doc(db, "vehicles", vehicle.vin), {
+            image: "",
+            filePath: "",
+        });
+
+        setVehicles((prevVehicles) => {
+            const updatedVehicles = prevVehicles.map((prevVehicle) => {
+                if (prevVehicle.vin === vehicle.vin) {
+                    return { ...prevVehicle, image: "", filePath: "" };
+                }
+                return prevVehicle;
+            });
+            return updatedVehicles;
+        });
     };
 
     const handleEdit = (vin: string) => {
@@ -202,20 +272,24 @@ export function Login() {
     };
 
     const handleAddVehicle = () => {
-        addVehicle(newVehicle);
-        setNewVehicle({
-            stockNumber: "",
-            year: "",
-            make: "",
-            model: "",
-            vin: "",
-            mileage: "",
-            color: "",
-            cost: "",
-            date: "",
-            image: "",
-            link: "",
-        });
+        if (newVehicle.image) {
+            addVehicle(newVehicle);
+            setNewVehicle({
+                stockNumber: "",
+                year: "",
+                make: "",
+                model: "",
+                vin: "",
+                mileage: "",
+                color: "",
+                cost: "",
+                date: "",
+                image: "",
+                link: "",
+                filePath: "",
+            });
+            alert("Vehicle added successfully!");
+        }
     };
 
     return (
@@ -433,15 +507,11 @@ export function Login() {
                             required
                         />
                         <input
-                            type="text"
-                            placeholder="Image"
-                            value={newVehicle.image}
-                            onChange={(e) =>
-                                setNewVehicle({
-                                    ...newVehicle,
-                                    image: e.target.value,
-                                })
-                            }
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => {
+                                handleImageUpload(e);
+                            }}
                             style={{
                                 marginRight: "10px",
                                 marginBottom: "10px",
@@ -499,7 +569,7 @@ export function Login() {
                                     padding: "15px",
                                 }}
                             >
-                                {/* Display vehicle information */}
+                              
                                 <div>
                                     <span>
                                         Stock Number:{" "}
@@ -763,32 +833,65 @@ export function Login() {
                                     </span>
                                     <br />
                                     <span>
-                                        Image:{" "}
-                                        {editingVin === vehicle.vin ? (
-                                            <input
-                                                type="text"
-                                                value={
-                                                    editedFields.image ||
-                                                    vehicle.image
-                                                }
-                                                onChange={(e) =>
-                                                    handleChange(
-                                                        "image",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                style={{
-                                                    marginRight: "5px",
-                                                    marginBottom: "5px",
-                                                    width: "80%",
-                                                    padding: "2px",
-                                                    borderRadius: "5px",
-                                                    border: "1px solid #ccc",
-                                                }}
-                                            />
-                                        ) : (
-                                            vehicle.image
-                                        )}
+                                            Image:{" "}
+                                            {vehicle.image ? (
+                                                editingVin === vehicle.vin ? (
+                                                    <>
+                                                        <img
+                                                            src={vehicle.image}
+                                                            alt="vehicle"
+                                                            style={{
+                                                                width: "100px",
+                                                                height: "100px",
+                                                                objectFit:
+                                                                    "cover",
+                                                            }}
+                                                        />
+                                                        <button
+                                                            onClick={() =>
+                                                                handleDeleteImage(
+                                                                    vehicle
+                                                                )
+                                                            }
+                                                        >
+                                                            Delete Image
+                                                        </button>
+                                                    </>
+                                                ) : (
+                                                    <img
+                                                        src={vehicle.image}
+                                                        alt="vehicle"
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "200px",
+                                                            objectFit: "cover",
+                                                        }}
+                                                    />
+                                                )
+                                            ) : editingVin === vehicle.vin ? (
+                                                <input
+                                                    type="file"
+                                                    accept="image/*"
+                                                    onChange={(e) => {
+                                                        handleEditImageUpload(
+                                                            e
+                                                        );
+                                                    }}
+                                                    style={{
+                                                        marginRight: "5px",
+                                                        marginBottom: "5px",
+                                                        width: "80%",
+                                                        padding: "2px",
+                                                        borderRadius: "5px",
+                                                        border: "1px solid #ccc",
+                                                    }}
+                                                />
+                                            ) : (
+                                                <p style={{ color: "orange" }}>
+                                                    No image, please click edit
+                                                    to upload.
+                                                </p>
+                                            )}
                                     </span>
                                     <br />
                                     <span>
@@ -816,12 +919,14 @@ export function Login() {
                                                 }}
                                             />
                                         ) : (
-                                            vehicle.link
+                                            <a href={vehicle.link}>
+                                                {vehicle.link}
+                                            </a>
                                         )}
                                     </span>
                                     <br />
                                 </div>
-                                {/* Show "Edit" or "Save" button based on editingVin state */}
+                               
                                 {editingVin === vehicle.vin ? (
                                     <button
                                         onClick={() => handleSave(vehicle.vin)}
@@ -852,7 +957,7 @@ export function Login() {
                                     </button>
                                 )}
                                 <button
-                                    onClick={() => deleteVehicle(vehicle.vin)}
+                                    onClick={() => deleteVehicle(vehicle)}
                                     style={{
                                         marginLeft: "10px",
                                         width: "60px",
