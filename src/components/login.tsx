@@ -29,7 +29,7 @@ import { useUploadFile, useDownloadURL } from "react-firebase-hooks/storage";
 // // import { parse } from 'csv-parse/sync';
 // import Papa from 'papaparse';
 
-export function Inventory() {
+export function InventoryCards() {
     const collectionRef = "vehicles";
 
     const [vehicles, setVehicles] = useState<CarProps[]>([]);
@@ -72,10 +72,10 @@ export function Inventory() {
     return (
         <div>
             {loading ? (
-                <div>Loading...</div>
+                <div style={{ color: "white" }}>Loading inventory...</div>
             ) : (
                 <>
-                    <h2>Current Inventory:</h2>
+                    <h2 style={{ color: "white", textAlign: "center" }}>Current Inventory:</h2>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1rem" }}
                     >
                         {vehicles.map((car) => (
