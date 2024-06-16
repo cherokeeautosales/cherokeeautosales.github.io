@@ -25,6 +25,8 @@ import CarCard from "./react/ReactCarCard.js";
 
 import { useUploadFile, useDownloadURL } from "react-firebase-hooks/storage";
 
+import './login.css';
+
 // import inventory from "../data/inventory.csv?raw";
 // // import { parse } from 'csv-parse/sync';
 // import Papa from 'papaparse';
@@ -108,6 +110,7 @@ export function Login() {
         link: "",
         filePath: "",
     });
+
 
     const [editingVin, setEditingVin] = useState("");
     const [editedFields, setEditedFields] = useState<Partial<CarProps>>({});
@@ -306,15 +309,6 @@ export function Login() {
                         <h2>Welcome!</h2>
                         <button
                             onClick={() => setIsLoggedIn(false)}
-                            style={{
-                                marginLeft: "10px",
-                                width: "100px",
-                                borderRadius: "5px",
-                                padding: "5px",
-                                border: "none",
-                                backgroundColor: "#007bff",
-                                color: "white",
-                            }}
                         >
                             Logout
                         </button>
@@ -336,14 +330,6 @@ export function Login() {
                                     stockNumber: e.target.value,
                                 })
                             }
-                            style={{
-                                marginRight: "10px",
-                                marginBottom: "10px",
-                                width: "300px",
-                                padding: "5px",
-                                borderRadius: "5px",
-                                border: "1px solid #ccc",
-                            }}
                             required
                         />
                         <input
@@ -356,14 +342,6 @@ export function Login() {
                                     year: e.target.value,
                                 })
                             }
-                            style={{
-                                marginRight: "10px",
-                                marginBottom: "10px",
-                                width: "300px",
-                                padding: "5px",
-                                borderRadius: "5px",
-                                border: "1px solid #ccc",
-                            }}
                             required
                         />
                         <input
@@ -376,14 +354,6 @@ export function Login() {
                                     make: e.target.value,
                                 })
                             }
-                            style={{
-                                marginRight: "10px",
-                                marginBottom: "10px",
-                                width: "300px",
-                                padding: "5px",
-                                borderRadius: "5px",
-                                border: "1px solid #ccc",
-                            }}
                             required
                         />
                         <input
@@ -396,14 +366,6 @@ export function Login() {
                                     model: e.target.value,
                                 })
                             }
-                            style={{
-                                marginRight: "10px",
-                                marginBottom: "10px",
-                                width: "300px",
-                                padding: "5px",
-                                borderRadius: "5px",
-                                border: "1px solid #ccc",
-                            }}
                             required
                         />
                         <input
@@ -416,14 +378,6 @@ export function Login() {
                                     vin: e.target.value,
                                 })
                             }
-                            style={{
-                                marginRight: "10px",
-                                marginBottom: "10px",
-                                width: "300px",
-                                padding: "5px",
-                                borderRadius: "5px",
-                                border: "1px solid #ccc",
-                            }}
                             required
                         />
                         <input
@@ -436,14 +390,6 @@ export function Login() {
                                     mileage: e.target.value,
                                 })
                             }
-                            style={{
-                                marginRight: "10px",
-                                marginBottom: "10px",
-                                width: "300px",
-                                padding: "5px",
-                                borderRadius: "5px",
-                                border: "1px solid #ccc",
-                            }}
                             required
                         />
                         <input
@@ -456,14 +402,6 @@ export function Login() {
                                     color: e.target.value,
                                 })
                             }
-                            style={{
-                                marginRight: "10px",
-                                marginBottom: "10px",
-                                width: "300px",
-                                padding: "5px",
-                                borderRadius: "5px",
-                                border: "1px solid #ccc",
-                            }}
                             required
                         />
                         <input
@@ -476,14 +414,7 @@ export function Login() {
                                     cost: e.target.value,
                                 })
                             }
-                            style={{
-                                marginRight: "10px",
-                                marginBottom: "10px",
-                                width: "300px",
-                                padding: "5px",
-                                borderRadius: "5px",
-                                border: "1px solid #ccc",
-                            }}
+
                             required
                         />
                         <input
@@ -496,14 +427,6 @@ export function Login() {
                                     date: e.target.value,
                                 })
                             }
-                            style={{
-                                marginRight: "10px",
-                                marginBottom: "10px",
-                                width: "300px",
-                                padding: "5px",
-                                borderRadius: "5px",
-                                border: "1px solid #ccc",
-                            }}
                             required
                         />
                         <input
@@ -511,14 +434,6 @@ export function Login() {
                             accept="image/*"
                             onChange={(e) => {
                                 handleImageUpload(e);
-                            }}
-                            style={{
-                                marginRight: "10px",
-                                marginBottom: "10px",
-                                width: "300px",
-                                padding: "5px",
-                                borderRadius: "5px",
-                                border: "1px solid #ccc",
                             }}
                             required
                         />
@@ -532,27 +447,9 @@ export function Login() {
                                     link: e.target.value,
                                 })
                             }
-                            style={{
-                                marginRight: "10px",
-                                marginBottom: "10px",
-                                width: "300px",
-                                padding: "5px",
-                                borderRadius: "5px",
-                                border: "1px solid #ccc",
-                            }}
                             required
                         />
-                        <button
-                            type="submit"
-                            style={{
-                                width: "100px",
-                                borderRadius: "5px",
-                                padding: "5px",
-                                border: "none",
-                                backgroundColor: "#007bff",
-                                color: "white",
-                            }}
-                        >
+                        <button type="submit">
                             Add
                         </button>
                     </form>
@@ -561,382 +458,211 @@ export function Login() {
                     <ul>
                         {vehicles.map((vehicle) => (
                             <div
+                                className="vehicleCard"
                                 key={vehicle.vin}
-                                style={{
-                                    marginBottom: "20px",
-                                    border: "1px lightgray solid",
-                                    borderRadius: "5px",
-                                    padding: "15px",
-                                }}
                             >
-                              
-                                <div>
-                                    <span>
-                                        Stock Number:{" "}
-                                        {editingVin === vehicle.vin ? (
-                                            <input
-                                                type="text"
-                                                value={
-                                                    editedFields.stockNumber ||
-                                                    vehicle.stockNumber
-                                                }
-                                                onChange={(e) =>
-                                                    handleChange(
-                                                        "stockNumber",
-                                                        e.target.value
-                                                    )
-                                                }
+
+<div className="vehicle-info">
+    <div className="info-row">
+        <span className="label">Stock Number:</span>
+        <span className="value">
+            {editingVin === vehicle.vin ? (
+                <input
+                    type="text"
+                    value={editedFields.stockNumber || vehicle.stockNumber}
+                    onChange={(e) => handleChange("stockNumber", e.target.value)}
+                />
+            ) : (
+                vehicle.stockNumber
+            )}
+        </span>
+    </div>
+    <div className="info-row">
+        <span className="label">Year:</span>
+        <span className="value">
+            {editingVin === vehicle.vin ? (
+                <input
+                    type="text"
+                    value={editedFields.year || vehicle.year}
+                    onChange={(e) => handleChange("year", e.target.value)}
+                />
+            ) : (
+                vehicle.year
+            )}
+        </span>
+    </div>
+    <div className="info-row">
+        <span className="label">Make:</span>
+        <span className="value">
+            {editingVin === vehicle.vin ? (
+                <input
+                    type="text"
+                    value={editedFields.make || vehicle.make}
+                    onChange={(e) => handleChange("make", e.target.value)}
+                />
+            ) : (
+                vehicle.make
+            )}
+        </span>
+        </div>
+        <div className="info-row">
+            <span className="label">Model:</span>
+            <span className="value">
+                {editingVin === vehicle.vin ? (
+                    <input
+                        type="text"
+                        value={editedFields.model || vehicle.model}
+                        onChange={(e) => handleChange("model", e.target.value)}
+                    />
+                ) : (
+                    vehicle.model
+                )}
+            </span>
+            </div>
+            <div className="info-row">
+                <span className="label">VIN:</span>
+                <span className="value">
+                    {editingVin === vehicle.vin ? (
+                        <input
+                            type="text"
+                            value={editedFields.vin || vehicle.vin}
+                            onChange={(e) => handleChange("vin", e.target.value)}
+                        />
+                    ) : (
+                        vehicle.vin
+                    )}
+                </span>
+                </div>
+                <div className="info-row">
+                    <span className="label">Mileage:</span>
+                    <span className="value">
+                        {editingVin === vehicle.vin ? (
+                            <input
+                                type="text"
+                                value={editedFields.mileage || vehicle.mileage}
+                                onChange={(e) => handleChange("mileage", e.target.value)}
+                            />
+                        ) : (
+                            vehicle.mileage
+                        )}
+                        </span>
+                        </div>
+
+            <div className="info-row"> 
+                <span className="label">Color:</span>
+                <span className="value">
+                    {editingVin === vehicle.vin ? (
+                        <input
+                            type="text"
+                            value={editedFields.color || vehicle.color}
+                            onChange={(e) => handleChange("color", e.target.value)}
+                        />
+                    ) : (
+                        vehicle.color
+                    )}
+                </span>
+                </div>
+                <div className="info-row">
+                    <span className="label">Cost:</span>
+                    <span className="value">
+                        {editingVin === vehicle.vin ? (
+                            <input
+                                type="text"
+                                value={editedFields.cost || vehicle.cost}
+                                onChange={(e) => handleChange("cost", e.target.value)}
+                            />
+                        ) : (
+                            vehicle.cost
+                        )}
+                    </span>
+                    </div>
+                    <div className="info-row">
+                        <span className="label">Date:</span>
+                        <span className="value">
+                            {editingVin === vehicle.vin ? (
+                                <input
+                                    type="text"
+                                    value={editedFields.date || vehicle.date}
+                                    onChange={(e) => handleChange("date", e.target.value)}
+                                />
+                            ) : (
+                                vehicle.date
+                            )}
+                        </span>
+                        </div>
+                        <div className="info-row">
+                            <span className="label">Image:</span>
+                            <span className="value">
+                                {vehicle.image ? (
+                                    editingVin === vehicle.vin ? (
+                                        <>
+                                            <img
+                                                src={vehicle.image}
+                                                alt="vehicle"
                                                 style={{
-                                                    marginRight: "5px",
-                                                    marginBottom: "5px",
-                                                    width: "80%",
-                                                    padding: "2px",
-                                                    borderRadius: "5px",
-                                                    border: "1px solid #ccc",
+                                                    width: "100px",
+                                                    height: "100px",
+                                                    objectFit: "cover",
                                                 }}
                                             />
-                                        ) : (
-                                            vehicle.stockNumber
-                                        )}
-                                    </span>
-                                    <br />
-                                    <span>
-                                        Year:{" "}
-                                        {editingVin === vehicle.vin ? (
-                                            <input
-                                                type="text"
-                                                value={
-                                                    editedFields.year ||
-                                                    vehicle.year
-                                                }
-                                                onChange={(e) =>
-                                                    handleChange(
-                                                        "year",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                style={{
-                                                    marginRight: "5px",
-                                                    marginBottom: "5px",
-                                                    width: "80%",
-                                                    padding: "2px",
-                                                    borderRadius: "5px",
-                                                    border: "1px solid #ccc",
-                                                }}
-                                            />
-                                        ) : (
-                                            vehicle.year
-                                        )}
-                                    </span>
-                                    <br />
-                                    <span>
-                                        Make:{" "}
-                                        {editingVin === vehicle.vin ? (
-                                            <input
-                                                type="text"
-                                                value={
-                                                    editedFields.make ||
-                                                    vehicle.make
-                                                }
-                                                onChange={(e) =>
-                                                    handleChange(
-                                                        "make",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                style={{
-                                                    marginRight: "5px",
-                                                    marginBottom: "5px",
-                                                    width: "80%",
-                                                    padding: "2px",
-                                                    borderRadius: "5px",
-                                                    border: "1px solid #ccc",
-                                                }}
-                                            />
-                                        ) : (
-                                            vehicle.make
-                                        )}
-                                    </span>
-                                    <br />
-                                    <span>
-                                        Model:{" "}
-                                        {editingVin === vehicle.vin ? (
-                                            <input
-                                                type="text"
-                                                value={
-                                                    editedFields.model ||
-                                                    vehicle.model
-                                                }
-                                                onChange={(e) =>
-                                                    handleChange(
-                                                        "model",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                style={{
-                                                    marginRight: "5px",
-                                                    marginBottom: "5px",
-                                                    width: "80%",
-                                                    padding: "2px",
-                                                    borderRadius: "5px",
-                                                    border: "1px solid #ccc",
-                                                }}
-                                            />
-                                        ) : (
-                                            vehicle.model
-                                        )}
-                                    </span>
-                                    <br />
-                                    <span>
-                                        VIN:{" "}
-                                        {editingVin === vehicle.vin ? (
-                                            <input
-                                                type="text"
-                                                value={
-                                                    editedFields.vin ||
-                                                    vehicle.vin
-                                                }
-                                                onChange={(e) =>
-                                                    handleChange(
-                                                        "vin",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                style={{
-                                                    marginRight: "5px",
-                                                    marginBottom: "5px",
-                                                    width: "80%",
-                                                    padding: "2px",
-                                                    borderRadius: "5px",
-                                                    border: "1px solid #ccc",
-                                                }}
-                                            />
-                                        ) : (
-                                            vehicle.vin
-                                        )}
-                                    </span>
-                                    <br />
-                                    <span>
-                                        Mileage:{" "}
-                                        {editingVin === vehicle.vin ? (
-                                            <input
-                                                type="text"
-                                                value={
-                                                    editedFields.mileage ||
-                                                    vehicle.mileage
-                                                }
-                                                onChange={(e) =>
-                                                    handleChange(
-                                                        "mileage",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                style={{
-                                                    marginRight: "5px",
-                                                    marginBottom: "5px",
-                                                    width: "80%",
-                                                    padding: "2px",
-                                                    borderRadius: "5px",
-                                                    border: "1px solid #ccc",
-                                                }}
-                                            />
-                                        ) : (
-                                            vehicle.mileage
-                                        )}
-                                    </span>
-                                    <br />
-                                    <span>
-                                        Color:{" "}
-                                        {editingVin === vehicle.vin ? (
-                                            <input
-                                                type="text"
-                                                value={
-                                                    editedFields.color ||
-                                                    vehicle.color
-                                                }
-                                                onChange={(e) =>
-                                                    handleChange(
-                                                        "color",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                style={{
-                                                    marginRight: "5px",
-                                                    marginBottom: "5px",
-                                                    width: "80%",
-                                                    padding: "2px",
-                                                    borderRadius: "5px",
-                                                    border: "1px solid #ccc",
-                                                }}
-                                            />
-                                        ) : (
-                                            vehicle.color
-                                        )}
-                                    </span>
-                                    <br />
-                                    <span>
-                                        Cost:{" "}
-                                        {editingVin === vehicle.vin ? (
-                                            <input
-                                                type="text"
-                                                value={
-                                                    editedFields.cost ||
-                                                    vehicle.cost
-                                                }
-                                                onChange={(e) =>
-                                                    handleChange(
-                                                        "cost",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                style={{
-                                                    marginRight: "5px",
-                                                    marginBottom: "5px",
-                                                    width: "80%",
-                                                    padding: "2px",
-                                                    borderRadius: "5px",
-                                                    border: "1px solid #ccc",
-                                                }}
-                                            />
-                                        ) : (
-                                            vehicle.cost
-                                        )}
-                                    </span>
-                                    <br />
-                                    <span>
-                                        Date:{" "}
-                                        {editingVin === vehicle.vin ? (
-                                            <input
-                                                type="text"
-                                                value={
-                                                    editedFields.date ||
-                                                    vehicle.date
-                                                }
-                                                onChange={(e) =>
-                                                    handleChange(
-                                                        "date",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                style={{
-                                                    marginRight: "5px",
-                                                    marginBottom: "5px",
-                                                    width: "80%",
-                                                    padding: "2px",
-                                                    borderRadius: "5px",
-                                                    border: "1px solid #ccc",
-                                                }}
-                                            />
-                                        ) : (
-                                            vehicle.date
-                                        )}
-                                    </span>
-                                    <br />
-                                    <span>
-                                            Image:{" "}
-                                            {vehicle.image ? (
-                                                editingVin === vehicle.vin ? (
-                                                    <>
-                                                        <img
-                                                            src={vehicle.image}
-                                                            alt="vehicle"
-                                                            style={{
-                                                                width: "100px",
-                                                                height: "100px",
-                                                                objectFit:
-                                                                    "cover",
-                                                            }}
-                                                        />
-                                                        <button
-                                                            onClick={() =>
-                                                                handleDeleteImage(
-                                                                    vehicle
-                                                                )
-                                                            }
-                                                        >
-                                                            Delete Image
-                                                        </button>
-                                                    </>
-                                                ) : (
-                                                    <img
-                                                        src={vehicle.image}
-                                                        alt="vehicle"
-                                                        style={{
-                                                            width: "200px",
-                                                            height: "200px",
-                                                            objectFit: "cover",
-                                                        }}
-                                                    />
-                                                )
-                                            ) : editingVin === vehicle.vin ? (
-                                                <input
-                                                    type="file"
-                                                    accept="image/*"
-                                                    onChange={(e) => {
-                                                        handleEditImageUpload(
-                                                            e
-                                                        );
-                                                    }}
-                                                    style={{
-                                                        marginRight: "5px",
-                                                        marginBottom: "5px",
-                                                        width: "80%",
-                                                        padding: "2px",
-                                                        borderRadius: "5px",
-                                                        border: "1px solid #ccc",
-                                                    }}
-                                                />
-                                            ) : (
-                                                <p style={{ color: "orange" }}>
-                                                    No image, please click edit
-                                                    to upload.
-                                                </p>
-                                            )}
-                                    </span>
-                                    <br />
-                                    <span>
-                                        Link:{" "}
-                                        {editingVin === vehicle.vin ? (
-                                            <input
-                                                type="text"
-                                                value={
-                                                    editedFields.link ||
-                                                    vehicle.link
-                                                }
-                                                onChange={(e) =>
-                                                    handleChange(
-                                                        "link",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                style={{
-                                                    marginRight: "5px",
-                                                    marginBottom: "5px",
-                                                    width: "80%",
-                                                    padding: "2px",
-                                                    borderRadius: "5px",
-                                                    border: "1px solid #ccc",
-                                                }}
-                                            />
-                                        ) : (
-                                            <a href={vehicle.link}>
-                                                {vehicle.link}
-                                            </a>
-                                        )}
-                                    </span>
-                                    <br />
+                                            <button
+                                            className="delete-image-button"
+                                                onClick={() => handleDeleteImage(vehicle)}
+                                            >
+                                                Delete Image
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <img
+                                            src={vehicle.image}
+                                            alt="vehicle"
+                                            style={{
+                                                width: "200px",
+                                                height: "200px",
+                                                objectFit: "cover",
+                                            }}
+                                        />
+                                    )
+                                ) : editingVin === vehicle.vin ? (
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={(e) => {
+                                            handleEditImageUpload(e);
+                                        }}
+                                    />
+                                ) : (
+                                    <p style={{ color: "orange" }}>
+                                        No image, please click edit to upload.
+                                    </p>
+                                )}
+                            </span>
+                            </div>
+                            <div className="info-row">
+                                <span className="label">Link:</span>
+                                <span className="value">
+                                    {editingVin === vehicle.vin ? (
+                                        <input
+                                            type="text"
+                                            value={editedFields.link || vehicle.link}
+                                            onChange={(e) => handleChange("link", e.target.value)}
+                                        />
+                                    ) : (
+                                        <a href={vehicle.link}>{vehicle.link}</a>
+                                    )}
+                                </span>
                                 </div>
+
+</div>
+                            
+    
                                
                                 {editingVin === vehicle.vin ? (
                                     <button
                                         onClick={() => handleSave(vehicle.vin)}
                                         style={{
-                                            width: "60px",
-                                            borderRadius: "5px",
-                                            padding: "5px",
-                                            border: "none",
-                                            backgroundColor: "lightgray",
-                                            marginTop: "10px",
+                                            border: "1px solid #2ba664",
+                                            backgroundColor: "#96ebb2",
                                         }}
                                     >
                                         Save
@@ -944,14 +670,6 @@ export function Login() {
                                 ) : (
                                     <button
                                         onClick={() => handleEdit(vehicle.vin)}
-                                        style={{
-                                            width: "60px",
-                                            borderRadius: "5px",
-                                            padding: "5px",
-                                            border: "none",
-                                            backgroundColor: "lightgray",
-                                            marginTop: "10px",
-                                        }}
                                     >
                                         Edit
                                     </button>
@@ -960,15 +678,12 @@ export function Login() {
                                     onClick={() => deleteVehicle(vehicle)}
                                     style={{
                                         marginLeft: "10px",
-                                        width: "60px",
-                                        borderRadius: "5px",
-                                        padding: "5px",
-                                        border: "none",
-                                        backgroundColor: "lightgray",
-                                        marginTop: "10px",
+                                        width: "150px",
+                                        border: "1px solid #a62b38",
+                                        backgroundColor: "#eb969e",
                                     }}
                                 >
-                                    Delete
+                                    Delete Vehicle
                                 </button>
                             </div>
                         ))}
