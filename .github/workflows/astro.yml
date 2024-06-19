@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create key.js file
-        run: echo "${{ secrets.FIREBASE }}" > key.js
+        run: echo '${{ secrets.FIREBASE }}' > key.js
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
