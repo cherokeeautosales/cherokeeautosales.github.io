@@ -23,7 +23,8 @@ import {
 import type { CarProps } from "./pieces/CarCard.astro";
 import CarCard from "./react/ReactCarCard.js";
 
-import { useUploadFile, useDownloadURL } from "react-firebase-hooks/storage";
+// import { useUploadFile, useDownloadURL } from "react-firebase-hooks/storage";
+import * as firebaseStorage from 'react-firebase-hooks/storage';
 
 import './login.css';
 
@@ -180,7 +181,7 @@ export function Login() {
         // });
     };
 
-    const [uploadFile] = useUploadFile();
+    const [uploadFile] = firebaseStorage.useUploadFile();
 
     const handleImageUpload = async (
         e: React.ChangeEvent<HTMLInputElement>
