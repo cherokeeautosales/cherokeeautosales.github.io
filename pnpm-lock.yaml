@@ -38,6 +38,9 @@ dependencies:
   firebase-admin:
     specifier: ^12.1.0
     version: 12.1.0
+  papaparse:
+    specifier: ^5.4.1
+    version: 5.4.1
   react:
     specifier: ^18.3.1
     version: 18.3.1
@@ -47,6 +50,9 @@ dependencies:
   react-dom:
     specifier: ^18.3.1
     version: 18.3.1(react@18.3.1)
+  react-firebase-hooks:
+    specifier: ^5.1.1
+    version: 5.1.1(firebase@10.12.0)(react@18.3.1)
   react-icons:
     specifier: ^5.2.1
     version: 5.2.1(react@18.3.1)
@@ -64,6 +70,9 @@ dependencies:
     version: 5.4.5
 
 devDependencies:
+  '@types/papaparse':
+    specifier: ^5.3.14
+    version: 5.3.14
   accessible-astro-components:
     specifier: ^2.3.6
     version: 2.3.6
@@ -2082,7 +2091,12 @@ packages:
     resolution: {integrity: sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==}
     dependencies:
       undici-types: 5.26.5
-    dev: false
+
+  /@types/papaparse@5.3.14:
+    resolution: {integrity: sha512-LxJ4iEFcpqc6METwp9f6BV6VVc43m6MfH0VqFosHvrUgfXiFe6ww7R3itkOQ+TCK6Y+Iv/+RnnvtRZnkc5Kc9g==}
+    dependencies:
+      '@types/node': 20.12.12
+    dev: true
 
   /@types/prop-types@15.7.12:
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -4552,6 +4566,10 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /papaparse@5.4.1:
+    resolution: {integrity: sha512-HipMsgJkZu8br23pW15uvo6sib6wne/4woLZPlFf3rpDyMe9ywEXUsuD7+6K9PRkJlVT51j/sCOYDKGGS3ZJrw==}
+    dev: false
+
   /parse-latin@5.0.1:
     resolution: {integrity: sha512-b/K8ExXaWC9t34kKeDV8kGXBkXZ1HCSAZRYE7HR14eA1GlXX5L8iWhs8USJNhQU9q5ci413jCKF0gOyovvyRBg==}
     dependencies:
@@ -4790,6 +4808,16 @@ packages:
       loose-envify: 1.4.0
       react: 18.3.1
       scheduler: 0.23.2
+    dev: false
+
+  /react-firebase-hooks@5.1.1(firebase@10.12.0)(react@18.3.1):
+    resolution: {integrity: sha512-y2UpWs82xs+39q5Rc/wq316ca52QsC0n8m801V+yM4IC4hbfOL4yQPVSh7w+ydstdvjN9F+lvs1WrO2VYxpmdA==}
+    peerDependencies:
+      firebase: '>= 9.0.0'
+      react: '>= 16.8.0'
+    dependencies:
+      firebase: 10.12.0
+      react: 18.3.1
     dev: false
 
   /react-html-props@2.0.9(react-dom@18.3.1)(react@18.3.1):
@@ -5526,7 +5554,6 @@ packages:
 
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
-    dev: false
 
   /undici@5.28.4:
     resolution: {integrity: sha512-72RFADWFqKmUb2hmmvNODKL3p9hcB6Gt2DOQMis1SEBaV6a4MH8soBvzg+95CYhCKPFedut2JY9bMfrDl9D23g==}
@@ -6035,6 +6062,7 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    requiresBuild: true
     dev: false
 
   /yocto-queue@1.0.0:

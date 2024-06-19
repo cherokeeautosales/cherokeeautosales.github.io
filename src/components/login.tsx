@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { auth, db, storage } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {
@@ -37,39 +37,17 @@ export function InventoryCards() {
     const [vehicles, setVehicles] = useState<CarProps[]>([]);
     const [loading, setLoading] = useState(true);
 
-    // intial data load
-    // const data = parse(inventory, {
-    //   skip_empty_lines: true,
-    //     delimiter: ',',
-    //     columns: ["stockNumber", "year", "make", "model", "vin", "mileage", "color", "cost", "date", "image", "link"]
-    // }).splice(1);
-
-    // data.forEach(async (row: any) => {
-    //   const { vin } = row;
-    //   const vehicleRef = doc(db, collectionRef, vin);
-    //   await setDoc(vehicleRef, row);
-    // });
-
-    // const { data } = Papa.parse(inventory, {
-    //     header: true,
-    //     skipEmptyLines: true
-    // });
-
-    // for (const row of data as any[]) {
-    //     const { vin } = row;
-    //     const vehicleRef = doc(db, collectionRef, vin);
-    //     await setDoc(vehicleRef, row);
-    // }
-
-    const fetchData = async () => {
-        const querySnapshot = await getDocs(collection(db, collectionRef));
-        const data = querySnapshot.docs.map((doc) => ({
-            ...doc.data(),
-        })) as CarProps[];
-        setVehicles(data);
-        setLoading(false);
-    };
-    fetchData();
+    useEffect(() => {
+        const fetchData = async () => {
+            const querySnapshot = await getDocs(collection(db, collectionRef));
+            const data = querySnapshot.docs.map((doc) => ({
+                ...doc.data(),
+            })) as CarProps[];
+            setVehicles(data);
+            setLoading(false);
+        };
+        fetchData();
+    }, []);
 
     return (
         <div>
@@ -111,13 +89,15 @@ export function Login() {
         filePath: "",
     });
 
+    const usernameRef = useRef<HTMLInputElement>(null);
+    const passwordRef = useRef<HTMLInputElement>(null);
 
     const [editingVin, setEditingVin] = useState("");
     const [editedFields, setEditedFields] = useState<Partial<CarProps>>({});
 
     const handleLogin = async () => {
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            await signInWithEmailAndPassword(auth, email || usernameRef.current?.value || "", password || passwordRef.current?.value || "");
             fetchData();
             setIsLoggedIn(true);
         } catch (error) {
@@ -716,6 +696,7 @@ export function Login() {
                                 borderRadius: "5px",
                                 border: "1px solid #ccc",
                             }}
+                            ref={usernameRef}
                             required
                         />
                         <input
@@ -731,6 +712,7 @@ export function Login() {
                                 borderRadius: "5px",
                                 border: "1px solid #ccc",
                             }}
+                            ref={passwordRef}
                             required
                         />
                         <button
