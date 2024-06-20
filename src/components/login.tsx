@@ -92,7 +92,10 @@ export function InventoryCards() {
                                         textAlign: "center",
                                     }}
                                 >
-                                    <button onClick={toggleShowAll}>
+                                    <button
+                                        onClick={toggleShowAll}
+                                        style={{ width: "200px" }}
+                                    >
                                         Click to see more
                                     </button>
                                 </div>
@@ -328,13 +331,16 @@ export function Login() {
                         }}
                     >
                         <h2>Welcome!</h2>
-                        <button onClick={() => setIsLoggedIn(false)}
-                            style={{margin: '0'}}>
+                        <button
+                            onClick={() => setIsLoggedIn(false)}
+                            style={{ margin: "0" }}
+                        >
                             Logout
                         </button>
                     </div>
                     <h3 style={{ marginTop: "50px" }}>Add Vehicle</h3>
-                    <form id="add-vehicle-form"
+                    <form
+                        id="add-vehicle-form"
                         onSubmit={(e) => {
                             e.preventDefault();
                             handleAddVehicle();
@@ -380,6 +386,7 @@ export function Login() {
                             }
                             required
                             id="addMake"
+                            name="addMake"
                         />
                         <input
                             type="text"
@@ -393,6 +400,7 @@ export function Login() {
                             }
                             required
                             id="addModel"
+                            name="addModel"
                         />
                         <input
                             type="text"
@@ -406,6 +414,7 @@ export function Login() {
                             }
                             required
                             id="addVin"
+                            name="addVin"
                         />
                         <input
                             type="text"
@@ -419,6 +428,7 @@ export function Login() {
                             }
                             required
                             id="addMileage"
+                            name="addMileage"
                         />
                         <input
                             type="text"
@@ -432,6 +442,7 @@ export function Login() {
                             }
                             required
                             id="addColor"
+                            name="addColor"
                         />
                         <input
                             type="text"
@@ -445,6 +456,7 @@ export function Login() {
                             }
                             required
                             id="addCost"
+                            name="addCost"
                         />
                         <input
                             type="text"
@@ -458,6 +470,7 @@ export function Login() {
                             }
                             required
                             id="addDate"
+                            name="addDate"
                         />
                         <input
                             type="file"
@@ -467,6 +480,7 @@ export function Login() {
                             }}
                             required
                             id="addImage"
+                            name="addImage"
                         />
                         <input
                             type="text"
@@ -480,6 +494,7 @@ export function Login() {
                             }
                             required
                             id="addLink"
+                            name="addLink"
                         />
                         <button type="submit">Add</button>
                     </form>
@@ -498,6 +513,7 @@ export function Login() {
                                                 <input
                                                     type="text"
                                                     id="editStockNumber"
+                                                    name="editStockNumber"
                                                     value={
                                                         editedFields.stockNumber ||
                                                         vehicle.stockNumber
@@ -521,6 +537,7 @@ export function Login() {
                                                 <input
                                                     type="text"
                                                     id="editYear"
+                                                    name="editYear"
                                                     value={
                                                         editedFields.year ||
                                                         vehicle.year
@@ -544,6 +561,7 @@ export function Login() {
                                                 <input
                                                     type="text"
                                                     id="editMake"
+                                                    name="editMake"
                                                     value={
                                                         editedFields.make ||
                                                         vehicle.make
@@ -567,6 +585,7 @@ export function Login() {
                                                 <input
                                                     type="text"
                                                     id="editModel"
+                                                    name="editModel"
                                                     value={
                                                         editedFields.model ||
                                                         vehicle.model
@@ -590,6 +609,7 @@ export function Login() {
                                                 <input
                                                     type="text"
                                                     id="editVin"
+                                                    name="editVin"
                                                     value={
                                                         editedFields.vin ||
                                                         vehicle.vin
@@ -613,6 +633,7 @@ export function Login() {
                                                 <input
                                                     type="text"
                                                     id="editMileage"
+                                                    name="editMileage"
                                                     value={
                                                         editedFields.mileage ||
                                                         vehicle.mileage
@@ -637,6 +658,7 @@ export function Login() {
                                                 <input
                                                     type="text"
                                                     id="editColor"
+                                                    name="editColor"
                                                     value={
                                                         editedFields.color ||
                                                         vehicle.color
@@ -660,6 +682,7 @@ export function Login() {
                                                 <input
                                                     type="text"
                                                     id="editCost"
+                                                    name="editCost"
                                                     value={
                                                         editedFields.cost ||
                                                         vehicle.cost
@@ -683,6 +706,7 @@ export function Login() {
                                                 <input
                                                     type="text"
                                                     id="editDate"
+                                                    name="editDate"
                                                     value={
                                                         editedFields.date ||
                                                         vehicle.date
@@ -741,6 +765,7 @@ export function Login() {
                                                 <input
                                                     type="file"
                                                     id="editImage"
+                                                    name="editImage"
                                                     accept="image/*"
                                                     onChange={(e) => {
                                                         handleEditImageUpload(
@@ -763,6 +788,7 @@ export function Login() {
                                                 <input
                                                     type="text"
                                                     id="editLink"
+                                                    name="editLink"
                                                     value={
                                                         editedFields.link ||
                                                         vehicle.link
