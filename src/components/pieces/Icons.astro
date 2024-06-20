@@ -1,5 +1,12 @@
 ---
-import { FaCheckCircle, FaCar, FaThumbsUp, FaCalendarAlt, FaPiggyBank, FaSmileBeam } from "react-icons/fa";
+import {
+    FaCheckCircle,
+    FaCar,
+    FaThumbsUp,
+    FaCalendarAlt,
+    FaPiggyBank,
+    FaSmileBeam,
+} from "react-icons/fa";
 import { HiMiniWrenchScrewdriver } from "react-icons/hi2";
 import { IoRibbon } from "react-icons/io5";
 
@@ -21,54 +28,44 @@ import Card from "./FactCard.astro";
         max-height: 50%;
         color: var(--color-primary);
     }
+
+    @media (max-width: 768px) {
+        .icons {
+            display: none;
+        }
+    }
 </style>
 
 <div class="icons">
-    <Card
-        caption="Cherokee rewards your progress"
-    >
+    <Card caption="Cherokee rewards your progress">
         <FaCheckCircle />
     </Card>
 
-    <Card
-        caption="Vehicles you can trust"
-    >
+    <Card caption="Vehicles you can trust">
         <FaCar />
     </Card>
 
-    <Card
-        caption="Earning your business again and again"
-    >
+    <Card caption="Earning your business again and again">
         <FaThumbsUp />
     </Card>
 
-    <Card
-        caption="12 Month / 12k vehicle service contract"
-    >
+    <Card caption="12 Month / 12k vehicle service contract">
         <FaCalendarAlt />
     </Card>
 
-    <Card
-        caption="Low down payment options"
-    >
+    <Card caption="Low down payment options">
         <FaPiggyBank />
     </Card>
 
-    <Card
-        caption="Access to state of the art service center"
-    >
+    <Card caption="Access to state of the art service center">
         <HiMiniWrenchScrewdriver />
     </Card>
 
-    <Card
-        caption="Amazing referral program"
-    >
+    <Card caption="Amazing referral program">
         <IoRibbon />
     </Card>
 
-    <Card
-        caption="We get almost everyone approved"
-    >
+    <Card caption="We get almost everyone approved">
         <FaSmileBeam />
     </Card>
 </div>

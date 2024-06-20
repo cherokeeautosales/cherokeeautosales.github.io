@@ -12,7 +12,7 @@ const FAQAccordion = () => {
         }}
     >
       <Accordion.Item eventKey="0">
-        <Accordion.Header>What is BHPH or Buy Here Pay Here financing?</Accordion.Header>
+       <Accordion.Button style={{margin: '0'}}>What is BHPH or Buy Here Pay Here financing?</Accordion.Button>
         <Accordion.Body>
           Experience hassle-free car financing with our Buy Here Pay Here (BHPH) option. Skip traditional lenders
           and make direct payments to us, unlocking a range of flexible financing solutions tailored to your needs.
@@ -20,7 +20,7 @@ const FAQAccordion = () => {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="1">
-        <Accordion.Header>How do I get a car today?</Accordion.Header>
+        <Accordion.Button style={{margin: '0'}}>How do I get a car today?</Accordion.Button>
         <Accordion.Body>
           First of all, you need to have a job that can be verified, and not be currently involved in a bankruptcy.
           You will need to present a state ID or Driver's License, a paystub, proof of residence, and your down payment.
@@ -29,7 +29,7 @@ const FAQAccordion = () => {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="2">
-        <Accordion.Header>How much can I be approved for?</Accordion.Header>
+        <Accordion.Button style={{margin: '0'}}>How much can I be approved for?</Accordion.Button>
         <Accordion.Body>
           Our calculations are based on your income and all other financial obligations you may have. With that
           information, we can determine a payment schedule that fits your particular circumstances. That may be weekly,
@@ -39,7 +39,7 @@ const FAQAccordion = () => {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="3">
-        <Accordion.Header>How big a down payment do I need?</Accordion.Header>
+        <Accordion.Button style={{margin: '0'}}>How big a down payment do I need?</Accordion.Button>
         <Accordion.Body>
           That depends on the price of the car. A more significant down payment will always improve your chances of
           obtaining approval sooner. Not only that but with a larger down payment the car will be yours sooner. Which
@@ -48,7 +48,7 @@ const FAQAccordion = () => {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="4">
-        <Accordion.Header>Can I Take My Vehicle Home Today?</Accordion.Header>
+        <Accordion.Button style={{margin: '0'}}>Can I Take My Vehicle Home Today?</Accordion.Button>
         <Accordion.Body>
           YES! At Cherokee Auto you drive your chosen vehicle home the same day! We understand your eagerness to hit
           the road in your new car, and we're committed to providing a seamless and efficient process. In most cases,
@@ -56,7 +56,7 @@ const FAQAccordion = () => {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="5">
-        <Accordion.Header>Can you finance people even if they have bad credit?</Accordion.Header>
+        <Accordion.Button style={{margin: '0'}}>Can you finance people even if they have bad credit?</Accordion.Button>
         <Accordion.Body>
           We believe in providing financing options for all applicants, regardless of their credit history. Our
           comprehensive in-house process carefully considers your complete application and required documentation,
@@ -64,7 +64,7 @@ const FAQAccordion = () => {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="6">
-        <Accordion.Header>Do you require a credit check to finance a vehicle?</Accordion.Header>
+        <Accordion.Button style={{margin: '0'}}>Do you require a credit check to finance a vehicle?</Accordion.Button>
         <Accordion.Body>
           We understand that everyone's financial situation is unique. While we may consider factors such as credit
           history, our main focus is on your overall ability to make payments and your current financial stability. We
@@ -75,7 +75,7 @@ const FAQAccordion = () => {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="7">
-        <Accordion.Header>Will buying from CHEROKEE AUTO really help re-establish my credit?</Accordion.Header>
+        <Accordion.Button style={{margin: '0'}}>Will buying from CHEROKEE AUTO really help re-establish my credit?</Accordion.Button>
         <Accordion.Body>
           While it can seem like a never-ending cycle for people with no credit, poor credit or even bad credit, there
           is a way to improve your credit score. We can definitely help you establish or rebuild your credit as long as
@@ -83,7 +83,7 @@ const FAQAccordion = () => {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="8">
-        <Accordion.Header>Why choose Buy Here Pay Here financing over traditional lenders?</Accordion.Header>
+        <Accordion.Button style={{margin: '0'}}>Why choose Buy Here Pay Here financing over traditional lenders?</Accordion.Button>
         <Accordion.Body>
           We believe Buy Here Pay Here financing offers several advantages over traditional lenders. Firstly, we cater
           to individuals with challenging credit situations, including bad credit or no credit history. Instead of
@@ -96,7 +96,7 @@ const FAQAccordion = () => {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="9">
-        <Accordion.Header>Is there a warranty included with every financed vehicle?</Accordion.Header>
+        <Accordion.Button style={{margin: '0'}}>Is there a warranty included with every financed vehicle?</Accordion.Button>
         <Accordion.Body>
           Absolutely! We provide a 12 months / 12,000 miles Vehicle Service Contract with every vehicle we sell and
           finance. This Vehicle service contract offers you peace of mind and ensures that you are covered for any
@@ -106,7 +106,7 @@ const FAQAccordion = () => {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="10">
-        <Accordion.Header>Cancellation or refund policy?</Accordion.Header>
+        <Accordion.Button style={{margin: '0'}}>Cancellation or refund policy?</Accordion.Button>
         <Accordion.Body>
           If you have any questions on cancellation or refund contact 865-687-7100
         </Accordion.Body>
