@@ -1,170 +1,147 @@
 ---
 import { Container, Row, Col } from "react-bootstrap";
 import {
-    FaPhoneAlt,
-    FaFacebookF,
-    FaInstagram,
-    FaDollarSign,
-    FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaFacebookF,
+  FaInstagram,
+  FaDollarSign,
+  FaMapMarkerAlt,
 } from "react-icons/fa";
 ---
 
 <style lang="scss">
-    .footer-content {
-        display: flex;
-        flex-direction: row;
-        gap: 2rem;
-        > * {
-            min-width: 600px;
-        }
+  h3 {
+    font-size: 20px;
+  }
+
+  .footer {
+    background-color: var(--dark-blue);
+    padding: 2rem 1rem;
+    color: white;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+
+    .footer-logo h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .footer {
-        background-color: var(--dark-blue);
-        padding: 2rem 0;
-        color: white;
-
-        .footer-logo h3 {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-logo img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .footer-section {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-
-            h3 {
-                margin-bottom: 1rem;
-            }
-        }
-
-        .footer-contact a {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-hours table {
-            width: 100%;
-            border-collapse: collapse;
-
-            th,
-            td {
-                border: 1px solid #ffffff;
-                padding: 0.5rem;
-            }
-
-            th {
-                text-align: left;
-            }
-
-            td {
-                text-align: center;
-            }
-
-            tr:nth-child(even) {
-                background-color: var(--blue);
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .footer-logo,
-            .footer-contact,
-            .footer-hours {
-                text-align: center;
-            }
-        }
+    .footer-logo img {
+      width: 50px;
+      height: 50px;
     }
+
+    .footer-logo p {
+      font-size: 14px;
+      font-weight: 400;
+      text-align: left;
+      margin: 0;
+    }
+
+    .footer-contact a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-hours table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th,
+      td {
+        border: 1px solid #ffffff;
+        padding: 0.5rem;
+      }
+
+      th {
+        text-align: left;
+      }
+
+      td {
+        text-align: center;
+      }
+
+      tr:nth-child(even) {
+        background-color: var(--blue);
+      }
+    }
+  }
 </style>
 
 <footer class="footer">
-    <Container>
-        <Row
-            class="footer-content"
-        >
-            <Col class="footer-logo">
-                <h3>
-                    <img
-                        src="./images/logo.png"
-                        alt="Cherokee Auto Sales Logo"
-                    />
-                    Cherokee Auto Sales
-                </h3>
-                <p>
-                    Experience Excellence at Cherokee Auto Sales, Knoxville's
-                    Premier BHPH Dealership. Serving Knoxville and Surrounding
-                    Counties. We Help You Overcome Credit Challenges With Hand
-                    Picked Inventory And Affordable Down Payments. YOU ARE WHAT
-                    MATTERS MOST!
-                </p>
-            </Col>
-            <Col class="footer-contact footer-section" id="contact">
-                <h3>Contact</h3>
-                <a href="tel:(865) 687-7100"><FaPhoneAlt /> (865) 687-7100</a>
-                <a
-                    href="https://www.facebook.com/cherokeeautosales"
-                    target="_blank"><FaFacebookF /> Facebook</a
-                >
-                <a
-                    href="https://www.instagram.com/cherokeeautosales"
-                    target="_blank"><FaInstagram /> Instagram</a
-                >
-                <a href="/payment"><FaDollarSign /> Payment</a>
-                <a
-                    href="https://maps.google.com/?q=3423 North Broadway St, Knoxville, TN 37917"
-                    target="_blank"><FaMapMarkerAlt /> Directions</a
-                >
-            </Col>
-            <Col class="footer-hours footer-section">
-                <h3>Working Hours</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Day</th>
-                            <th>Hours</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Monday</td>
-                            <td>9:00am - 6:00pm</td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td>9:00am - 6:00pm</td>
-                        </tr>
-                        <tr>
-                            <td>Wednesday</td>
-                            <td>9:00am - 6:00pm</td>
-                        </tr>
-                        <tr>
-                            <td>Thursday</td>
-                            <td>9:00am - 6:00pm</td>
-                        </tr>
-                        <tr>
-                            <td>Friday</td>
-                            <td>9:00am - 6:00pm</td>
-                        </tr>
-                        <tr>
-                            <td>Saturday</td>
-                            <td>9:00am - 3:00pm</td>
-                        </tr>
-                        <tr>
-                            <td>Sunday</td>
-                            <td>Closed</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </Col>
-        </Row>
-    </Container>
+  <div class="footer-logo">
+    <h3>
+      <img src="./images/logo.png" alt="Cherokee Auto Sales Logo" />
+      Cherokee Auto Sales
+    </h3>
+    <p>
+      Experience Excellence at Cherokee Auto Sales, Knoxville's Premier BHPH
+      Dealership. Serving Knoxville and Surrounding Counties. We Help You
+      Overcome Credit Challenges With Hand Picked Inventory And Affordable Down
+      Payments. YOU ARE WHAT MATTERS MOST!
+    </p>
+  </div>
+  <div class="footer-contact" id="contact">
+    <h3>Contact</h3>
+    <a href="tel:(865) 687-7100"><FaPhoneAlt /> (865) 687-7100</a>
+    <a href="https://www.facebook.com/cherokeeautosales" target="_blank"
+      ><FaFacebookF /> Facebook</a
+    >
+    <a href="https://www.instagram.com/cherokeeautosales" target="_blank"
+      ><FaInstagram /> Instagram</a
+    >
+    <a href="/payment"><FaDollarSign /> Payment</a>
+    <a
+      href="https://maps.google.com/?q=3423 North Broadway St, Knoxville, TN 37917"
+      target="_blank"><FaMapMarkerAlt /> Directions</a
+    >
+  </div>
+
+  <div class="footer-hours">
+    <h3>Working Hours</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Hours</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monday</td>
+          <td>9:00am - 6:00pm</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>9:00am - 6:00pm</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>9:00am - 6:00pm</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td>9:00am - 6:00pm</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>9:00am - 6:00pm</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>9:00am - 3:00pm</td>
+        </tr>
+        <tr>
+          <td>Sunday</td>
+          <td>Closed</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </footer>
