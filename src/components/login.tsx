@@ -320,7 +320,7 @@ export function Login() {
     };
 
     return (
-        <div>
+        <div id={`login-component-` + isLoggedIn}>
             {isLoggedIn ? (
                 <div style={{ margin: "10px" }}>
                     <div
@@ -345,8 +345,10 @@ export function Login() {
                             e.preventDefault();
                             handleAddVehicle();
                         }}
+                        autoComplete="off"
                     >
                         <input
+                            autoComplete="off"
                             type="text"
                             placeholder="Stock Number"
                             value={newVehicle.stockNumber}
@@ -361,6 +363,7 @@ export function Login() {
                             name="addStockNumber"
                         />
                         <input
+                            autoComplete="off"
                             type="text"
                             placeholder="Year"
                             value={newVehicle.year}
