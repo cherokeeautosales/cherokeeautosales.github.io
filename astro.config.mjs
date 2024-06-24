@@ -6,4 +6,9 @@ export default defineConfig({
   integrations: [react()],
   site: 'https://gcrois.github.io/',
   base: '/CherokeeAuto/',
+  vite: {
+    ssr: {
+      noExternal: ['react-firebase-hooks'],
+    },
+  }
 });
