@@ -16,7 +16,7 @@ export const genUrl = (path: string) => `${BASE_URL}${path}`;
 console.log("BASE_URL", BASE_URL);
 
 interface AppProps {
-  firebaseConfig?: {
+  firebaseConfig: {
     apiKey: string;
     authDomain: string;
     projectId: string;

@@ -21,16 +21,14 @@ interface FirebaseContextProps {
 }
 
 interface FirebaseProviderProps {
-  config?: FirebaseConfig;
+  config: FirebaseConfig;
   children: ReactNode;
 }
 
 const FirebaseContext = createContext<FirebaseContextProps | undefined>(undefined);
 
 const FirebaseProvider: FC<FirebaseProviderProps> = ({ config, children }) => {
-  const effectiveConfig = config;// ?? require('./key.js').firebaseConfig;
-  console.log('Effective config:', effectiveConfig);
-
+  const effectiveConfig = config;
   const app = initializeApp(effectiveConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
