@@ -1,9 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { Login } from "../components/login"
+import { firebaseConfig } from "../../key.js";
+import App from "../dashboard/App.tsx";
 ---
 
-<Layout title="Dashboard">
-  <!-- <Firebase client:load/> -->
-  <Login client:load/>
-</Layout>
+<App firebaseConfig={firebaseConfig} client:only="react" />

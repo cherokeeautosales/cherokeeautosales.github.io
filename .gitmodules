@@ -1,0 +1,3 @@
+[submodule "src/auto-dashboard"]
+	path = src/auto-dashboard
+	url = git@github.com:emh1005/auto-dashboard.git

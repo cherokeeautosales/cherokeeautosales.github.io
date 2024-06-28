@@ -9,6 +9,7 @@ export default defineConfig({
   vite: {
     ssr: {
       noExternal: ['react-firebase-hooks'],
+      external: ['firebase/database']
     },
   }
 });
