@@ -70,27 +70,33 @@ const App: FC<AppProps> = ({ firebaseConfig }) => {
     setIsLoggedIn(false);
   };
 
+  console.log(import.meta.env.BASE_URL);
+
   return (
     <FirebaseProvider config={firebaseConfig}>
-      <Router>
+      <Router basename={`/${import.meta.env.BASE_URL}dashboard`}>
         <Routes>
           <Route
-            path={genUrl("")}
+            path=""
             element={
               isLoggedIn ? (
-                <Navigate to={genUrl("dashboard")} />
+                <Dashboard onLogout={onLogout} />
               ) : (
-                <Navigate to={genUrl("login")} />
+                <Navigate to="login" />
               )
             }
           />
           <Route
-            path={genUrl("login")}
+            path="login"
             element={
+              isLoggedIn ? (
+                <Navigate to="/" />
+              ) : (
                 <LoginPage onLogin={onLogin} />
-              }
+              )
+            }
           />
-          <Route
+          {/* <Route
             path={genUrl("dashboard")}
             element={
               isLoggedIn ? (
@@ -99,7 +105,8 @@ const App: FC<AppProps> = ({ firebaseConfig }) => {
                 <Navigate to={genUrl("login")} />
               )
             }
-          />
+          /> */}
+          <Route path="*" element={<Navigate to="" />} />
           {/* <Route path={`${BASE_URL}/`} element={<Navigate to="/login" />} /> */}
           {/* <Route
             path="/login"
