@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { FC } from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,
@@ -74,7 +74,8 @@ const App: FC<AppProps> = ({ firebaseConfig }) => {
 
   return (
     <FirebaseProvider config={firebaseConfig}>
-      <Router basename={`/${import.meta.env.BASE_URL}dashboard`}>
+      {/* <Router basename={`/${import.meta.env.BASE_URL}dashboard`}> */}
+      <Router>
         <Routes>
           <Route
             path=""
