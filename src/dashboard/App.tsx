@@ -9,7 +9,7 @@ import {
 import LoginPage from "./loginPage";
 import Dashboard from "./dashboard";
 import FirebaseProvider from "./firebase";
-import "./dashboard.css";
+// import "/dashboard.css";
 
 const BASE_URL = import.meta.env.BASE_URL + "dashboard/";
 export const genUrl = (path: string) => `${BASE_URL}${path}`;
