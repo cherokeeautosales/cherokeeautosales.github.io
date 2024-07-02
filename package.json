@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build && cp build/index.html build/404.html",
+    "build": "astro check && astro build && gh-pages -d build && cp build/index.html build/404.html",
     "preview": "astro preview",
     "astro": "astro"
   },
