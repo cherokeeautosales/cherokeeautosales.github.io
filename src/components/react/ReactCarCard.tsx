@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./CarCard.scss";
+import { IoCloseCircle } from "react-icons/io5";
 
 interface CarProps {
   year: string;
@@ -52,6 +53,17 @@ const CarCard: React.FC<CarProps> = ({
   }) => {
     return (
       <div className="modal-container" onClick={onClose}>
+        <IoCloseCircle
+          style={{
+            position: "absolute",
+            top: "15px",
+            right: "15px",
+            fontSize: "30px",
+            cursor: "pointer",
+            color: "white"
+          }}
+          onClick={onClose}
+        />
         <div
           style={{
             position: "relative",
@@ -68,7 +80,7 @@ const CarCard: React.FC<CarProps> = ({
               backgroundPosition: "center",
             }}
             onClick={onClose}
-          ></div>
+          />
         </div>
         <div
           style={{
