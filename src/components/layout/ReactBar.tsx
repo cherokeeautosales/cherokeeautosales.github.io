@@ -16,7 +16,9 @@ function NavBar(props: {}) {
 				Cherokee Auto Sales
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
-			<Navbar.Collapse id="basic-navbar-nav">
+			<Navbar.Collapse
+				id="basic-navbar-nav"
+			>
 				<Nav
 					className="me-auto justify-content-end w-100 text-white"
 				>

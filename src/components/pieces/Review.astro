@@ -25,13 +25,13 @@ import { SocialIcon } from "react-social-icons";
 .review {
 	background: #f9f9f9;
 	padding: 1rem;
-	margin: 1rem 0;
+	margin: 0.5rem 0;
 	border-radius: 5px;
 	border: 1px solid #ddd;
 
 	width: 100%;
 	max-width: 300px;
-	height: 300px;
+	height: 400px;
 
 	display: grid;
 	grid-template-columns: 3fr 100px;
@@ -77,7 +77,7 @@ import { SocialIcon } from "react-social-icons";
 			</div>
 		</div>
 		<div class="r-header">
-			{<SocialIcon url={href}/>}
+			{<SocialIcon url={href} network={source}/>}
 		</div>
 		<p class="content">
 			{content}
