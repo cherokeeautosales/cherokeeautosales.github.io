@@ -285,7 +285,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                 stockNumber: e.target.value,
               })
             }
-            required
+            // required
             id="addStockNumber"
             name="addStockNumber"
           />
@@ -300,7 +300,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                 year: e.target.value,
               })
             }
-            required
+            // required
             id="addYear"
             name="addYear"
           />
@@ -314,7 +314,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                 make: e.target.value,
               })
             }
-            required
+            // required
             id="addMake"
             name="addMake"
           />
@@ -328,7 +328,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                 model: e.target.value,
               })
             }
-            required
+            // required
             id="addModel"
             name="addModel"
           />
@@ -356,7 +356,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                 mileage: e.target.value,
               })
             }
-            required
+            // required
             id="addMileage"
             name="addMileage"
           />
@@ -370,7 +370,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                 color: e.target.value,
               })
             }
-            required
+            // required
             id="addColor"
             name="addColor"
           />
@@ -384,7 +384,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                 cost: e.target.value,
               })
             }
-            required
+            // required
             id="addCost"
             name="addCost"
           />
@@ -398,7 +398,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                 date: e.target.value,
               })
             }
-            required
+            // required
             id="addDate"
             name="addDate"
           />
@@ -408,7 +408,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
             onChange={(e) => {
               handleImageUpload(e);
             }}
-            required
+            // required
             id="addImage"
             name="addImage"
           />
@@ -422,7 +422,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                 link: e.target.value,
               })
             }
-            required
+            // required
             id="addLink"
             name="addLink"
           />
@@ -645,7 +645,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                         onChange={(e) => handleChange("link", e.target.value)}
                       />
                     ) : (
-                      <a href={vehicle.link}>{vehicle.link}</a>
+                      <a href={vehicle.link} target="_blank">{vehicle.link}</a>
                     )}
                   </span>
                 </div>
