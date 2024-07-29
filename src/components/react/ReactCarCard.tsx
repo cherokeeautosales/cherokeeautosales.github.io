@@ -80,7 +80,20 @@ const CarCard: React.FC<CarProps> = ({
               backgroundPosition: "center",
             }}
             onClick={onClose}
-          />
+          >
+          <div
+            style={{
+              position: "absolute",
+              bottom: "0",
+              left: "0",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              color: "#fff",
+              padding: "10px",
+              width: "100%",
+              borderRadius: "0 0 8px 8px",
+            }}
+          > {year} {make} {model} </div>
+          </div>
         </div>
         <div
           style={{
@@ -132,12 +145,12 @@ const CarCard: React.FC<CarProps> = ({
           <h2>
             {year.toLowerCase()} {make.toLowerCase()} {model.toLowerCase()}
           </h2>
-          <p>{color.toLowerCase()}</p>
-          {mileageInt < 200000 ? (
+          {/* <p>{color.toLowerCase()}</p> */}
+          {/* {mileageInt < 200000 ? (
             <p>{mileage} miles</p>
           ) : (
             <p>One year Service Contract!</p>
-          )}
+          )} */}
         </div>
       </div>
       {/* </a> */}

@@ -23,6 +23,14 @@ import {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
 
+    .contain {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
     .footer-logo h3 {
       display: flex;
       align-items: center;
@@ -75,73 +83,75 @@ import {
 </style>
 
 <footer class="footer">
-  <div class="footer-logo">
-    <h3>
-      <img src="./images/logo.png" alt="Cherokee Auto Sales Logo" />
-      Cherokee Auto Sales
-    </h3>
-    <p>
-      Experience Excellence at Cherokee Auto Sales, Knoxville's Premier BHPH
-      Dealership. Serving Knoxville and Surrounding Counties. We Help You
-      Overcome Credit Challenges With Hand Picked Inventory And Affordable Down
-      Payments. YOU ARE WHAT MATTERS MOST!
-    </p>
-  </div>
-  <div class="footer-contact" id="contact">
-    <h3>Contact</h3>
-    <a href="tel:(865) 687-7100"><FaPhoneAlt /> (865) 687-7100</a>
-    <a href="https://www.facebook.com/cherokeeautosales" target="_blank"
-      ><FaFacebookF /> Facebook</a
-    >
-    <a href="https://www.instagram.com/cherokeeautosales" target="_blank"
-      ><FaInstagram /> Instagram</a
-    >
-    <a href="/payment"><FaDollarSign /> Payment</a>
-    <a
-      href="https://maps.google.com/?q=3423 North Broadway St, Knoxville, TN 37917"
-      target="_blank"><FaMapMarkerAlt /> Directions</a
-    >
-  </div>
+  <div class="contain">
+    <div class="footer-logo">
+      <h3>
+        <img src="./images/logo.png" alt="Cherokee Auto Sales Logo" />
+        Cherokee Auto Sales
+      </h3>
+      <p>
+        Experience Excellence at Cherokee Auto Sales, Knoxville's Premier BHPH
+        Dealership. Serving Knoxville and Surrounding Counties. We Help You
+        Overcome Credit Challenges With Hand Picked Inventory And Affordable Down
+        Payments. YOU ARE WHAT MATTERS MOST!
+      </p>
+    </div>
+    <div class="footer-contact" id="contact">
+      <h3>Contact</h3>
+      <a href="tel:(865) 687-7100"><FaPhoneAlt /> (865) 687-7100</a>
+      <a href="https://www.facebook.com/cherokeeautosales" target="_blank"
+        ><FaFacebookF /> Facebook</a
+      >
+      <a href="https://www.instagram.com/cherokeeautosales" target="_blank"
+        ><FaInstagram /> Instagram</a
+      >
+      <a href="https://cherokeeautosales.paymycar.com/login"><FaDollarSign /> Payment</a>
+      <a
+        href="https://maps.google.com/?q=3423 North Broadway St, Knoxville, TN 37917"
+        target="_blank"><FaMapMarkerAlt /> Directions</a
+      >
+    </div>
 
-  <div class="footer-hours">
-    <h3>Working Hours</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Day</th>
-          <th>Hours</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Monday</td>
-          <td>9:00am - 6:00pm</td>
-        </tr>
-        <tr>
-          <td>Tuesday</td>
-          <td>9:00am - 6:00pm</td>
-        </tr>
-        <tr>
-          <td>Wednesday</td>
-          <td>9:00am - 6:00pm</td>
-        </tr>
-        <tr>
-          <td>Thursday</td>
-          <td>9:00am - 6:00pm</td>
-        </tr>
-        <tr>
-          <td>Friday</td>
-          <td>9:00am - 6:00pm</td>
-        </tr>
-        <tr>
-          <td>Saturday</td>
-          <td>9:00am - 3:00pm</td>
-        </tr>
-        <tr>
-          <td>Sunday</td>
-          <td>Closed</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="footer-hours">
+      <h3>Working Hours</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday</td>
+            <td>9:00am - 6:00pm</td>
+          </tr>
+          <tr>
+            <td>Tuesday</td>
+            <td>9:00am - 6:00pm</td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td>9:00am - 6:00pm</td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td>9:00am - 6:00pm</td>
+          </tr>
+          <tr>
+            <td>Friday</td>
+            <td>9:00am - 6:00pm</td>
+          </tr>
+          <tr>
+            <td>Saturday</td>
+            <td>9:00am - 3:00pm</td>
+          </tr>
+          <tr>
+            <td>Sunday</td>
+            <td>Closed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </footer>
