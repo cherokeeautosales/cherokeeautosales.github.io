@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./CarCard.scss";
+import { IoCloseCircle } from "react-icons/io5";
 
 interface CarProps {
   year: string;
@@ -52,6 +53,17 @@ const CarCard: React.FC<CarProps> = ({
   }) => {
     return (
       <div className="modal-container" onClick={onClose}>
+        <IoCloseCircle
+          style={{
+            position: "absolute",
+            top: "15px",
+            right: "15px",
+            fontSize: "30px",
+            cursor: "pointer",
+            color: "white"
+          }}
+          onClick={onClose}
+        />
         <div
           style={{
             position: "relative",
@@ -68,7 +80,20 @@ const CarCard: React.FC<CarProps> = ({
               backgroundPosition: "center",
             }}
             onClick={onClose}
-          ></div>
+          >
+          <div
+            style={{
+              position: "absolute",
+              bottom: "0",
+              left: "0",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              color: "#fff",
+              padding: "10px",
+              width: "100%",
+              borderRadius: "0 0 8px 8px",
+            }}
+          > {year} {make} {model} </div>
+          </div>
         </div>
         <div
           style={{
@@ -120,12 +145,12 @@ const CarCard: React.FC<CarProps> = ({
           <h2>
             {year.toLowerCase()} {make.toLowerCase()} {model.toLowerCase()}
           </h2>
-          <p>{color.toLowerCase()}</p>
-          {mileageInt < 200000 ? (
+          {/* <p>{color.toLowerCase()}</p> */}
+          {/* {mileageInt < 200000 ? (
             <p>{mileage} miles</p>
           ) : (
             <p>One year Service Contract!</p>
-          )}
+          )} */}
         </div>
       </div>
       {/* </a> */}
