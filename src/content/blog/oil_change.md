@@ -12,7 +12,7 @@ Regular oil changes are crucial to maintaining the health and performance of you
 
 Oil is the lifeblood of your engine. It lubricates the moving parts, reduces friction, and helps keep the engine cool. Over time, oil breaks down and becomes less effective, which can lead to increased engine wear and potential damage.
 
-![Engine Components](/public/images/blog/oil/engine.jpg)
+![Engine Components](/CherokeeAuto/images/blog/oil/engine.jpg)
 
 ### Factors Influencing Oil Change Frequency
 
@@ -33,7 +33,7 @@ Oil is the lifeblood of your engine. It lubricates the moving parts, reduces fri
 2. **Oil Color and Consistency**: Dirty or gritty oil is a clear indicator.
 3. **Engine Noise**: Increased noise or knocking sounds can signal insufficient lubrication.
 
-![Oil Check](/public/images/blog/oil/check.webp)
+![Oil Check](/CherokeeAuto/images/blog/oil/check.webp)
 
 ### General Guidelines
 
@@ -50,7 +50,7 @@ Oil is the lifeblood of your engine. It lubricates the moving parts, reduces fri
 
 Regular oil changes are a simple yet effective way to maintain your vehicle's performance and longevity. By understanding the factors that influence oil change intervals and recognizing the signs that your oil needs changing, you can ensure that your engine remains in optimal condition.
 
-![Happy Car](/public/images/blog/oil/happy.webp)
+![Happy Car](/CherokeeAuto/images/blog/oil/happy.webp)
 
 Don't forget to check your oil regularly and follow the manufacturer's guidelines for oil changes. Your car will thank you!
 

@@ -12,7 +12,7 @@ If you're looking to purchase a car but have less-than-perfect credit, a "Buy He
 
 "Buy Here Pay Here" refers to a type of car dealership that offers both the vehicle and the financing in-house. Unlike traditional dealerships, where you secure a loan through a bank or credit union, BHPH dealerships handle the entire financing process on-site.
 
-![BHPH Dealership](/public/images/blog/bhph/cherokee.jpg)
+![BHPH Dealership](/CherokeeAuto/images/blog/bhph/cherokee.jpg)
 
 ### How Does BHPH Work?
 
@@ -42,7 +42,7 @@ Making timely payments on your BHPH loan can help improve your credit score. Thi
 2. **Read the Contract Carefully**: Understand all terms and conditions before signing.
 3. **Stay Communicative**: Maintain open communication with the dealership, especially if you're facing financial difficulties.
 
-![Happy Car Owner](/public/images/blog/bhph/happyguy.jpg)
+![Happy Car Owner](/CherokeeAuto/images/blog/bhph/happyguy.jpg)
 
 ### Conclusion
 
@@ -50,4 +50,4 @@ Making timely payments on your BHPH loan can help improve your credit score. Thi
 
 Remember, BHPH provides an opportunity to get behind the wheel and rebuild your credit simultaneously. It's a convenient and accessible way to secure reliable transportation.
 
-![Drive Away](/public/images/blog/bhph/happy.webp)
+![Drive Away](/CherokeeAuto/images/blog/bhph/happy.webp)
