@@ -1,0 +1,51 @@
+---
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/style.scss";
+import "../styles/blog.scss";
+
+import Head from "../components/layout/Head.astro";
+import NavBar from "../components/layout/NavBar.astro";
+import Footer from "../components/layout/Footer.astro";
+import { Col, Container, Row } from "react-bootstrap";
+
+const { title, description, thumbnail } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <Head
+    title=`${title} | Cherokee Auto Sales TN`
+    description={description}
+    image={thumbnail}
+  />
+  <body
+    style={{
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+    }}
+  >
+    <NavBar />
+    <div
+      style={{
+        flexGrow: 1,
+      }}
+    >
+      <Container style={{ padding: "2rem" }}>
+        <Row className="justify-content-center align-items-center">
+          <Col style={{
+            minWidth: "min(300px, 100%)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            gap: "1rem",
+            padding: "1rem",
+        }}>
+            <h1>{title} thumbnail: {thumbnail}!</h1>
+            <slot />
+          </Col>
+        </Row>
+    </div>
+    <Footer />
+  </body>
+</html>

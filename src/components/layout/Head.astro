@@ -1,18 +1,27 @@
 ---
 interface Props {
 	title: string;
+	description: string;
+	image?: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
+const linkPrefix = Astro.site + (import.meta.env.BASE_URL.slice(1,-1));
+const image = linkPrefix + (Astro.props.image || "/images/warranty.jpg");
+const favicon = linkPrefix + "/images/favicon.png";
 ---
 
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="icon" type="image/x-icon" href="./images/favicon.png" />
+	<link rel="icon" type="image/x-icon" href={favicon}/>
 	<meta property="og:url" content="https://cherokeeautosalestn.com/" />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content={image} />
 	<meta property="og:type" content="website" />
 	<meta name="generator" content={Astro.generator} />
+	<meta name="description" content={description} />
 	<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
@@ -73,5 +82,5 @@ const { title } = Astro.props;
 		}
 	</style>
 	<base href={import.meta.env.BASE_URL} />
-	<title>{title}</title>
+	<title>{image}{title}</title>
 </head>

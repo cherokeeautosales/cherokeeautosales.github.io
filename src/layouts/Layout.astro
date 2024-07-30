@@ -10,10 +10,25 @@ import Footer from "../components/layout/Footer.astro";
 
 <!DOCTYPE html>
 <html lang="en">
-  <Head title="Cherokee Auto Sales TN" />
-  <body>
+  <Head
+    title="Cherokee Auto Sales TN"
+    description="Discover one of Knoxville, TN's premier selections of pre-owned and certified used vehicles at Cherokee Auto Sales. With our dedication to excellence, we've curated an extensive inventory featuring quality cars, pickups, vans, and SUVs."
+  />
+  <body
+    style={{
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+    }}
+  >
     <NavBar />
-    <slot />
+    <div
+      style={{
+        flexGrow: 1,
+      }}
+    >
+      <slot />
+    </div>
     <Footer />
   </body>
 </html>

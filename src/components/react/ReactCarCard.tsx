@@ -60,7 +60,9 @@ const CarCard: React.FC<CarProps> = ({
             right: "15px",
             fontSize: "30px",
             cursor: "pointer",
-            color: "white"
+            color: "rgba(255, 255, 255, 1.0)",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 1000,
           }}
           onClick={onClose}
         />

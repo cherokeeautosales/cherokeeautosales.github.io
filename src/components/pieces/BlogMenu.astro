@@ -1,0 +1,108 @@
+---
+import { getCollection } from 'astro:content';
+import { Container, Row, Col } from 'react-bootstrap';
+import * as Icons from "react-icons/fa";
+
+const allBlogPosts = await getCollection('blog');
+---
+<style lang="scss">
+.blog-section {
+    background: var(--white);
+}
+
+.blog-container {
+    padding: 2rem;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.blog-post {
+    aspect-ratio: 1;
+    border: 1px solid #ddd;
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--dark-blue);
+    position: relative;
+    border-radius: 20px;
+    padding: 1rem;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+        cursor: pointer;
+    }
+}
+
+.blog-post a {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.blog-post-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.blog-post-icon svg {
+    font-size: 200px;
+    color: rgba(255, 255, 255, 0.1);
+}
+</style>
+
+<section class="blog-section" id="blog">
+    <Container>
+      <Row className="justify-content-center align-items-center">
+        <Col>
+            <h1>Blog:</h1>
+            <div class="blog-grid">
+                {allBlogPosts.map((post, index) => {
+                    //@ts-ignore - This is a dynamic import
+                    const IconComponent = Icons[post.data.icon] ?? Icons.FaCar;
+                    return (
+                        <div
+                            class="blog-post"
+                            id={`post-${index}`}
+                        >
+                            <a href={`blog/${post.slug}`}>
+                                {post.data.title}
+                            </a>
+                            <div class="blog-post-icon">
+                                {IconComponent && <IconComponent />}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+            <br/>
+        </Col>
+      </Row>
+    </Container>
+</section>
+
+<script>
+    document.querySelectorAll('.blog-post').forEach(post => {
+        post.addEventListener('click', () => {
+            const href = post.querySelector('a')?.getAttribute('href');
+            window.location.href = href || '/';
+        });
+    });
+</script>
