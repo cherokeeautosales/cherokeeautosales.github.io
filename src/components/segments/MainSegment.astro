@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 
 <style>
     .main-seg {
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -14,7 +15,7 @@ import { Button } from "react-bootstrap";
 
         background:
             linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-            url("/CherokeeAuto/images/happyguy.jpg") no-repeat center center/cover;
+            url("/images/happyguy.jpg") no-repeat center center/cover;
 
         div {
             color: white;
@@ -23,14 +24,19 @@ import { Button } from "react-bootstrap";
             text-align: center;
         }
     }
+
+    .financed {
+        position: absolute;
+        bottom: 12px;
+    }
 </style>
 
 <section class="main-seg" id="home">
-    <div>Cherokee Auto Sales</div>
     <Button
         href="https://cherokeeautosalestn.neoverify.com/quick_credit"
         target="_blank"
         size="lg"
+        className="financed"
     >
         Get Financed
     </Button>

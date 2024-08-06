@@ -68,7 +68,7 @@ const LoginPage = ({ onLogin }: { onLogin: () => void }) => {
     //     const expirationTime = new Date();
     //     expirationTime.setTime(expirationTime.getTime() + 30 * 60 * 1000); // 30 minutes from now
     //     document.cookie = `auth_token=${token};expires=${expirationTime.toUTCString()};path=/`;
-    //     window.location.href = "/CherokeeAuto/dashboard";
+    //     window.location.href = "/dashboard";
     //   }
     // } catch (error) {
     //   console.error("Login error:", error);
