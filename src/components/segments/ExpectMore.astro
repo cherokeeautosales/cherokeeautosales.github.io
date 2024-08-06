@@ -1,0 +1,25 @@
+---
+import { Row, Col, Container } from "react-bootstrap";
+import FaqAccordion from "../react/Faq";
+import Icons from "../pieces/Icons.astro";
+---
+
+<style lang="scss">
+#expect_more {
+    background-color: var(--dark-blue);
+    padding: 2rem;
+}
+</style>
+
+<section id="expect_more">
+    <Container>
+        <Row className="justify-content-center align-items-center">
+            <Col style={{ minWidth: "min(300px, 100%)", flexGrow: 2 }}>
+                <FaqAccordion client:load />
+            </Col>
+            <Col style={{ minWidth: "min(500px, 100%)", flexGrow: 1 }}>
+                <Icons />
+            </Col>
+        </Row>
+    </Container>
+</section>

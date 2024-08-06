@@ -1,0 +1,73 @@
+---
+import { Row, Col, Container, Button } from "react-bootstrap";
+import { FaPhoneAlt } from "react-icons/fa";
+---
+
+<section id="service">
+    <Container style={{ padding: "2rem" }}>
+        <Row className="justify-content-center align-items-center" style={{marginBottom: '20px'}}>
+            <Col style={{ minWidth: "min(500px, 100%)" }}>
+                <img
+                    src="./images/warranty.jpg"
+                    style={{
+                        width: "100%",
+                        maxWidth: "500px",
+                        borderRadius: "10px",
+                    }}
+                />
+            </Col>
+            <Col
+                style={{
+                    minWidth: "min(300px, 100%)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    gap: "1rem",
+                    padding: "1rem",
+                }}
+            >
+                <h3>12 Months / 12,000 Miles vehicle service contract</h3>
+                <div>
+                    2 free oil changes on every vehicle. Security and Peace of
+                    Mind come with every purchase. All of our Vehicles come with
+                    a 12 month / 12,000 mile vehicle contract.
+                </div>
+                <!-- <Button href="/#contact" style={{ maxWidth: "200px" }}>
+                    <FaPhoneAlt /> Contact Us Now
+                </Button> -->
+            </Col>
+        </Row>
+        <Row className="justify-content-center align-items-center">
+            <Col style={{ minWidth: "min(500px, 100%)" }}>
+                <img
+                    src="./images/referral.jpg"
+                    style={{
+                        width: "100%",
+                        maxWidth: "500px",
+                        borderRadius: "10px",
+                    }}
+                />
+            </Col>
+            <Col
+                style={{
+                    minWidth: "min(300px, 100%)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    gap: "1rem",
+                    padding: "1rem",
+                }}
+            >
+                <h3>Earning your business again and again</h3>
+                <div>
+                    We want your Friends and Family to experience our customer
+                    service. Thats why we have one of the best referral programs
+                    anywhere. Ask about how you can earn even more.
+                </div>
+                <Button href="#contact" style={{ maxWidth: "200px" }}>
+                    <FaPhoneAlt /> Contact Us Now
+                </Button>
+            </Col>
+        </Row>
+    </Container>
+</section>

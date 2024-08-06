@@ -1,0 +1,80 @@
+---
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { FaPhoneAlt, FaMapMarkedAlt } from "react-icons/fa";
+---
+
+<section id="location">
+    <Container style={{ padding: "2rem" }}>
+        <Row className="justify-content-center align-items-center">
+            <Col style={{ minWidth: "min(500px, 100%)" }}>
+                <img
+                    src="./images/financingreq.jpg"
+                    style={{
+                        width: "100%",
+                        maxWidth: "500px",
+                        borderRadius: "10px",
+                    }}
+                />
+            </Col>
+            <Col
+                style={{
+                    minWidth: "min(300px, 100%)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    gap: "1rem",
+                    padding: "1rem",
+                }}
+            >
+                <h3>Cherokee Auto Sales</h3>
+                <div>
+                    Discover one of Knoxville, TN's premier selections of
+                    pre-owned and certified used vehicles at Cherokee Auto
+                    Sales. With our dedication to excellence, we've curated an
+                    extensive inventory featuring quality cars, pickups, vans,
+                    and SUVs. Visit our convenient locations today and
+                    experience unparalleled service. Count on us for free
+                    vehicle history reports, competitive pricing, and flexible
+                    financing options tailored to your needs. Our experienced
+                    sales team is committed to providing unbeatable deals and
+                    personalized service, ensuring we match your budget and
+                    preferences every time. Whether it's your first visit or
+                    your twelfth, Cherokee Auto Sales is here to find you the
+                    perfect vehicle at the right price. Experience the Cherokee
+                    Auto Sales difference today and let us earn your business.
+                </div>
+                <Button href="#contact" style={{ maxWidth: "200px" }}>
+                    <FaPhoneAlt /> Contact Us Now
+                </Button>
+            </Col>
+        </Row>
+        <Row
+            className="justify-content-center align-items-center"
+            style={{ marginTop: "2rem" }}
+        >
+            <Col>
+                <iframe
+                    title="Map of Locations"
+                    class="ifEmbed"
+                    frameborder="0"
+                    height="350px"
+                    width="100%"
+                    marginheight="0"
+                    marginwidth="0"
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA1Kn5Q5FatDiBjhEvkmjUVbudRQGH-OGA&q=3423%20North%20Broadway,Knoxville,TN,37917"
+                    style={{ borderRadius: "10px" }}></iframe>
+                <div style={{ textAlign: "center" }}>
+                    Cherokee Auto Sales Knoxville, Tennessee is here to find you
+                    the perfect vehicle.
+                    <br /><br />
+                    <Button
+                        target="_blank"
+                        href="https://maps.app.goo.gl/6fcjt2xbFEEW9UBm9"
+                    >
+                        <FaMapMarkedAlt /> Get Instant Directions
+                    </Button>
+                </div>
+            </Col>
+        </Row>
+    </Container>
+</section>

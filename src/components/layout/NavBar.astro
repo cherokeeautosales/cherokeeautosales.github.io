@@ -1,0 +1,178 @@
+---
+import { Container, Nav } from "react-bootstrap";
+import ReactBar from "./ReactBar";
+import {
+    FaMapMarkerAlt,
+    FaPhoneAlt,
+    FaFacebookF,
+    FaDollarSign,
+} from "react-icons/fa";
+---
+
+<Container className="info-bar long">
+    <Nav>
+        <Nav.Link
+            className="wrap-hide"
+            href="https://www.google.com/maps/?q=3423%20North%20Broadway,Knoxville,TN,37917"
+            target="_blank"
+        >
+            <FaMapMarkerAlt /> 3423 North Broadway Knoxville, TN 37917
+        </Nav.Link>
+        <Nav.Link className="wrap-hide" href="tel:8656877100">
+            <FaPhoneAlt /> (865) 687 - 7100
+        </Nav.Link>
+        <Nav.Link
+            className="wrap-hide"
+            href="https://www.facebook.com/cherokeeautosales"
+            target="_blank"
+        >
+            <FaFacebookF /> Facebook
+        </Nav.Link>
+        <div class="wrap-hide">¡Nosotros Hablamos Español!</div>
+        <Nav.Link
+            className="info-nav"
+            href="https://www.facebook.com/cherokeeautosales"
+            target="_blank"
+        >
+            <FaDollarSign /> Payment
+        </Nav.Link>
+        <!-- <div id="google_translate_element">Select Language</div> -->
+    </Nav>
+</Container>
+
+<Container className="info-bar short">
+    <Nav>
+        <div class="icon-group">
+            <Nav.Link
+                href="https://www.google.com/maps/?q=3423%20North%20Broadway,Knoxville,TN,37917"
+                target="_blank"
+            >
+                <FaMapMarkerAlt />
+            </Nav.Link>
+            <Nav.Link href="tel:8656877100">
+                <FaPhoneAlt />
+            </Nav.Link>
+            <Nav.Link
+                href="https://www.facebook.com/cherokeeautosales"
+                target="_blank"
+            >
+                <FaFacebookF />
+            </Nav.Link>
+        </div>
+        <Nav.Link
+            className="info-nav"
+            href="https://www.facebook.com/cherokeeautosales"
+            target="_blank"
+        >
+            <FaDollarSign /> Payment
+        </Nav.Link>
+        <!-- <div id="google_translate_element">Select Language</div> -->
+    </Nav>
+</Container>
+
+<ReactBar client:load/>
+
+<style lang="scss" is:global>
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .info-bar {
+        background-color: var(--dark-blue);
+        white-space: nowrap;
+        color: white;
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        > * {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: var(--max-width);
+
+            > * {
+                padding: 0.5rem;
+            }
+        }
+
+        svg {
+            margin-top: -3px;
+            font-size: 20px;
+        }
+
+        &.long {
+            @media screen and (max-width: 1200px) {
+                display: none;
+            }
+        }
+
+        &.short {
+            @media screen and (min-width: 1200px) {
+                display: none;
+            }
+        }
+    }
+
+    .icon-group {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        min-width: 125px;
+        max-width: 200px;
+
+        > * {
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            line-height: 20px;
+            padding-left: 7px;
+
+            &::after {
+                display: none;
+            }
+
+            &:hover {
+                background-color: var(--blue);
+            }
+        }
+    }
+    
+    .info-nav {
+        float: right;
+    }
+
+    .main-bar {
+        background-color: #eb0b2d;
+        border-bottom: 1px solid #e9ecef;
+
+        > * > * {
+            color: white;
+        }
+    }    .info-nav {
+        float: right;
+    }
+
+    .main-bar {
+        background-color: #eb0b2d;
+        border-bottom: 1px solid #e9ecef;
+
+        > * > * {
+            color: white;
+        }
+    }
+
+    .navbar-nav .nav-link.active {
+        color: white;
+        text-decoration: underline;
+    }
+</style>

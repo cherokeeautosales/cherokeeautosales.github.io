@@ -1,0 +1,16 @@
+---
+import { Container, Row, Col } from 'react-bootstrap';
+import { parse } from 'csv-parse/sync';
+// import InventoryPiece from '../pieces/Inventory.astro';
+import { InventoryCards } from "../login"
+---
+
+<section id="inventory" style={{ background: 'var(--dark-blue)' }}>
+  <Container style={{ padding: '2rem' }}>
+    <Row className="justify-content-center align-items-center">
+      <Col>
+        <InventoryCards client:load/>
+      </Col>
+    </Row>
+  </Container>
+</section>

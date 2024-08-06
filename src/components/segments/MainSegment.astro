@@ -1,0 +1,43 @@
+---
+import { Button } from "react-bootstrap";
+---
+
+<style>
+    .main-seg {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fira Sans Condensed", sans-serif;
+        height: calc(50vh - 90px);
+        min-height: 300px;
+
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+            url("/images/happyguy.jpg") no-repeat center center/cover;
+
+        div {
+            color: white;
+            font-weight: bold;
+            font-size: 5rem;
+            text-align: center;
+        }
+    }
+
+    .financed {
+        position: absolute;
+        bottom: 12px;
+    }
+</style>
+
+<section class="main-seg" id="home">
+    <Button
+        href="https://cherokeeautosalestn.neoverify.com/quick_credit"
+        target="_blank"
+        size="lg"
+        className="financed"
+    >
+        Get Financed
+    </Button>
+</section>

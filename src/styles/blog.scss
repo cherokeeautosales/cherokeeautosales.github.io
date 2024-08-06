@@ -1,0 +1,7 @@
+img {
+    // max 50% in either direction or 300px
+    max-width: max(30%, 300px);
+    max-height: max(30%, 300px);
+    // center
+    margin: auto;
+}
