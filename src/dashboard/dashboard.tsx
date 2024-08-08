@@ -51,13 +51,13 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   // }
   // if (!checkSignInCookie()) {
   //   // Redirect to login page if auth_token cookie is not found
-  //   // window.location.href = "/CherokeeAuto/login";
+  //   // window.location.href = "/login";
   // }
 
   // window.onload = function() {
   //   if (!checkSignInCookie()) {
   //     // Redirect to login page if auth_token cookie is not found
-  //     window.location.href = "/CherokeeAuto/login";
+  //     window.location.href = "/login";
   //   }
   // };
 
