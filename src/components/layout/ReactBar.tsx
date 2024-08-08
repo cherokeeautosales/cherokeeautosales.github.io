@@ -28,6 +28,7 @@ function NavBar(props: {}) {
 					<Nav.Link href="#service">Service & Repair</Nav.Link>
 					<Nav.Link href="#inventory">Inventory</Nav.Link>
 					<Nav.Link href="#location">Location</Nav.Link>
+					<Nav.Link href="#blog">Blog</Nav.Link>
 				</Nav>
 			</Navbar.Collapse>
 		</Container>
