@@ -1,8 +1,16 @@
 ---
+import Head from '../components/layout/Head.astro';
+
 interface Props {
     target: string;
 }
 ---
 <html lang='en'>
+    <head>
+        <Head
+            title="Buy Here, Pay Here @ Cherokee Auto Sales!"
+            description="Buy Here, Pay Here at one of Knoxville, TN's premier selections of pre-owned and certified used vehicles at Cherokee Auto Sales. With our dedication to excellence, we've curated an extensive inventory featuring quality cars, pickups, vans, and SUVs."
+        />
+    </head>
     <meta http-equiv='refresh' content=`0; URL=${Astro.props.target}`>
 </html>
