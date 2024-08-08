@@ -78,6 +78,7 @@ export function InventoryCards() {
                 display: "grid",
                 gridTemplateColumns: "1fr",
                 gap: "1rem",
+                justifyItems: "center",
               }}
             >
               {vehicles

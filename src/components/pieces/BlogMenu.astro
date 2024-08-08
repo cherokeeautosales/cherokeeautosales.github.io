@@ -18,6 +18,10 @@ const allBlogPosts = await getCollection('blog');
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
+
+    @media screen and (max-width: 768px) {
+        justify-items: center;
+    }
 }
 
 .blog-post {
