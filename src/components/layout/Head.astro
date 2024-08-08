@@ -7,7 +7,7 @@ interface Props {
 
 const { title, description } = Astro.props;
 const linkPrefix = Astro.site + (import.meta.env.BASE_URL.slice(1,-1));
-const image = linkPrefix + (Astro.props.image || "/images/warranty.jpg");
+const image = linkPrefix + (Astro.props.image || "/images/teaser.png");
 const favicon = linkPrefix + "/images/favicon.png";
 ---
 
