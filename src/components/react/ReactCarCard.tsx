@@ -137,7 +137,7 @@ const CarCard: React.FC<CarProps> = ({
         className="car"
         style={{
           backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
+          backgroundSize: "contain",
           backgroundPosition: "center",
           cursor: "pointer",
         }}
