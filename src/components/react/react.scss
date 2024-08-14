@@ -1,3 +1,4 @@
+// car card
 .car-card {
   width: 100%;
   max-width: 300px;
@@ -89,5 +90,89 @@
 
   .modal-image {
     height: 70vh;
+  }
+}
+
+// floating button
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 65px;
+  height: 65px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+  z-index: 1000;
+
+  display: none;
+}
+
+.floating-button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 800px) {
+  .floating-button {
+    display: block;
+  }
+}
+
+
+// sell form
+button {
+  width: 100px;
+  border-radius: 5px;
+  padding: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  margin-left: 0;
+}
+
+input {
+  margin-right: 10px;
+  margin-bottom: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+label {
+  grid-column: 1;
+  font-weight: 500;
+}
+
+.message {
+  padding: 8px;
+  color: #bd5501;
+  background-color: rgba(249, 130, 32, 0.3);
+  border: 2px solid #bd5501;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+
+// inventory
+.mobile-ver-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-ver-only {
+      display: block;
+  }
+
+  .web-ver-only {
+      display: none;
   }
 }

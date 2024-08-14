@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./CarCard.scss";
+import "./react.scss";
 import { IoCloseCircle } from "react-icons/io5";
 
 interface CarProps {

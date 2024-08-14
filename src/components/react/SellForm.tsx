@@ -1,17 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { db, storage } from "../../firebase";
-import {
-  collection,
-  addDoc,
-} from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
-import {
-  ref,
-  getDownloadURL,
-  uploadBytes,
-} from "firebase/storage";
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
-import "./../login.css";
+import "./react.scss";
 
 interface FormData {
   year: string;
@@ -20,7 +13,6 @@ interface FormData {
   mileage: string;
   color: string;
   image: string;
-  filePath: string;
 }
 
 const SellForm = () => {
@@ -31,7 +23,6 @@ const SellForm = () => {
     mileage: "",
     color: "",
     image: "",
-    filePath: "",
   });
 
   const [msg, setMsg] = useState<string>("");
@@ -52,19 +43,22 @@ const SellForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    let imageUrl = '';
+    let imageUrl = "";
 
     if (file) {
       try {
-        const storageRef = ref(storage, `sellImages/${Date.now()}_${file.name}`);
+        const storageRef = ref(
+          storage,
+          `sellImages/${Date.now()}_${file.name}`
+        );
         await uploadBytes(storageRef, file);
         imageUrl = await getDownloadURL(storageRef);
       } catch (error) {
-        console.error('Error uploading file: ', error);
-        alert('Failed to upload image');
+        console.error("Error uploading file: ", error);
+        alert("Failed to upload image");
         return;
       }
-    };
+    }
 
     try {
       const docRef = await addDoc(collection(db, "sell"), {
@@ -72,7 +66,7 @@ const SellForm = () => {
         image: imageUrl,
       });
       // console.log("Document written with ID: ", docRef.id);
-      setMsg("Thank you for filling out the form!");
+      setMsg("Submitted! Thank you for filling out the form!");
       setFormData({
         year: "",
         make: "",
@@ -80,11 +74,10 @@ const SellForm = () => {
         mileage: "",
         color: "",
         image: "",
-        filePath: "",
       });
       setFile(null);
       if (fileInputRef.current) {
-        fileInputRef.current.value = '';
+        fileInputRef.current.value = "";
       }
     } catch (e) {
       // console.error("Error adding document: ", e);
@@ -95,7 +88,7 @@ const SellForm = () => {
   useEffect(() => {
     if (msg) {
       const timer = setTimeout(() => {
-        setMsg('');
+        setMsg("");
       }, 30000);
 
       return () => clearTimeout(timer);
@@ -107,6 +100,7 @@ const SellForm = () => {
       <h2>Sell your car with us!</h2>
       <p>Please fill out the form below to sell your car.</p>
       <form onSubmit={handleSubmit}>
+        {msg && <div className="message">{msg}</div>}
         <div>
           <label>Make:</label>
           <input
@@ -164,10 +158,9 @@ const SellForm = () => {
             ref={fileInputRef}
           />
         </div>
-        <p style={{color: '#ff7505'}}>{msg}</p>
+        {/* <p style={{color: '#ff7505'}}>{msg}</p> */}
         <button type="submit">Submit</button>
       </form>
-      
     </div>
   );
 };

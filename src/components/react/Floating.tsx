@@ -1,5 +1,5 @@
 import React from 'react';
-import './Floating.css';
+import './react.scss';
 import {
   FaPhoneAlt,
 } from "react-icons/fa";
