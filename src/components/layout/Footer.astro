@@ -6,6 +6,10 @@ import {
   FaInstagram,
   FaDollarSign,
   FaMapMarkerAlt,
+  FaYoutube,
+  FaTiktok,
+  FaSpotify,
+  FaPodcast,
 } from "react-icons/fa";
 ---
 
@@ -18,18 +22,25 @@ import {
     background-color: var(--dark-blue);
     padding: 2rem 1rem;
     color: white;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    // display: grid;
+    // // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    // grid-template-columns: 1fr .5fr .5fr 1fr;
+    // gap: 1.5rem;
 
     .contain {
       width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: 1fr 0.5fr 0.5fr 1fr;
       gap: 1.5rem;
+    }
+
+    @media (max-width: 800px) {
+      .contain {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
     }
 
     .footer-logo h3 {
@@ -94,23 +105,42 @@ import {
       <p>
         Experience Excellence at Cherokee Auto Sales, Knoxville's Premier BHPH
         Dealership. Serving Knoxville and Surrounding Counties. We Help You
-        Overcome Credit Challenges With Hand Picked Inventory And Affordable Down
-        Payments. YOU ARE WHAT MATTERS MOST!
+        Overcome Credit Challenges With Hand Picked Inventory And Affordable
+        Down Payments. YOU ARE WHAT MATTERS MOST!
       </p>
     </div>
     <div class="footer-contact" id="contact">
       <h3>Contact</h3>
       <a href="tel:(865) 687-7100"><FaPhoneAlt /> (865) 687-7100</a>
+      <a href="https://cherokeeautosales.paymycar.com/login"
+        ><FaDollarSign /> Payment</a
+      >
+      <a
+        href="https://maps.google.com/?q=3423 North Broadway St, Knoxville, TN 37917"
+        target="_blank"><FaMapMarkerAlt /> Directions</a
+      >
+    </div>
+
+    <div class="footer-contact" id="contact">
+      <h3>Socials</h3>
       <a href="https://www.facebook.com/cherokeeautosales" target="_blank"
         ><FaFacebookF /> Facebook</a
+      >
+      <a href="https://www.youtube.com/@cherokeeautosales5096" target="_blank"
+        ><FaYoutube /> Youtube</a
       >
       <a href="https://www.instagram.com/cherokeeautosales" target="_blank"
         ><FaInstagram /> Instagram</a
       >
-      <a href="https://cherokeeautosales.paymycar.com/login"><FaDollarSign /> Payment</a>
+      <a href="https://podcasters.spotify.com/pod/show/chrlpoll" target="_blank"
+        ><FaSpotify /> Spotify Podcast</a
+      >
       <a
-        href="https://maps.google.com/?q=3423 North Broadway St, Knoxville, TN 37917"
-        target="_blank"><FaMapMarkerAlt /> Directions</a
+        href="https://podcasts.apple.com/us/podcast/cherokee-auto/id1736765046"
+        target="_blank"><FaPodcast /> Apple Podcast</a
+      >
+      <a href="https://www.tiktok.com/@cherokeeautosalestn" target="_blank"
+        ><FaTiktok /> Tiktok</a
       >
     </div>
 

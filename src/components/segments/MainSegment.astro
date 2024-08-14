@@ -1,5 +1,7 @@
 ---
 import { Button } from "react-bootstrap";
+import FloatingButton from "../react/Floating";
+import BgImage from "../react/BgImage";
 ---
 
 <style>
@@ -32,6 +34,7 @@ import { Button } from "react-bootstrap";
 </style>
 
 <section class="main-seg" id="home">
+    <BgImage client:load/>
     <Button
         href="https://cherokeeautosalestn.neoverify.com/quick_credit"
         target="_blank"
@@ -40,4 +43,5 @@ import { Button } from "react-bootstrap";
     >
         Get Financed
     </Button>
+    <FloatingButton client:load/>
 </section>

@@ -14,10 +14,16 @@ button {
 
 input {
     margin-right: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    width: 100%;
+}
+
+label {
+    grid-column: 1;
+    font-weight: 500;
 }
 
 #add-vehicle-form {
@@ -63,15 +69,11 @@ input {
     display: contents;
 }
 
-.label {
-    grid-column: 1;
-}
-
-.value {
+/* .value {
     grid-column: 2;
     overflow: hidden;
     word-wrap: break-word;
-}
+} */
 
 .vehicleCard button.delete-image-button {
     width: 100px;
