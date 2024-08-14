@@ -2,22 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { db, storage } from "../../firebase";
 import {
   collection,
-  getDocs,
   addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  setDoc,
 } from "firebase/firestore";
 
 import {
   ref,
   getDownloadURL,
   uploadBytes,
-  deleteObject,
 } from "firebase/storage";
-
-import { useUploadFile } from "react-firebase-hooks/storage";
 
 import "./../login.css";
 
@@ -43,17 +35,42 @@ const SellForm = () => {
   });
 
   const [msg, setMsg] = useState<string>("");
+  const [file, setFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    let imageUrl = '';
+
+    if (file) {
+      try {
+        const storageRef = ref(storage, `sellImages/${Date.now()}_${file.name}`);
+        await uploadBytes(storageRef, file);
+        imageUrl = await getDownloadURL(storageRef);
+      } catch (error) {
+        console.error('Error uploading file: ', error);
+        alert('Failed to upload image');
+        return;
+      }
+    };
+
     try {
-      const docRef = await addDoc(collection(db, "sell"), formData);
+      const docRef = await addDoc(collection(db, "sell"), {
+        ...formData,
+        image: imageUrl,
+      });
       // console.log("Document written with ID: ", docRef.id);
       setMsg("Thank you for filling out the form!");
       setFormData({
@@ -65,30 +82,25 @@ const SellForm = () => {
         image: "",
         filePath: "",
       });
+      setFile(null);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
     } catch (e) {
       // console.error("Error adding document: ", e);
       setMsg("Something went wrong, please try again!");
     }
   };
 
-  const [uploadFile] = useUploadFile();
+  useEffect(() => {
+    if (msg) {
+      const timer = setTimeout(() => {
+        setMsg('');
+      }, 30000);
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files ? e.target.files[0] : undefined;
-    const filePath = file ? `vehicleImages/${Date.now()}_${file.name}` : "";
-    const imageRef = ref(storage, filePath);
-    if (file) {
-      const result = await uploadFile(imageRef, file, {
-        contentType: "image/jpeg",
-      });
+      return () => clearTimeout(timer);
     }
-    const imageUrl = await getDownloadURL(imageRef);
-    setFormData({
-      ...formData,
-      image: imageUrl,
-      filePath: filePath,
-    });
-  };
+  }, [msg]);
 
   return (
     <div style={{ width: "90%", margin: "20px auto" }}>
@@ -145,9 +157,11 @@ const SellForm = () => {
           <input
             type="file"
             accept="image/*"
-            onChange={(e) => {
-              handleImageUpload(e);
-            }}
+            // onChange={(e) => {
+            //   handleImageUpload(e);
+            // }}
+            onChange={handleFileChange}
+            ref={fileInputRef}
           />
         </div>
         <p style={{color: '#ff7505'}}>{msg}</p>
