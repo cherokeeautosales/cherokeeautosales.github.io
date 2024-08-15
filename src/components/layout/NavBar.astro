@@ -7,6 +7,7 @@ import {
   FaFacebookF,
   FaDollarSign,
 } from "react-icons/fa";
+import Translate from "../react/Translate";
 ---
 
 <Container className="info-bar long">
@@ -28,6 +29,25 @@ import {
     >
       <FaFacebookF /> Facebook
     </Nav.Link>
+
+    <div class="icon-group">
+      <Nav.Link
+        href="https://www.google.com/maps/?q=3423%20North%20Broadway,Knoxville,TN,37917"
+        target="_blank"
+      >
+        <FaMapMarkerAlt />
+      </Nav.Link>
+      <Nav.Link href="tel:8656877100">
+        <FaPhoneAlt />
+      </Nav.Link>
+      <Nav.Link
+        href="https://www.facebook.com/cherokeeautosales"
+        target="_blank"
+      >
+        <FaFacebookF />
+      </Nav.Link>
+    </div>
+
     <div class="wrap-hide">¡Nosotros Hablamos Español!</div>
     <Nav.Link
       className="info-nav"
@@ -36,11 +56,11 @@ import {
     >
       <FaDollarSign /> Payment
     </Nav.Link>
-    <!-- <div id="google_translate_element">Select Language</div> -->
+    <Translate client:load />
   </Nav>
 </Container>
 
-<Container className="info-bar short">
+<!-- <Container className="info-bar short">
   <Nav>
     <div class="icon-group">
       <Nav.Link
@@ -61,14 +81,14 @@ import {
     </div>
     <Nav.Link
       className="info-nav"
-      href="https://www.facebook.com/cherokeeautosales"
+      href="https://cherokeeautosales.paymycar.com/login"
       target="_blank"
     >
       <FaDollarSign /> Payment
     </Nav.Link>
-    <!-- <div id="google_translate_element">Select Language</div> -->
+    <Translate client:load />
   </Nav>
-</Container>
+</Container> -->
 
 <ReactBar client:load />
 
@@ -106,17 +126,17 @@ import {
       font-size: 20px;
     }
 
-    &.long {
-      @media screen and (max-width: 1200px) {
-        display: none;
-      }
-    }
+    // &.long {
+    //   @media screen and (max-width: 1200px) {
+    //     display: none;
+    //   }
+    // }
 
-    &.short {
-      @media screen and (min-width: 1200px) {
-        display: none;
-      }
-    }
+    // &.short {
+    //   @media screen and (min-width: 1200px) {
+    //     display: none;
+    //   }
+    // }
   }
 
   .icon-group {
@@ -144,6 +164,25 @@ import {
       &:hover {
         background-color: var(--blue);
       }
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .icon-group {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .wrap-hide {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 418px) {
+    #google_translate_element {
+      padding-bottom: 0.5rem;
+      margin-left: auto;
     }
   }
 
@@ -177,10 +216,6 @@ import {
         }
       }
     }
-  }
-
-  .info-nav {
-    float: right;
   }
 
   .d-inline-block {

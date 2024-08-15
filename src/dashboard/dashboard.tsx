@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { auth, db, storage } from "./firebase.js";
 import { signOut } from "firebase/auth";
 import {
   collection,
@@ -38,28 +37,6 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const [editedFields, setEditedFields] = useState<Partial<CarProps>>({});
 
   const { auth, db, storage } = useFirebase();
-
-  // function checkSignInCookie(): boolean {
-  //   const cookies = document.cookie.split(";");
-  //   for (let cookie of cookies) {
-  //     const [name, value] = cookie.trim().split("=");
-  //     if (name === "auth_token" && value) {
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // }
-  // if (!checkSignInCookie()) {
-  //   // Redirect to login page if auth_token cookie is not found
-  //   // window.location.href = "/login";
-  // }
-
-  // window.onload = function() {
-  //   if (!checkSignInCookie()) {
-  //     // Redirect to login page if auth_token cookie is not found
-  //     window.location.href = "/login";
-  //   }
-  // };
 
   const handleLogout = async () => {
     try {

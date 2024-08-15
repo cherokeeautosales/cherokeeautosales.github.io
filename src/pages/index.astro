@@ -7,14 +7,18 @@ import ExpectMore from "../components/segments/ExpectMore.astro";
 import Service from "../components/segments/Service.astro";
 import Inventory from "../components/segments/Inventory.astro";
 import Location from "../components/segments/Location.astro";
+import Video from "../components/segments/Video.astro";
 import BlogMenu from "../components/pieces/BlogMenu.astro";
+import MetaPixel from "../components/react/Meta";
 
 ---
 
 <Layout title="Cherokee Auto Sales">
+	<MetaPixel />
 	<MainSegment />
 	<GetQualified />
 	<Testimonials />
+	<Video />
 	<ExpectMore />
 	<Service />
 	<Inventory />
