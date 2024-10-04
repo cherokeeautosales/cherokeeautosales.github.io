@@ -5,43 +5,45 @@ import BgImage from "../react/BgImage";
 ---
 
 <style>
-    .main-seg {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-family: "Fira Sans Condensed", sans-serif;
-        height: calc(50vh - 90px);
-        min-height: 300px;
+  .main-seg {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Fira Sans Condensed", sans-serif;
+    height: calc(50vh - 90px);
+    min-height: 300px;
 
-        background:
-            linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-            url("/images/happyguy.jpg") no-repeat center center/cover;
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+      url("/images/happyguy.jpg") no-repeat center center/cover;
 
-        div {
-            color: white;
-            font-weight: bold;
-            font-size: 5rem;
-            text-align: center;
-        }
+    div {
+      color: white;
+      font-weight: bold;
+      font-size: 5rem;
+      text-align: center;
     }
+  }
 
-    .financed {
-        position: absolute;
-        bottom: 12px;
-    }
+  .financed {
+    position: absolute;
+    bottom: 12px;
+  }
 </style>
 
 <section class="main-seg" id="home">
-    <BgImage client:load />
+  <BgImage client:load />
+  <div class="financed">
     <Button
-        href="https://cherokeeautosalestn.neoverify.com/quick_credit"
-        target="_blank"
-        size="lg"
-        className="financed"
+      href="https://cherokeeautosalestn.neoverify.com/quick_credit"
+      target="_blank"
+      size="lg"
     >
-        Get Financed
+      Get Financed
     </Button>
-    <FloatingButton client:load />
+    <Button href="/sell-here" size="lg"> Sell Your Car </Button>
+  </div>
+  <FloatingButton client:load />
 </section>

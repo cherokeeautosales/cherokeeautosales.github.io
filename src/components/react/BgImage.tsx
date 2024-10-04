@@ -5,8 +5,10 @@ const BgImage = () => {
 
     const images = [
         '/images/happyguy.jpg',
-        '/images/happyguy2.jpg',
-        '/images/happyguy3.jpg',
+        '/images/2.png',
+        '/images/3.png',
+        '/images/4.png',
+        '/images/5.png',
     ];
 
     const updateBackgroundImage = () => {

@@ -65,8 +65,26 @@ const SellForm = () => {
         ...formData,
         image: imageUrl,
       });
+
+      const subject = "Sell Car Info Form - Cherokee Auto Sales";
+      const body = `
+      Hi, I'd like to sell my car to you, below is the details of my car:\n
+      Year: ${formData.year}\n
+      Make: ${formData.make}\n
+      Model: ${formData.model}\n
+      Mileage: ${formData.mileage}\n
+      Color: ${formData.color}\n
+      Image URL: ${imageUrl}
+    `.trim();
+
+      const mailtoLink = `mailto:alexisdelmonico@gmail.com?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoLink;
+
       // console.log("Document written with ID: ", docRef.id);
-      setMsg("Submitted! Thank you for filling out the form!");
+      // setMsg("Submitted! Thank you for filling out the form!");
       setFormData({
         year: "",
         make: "",
