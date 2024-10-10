@@ -1,6 +1,7 @@
 ---
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { FaPhoneAlt, FaMapMarkedAlt } from "react-icons/fa";
+import YoutubeLink from "../../../youtube.txt?raw";
+
 ---
 
 <section id="video">
@@ -14,7 +15,7 @@ import { FaPhoneAlt, FaMapMarkedAlt } from "react-icons/fa";
           class="ifEmbed"
           height="450px"
           width="100%"
-          src="https://www.youtube.com/embed/i-dgM4YBmbw?si=Sqpmf5XPxK2CfMiT"
+          src={YoutubeLink.replace('/watch?v=', '/embed/')}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
