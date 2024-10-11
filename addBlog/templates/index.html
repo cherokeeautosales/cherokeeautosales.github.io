@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Blog Post</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="full-page-drop-area">
+        <div class="drop-message">
+            <p>Drop your zip file here</p>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Upload New Blog Post</h1>
+        <form id="uploadForm" enctype="multipart/form-data" method="POST" action="/upload">
+            <label for="blog_name">Blog Post Name:</label>
+            <input type="text" id="blog_name" name="blog_name" placeholder="Blog post name (optional)">
+            
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required placeholder="Enter blog post title">
+            
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required placeholder="Enter blog post description">
+            
+            <label for="icon">Icon: <a href="https://react-icons.github.io/react-icons/icons/fa/" target="_blank">https://react-icons.github.io/react-icons/icons/fa/</a></label>
+            <input type="text" id="icon" name="icon" required placeholder="Enter blog post icon (e.g., FaOilCan)">
+            
+            <label for="file">Select a zip file:</label>
+            <div id="file-info">
+                <p>No file selected</p>
+            </div>
+            <input type="file" id="file" name="file" accept=".zip" required>
+            
+            <button type="submit">Upload</button>
+        </form>
+        <button id="github-commit" class="github-button">Commit and Push to GitHub</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
