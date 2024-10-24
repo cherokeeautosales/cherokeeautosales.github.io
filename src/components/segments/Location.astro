@@ -1,6 +1,6 @@
 ---
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { FaPhoneAlt, FaMapMarkedAlt } from "react-icons/fa";
+import { FaPhoneAlt, FaMapMarkedAlt, FaCalendarAlt } from "react-icons/fa";
 ---
 
 <section id="location">
@@ -43,9 +43,20 @@ import { FaPhoneAlt, FaMapMarkedAlt } from "react-icons/fa";
                     perfect vehicle at the right price. Experience the Cherokee
                     Auto Sales difference today and let us earn your business.
                 </div>
-                <Button href="#contact" style={{ maxWidth: "200px" }}>
-                    <FaPhoneAlt /> Contact Us Now
-                </Button>
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: "1rem",
+                    }}
+                >
+                    <Button href="#contact" style={{ maxWidth: "200px" }}>
+                        <FaPhoneAlt /> Contact Us Now
+                    </Button>
+                    <Button href="https://calendly.com/cherokeeautosales/30min">
+                        <FaCalendarAlt /> Schedule an Appointment
+                    </Button>
+                </div>
             </Col>
         </Row>
         <Row

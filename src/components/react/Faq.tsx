@@ -14,7 +14,7 @@ const FAQAccordion = () => {
       <Accordion.Item eventKey="0">
        <Accordion.Button style={{margin: '0'}}>What is BHPH or Buy Here Pay Here financing?</Accordion.Button>
         <Accordion.Body>
-          Experience hassle-free car financing with our Buy Here Pay Here (BHPH) option. Skip traditional lenders
+          Experience hassle-free car financing with our <a href="/buy-here-pay-here" target="_blank">Buy Here Pay Here (BHPH)</a> option. Skip traditional lenders
           and make direct payments to us, unlocking a range of flexible financing solutions tailored to your needs.
           Discover the simplicity of BHPH financing as we guide you towards owning your dream vehicle.
         </Accordion.Body>

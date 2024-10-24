@@ -160,10 +160,6 @@ def github_commit():
     except Exception as e:
         return jsonify({'error': f'An error occurred: {str(e)}'}), 500
 
-@app.route('/kill', methods=['POST'])
-def kill_server():
-    os._exit(0)
-
 # Serve static files
 @app.route('/<path:path>')
 def static_file(path):

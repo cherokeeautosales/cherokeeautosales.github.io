@@ -9,6 +9,7 @@ const reviews = parse(allReviews, {
 }) as ReviewProps[];
 
 import "swiper/css";
+import { Button } from "react-bootstrap";
 ---
 
 <style lang="scss">
@@ -22,7 +23,13 @@ import "swiper/css";
 <section
     id="testimonials"
     class="reviews"
-    style={{ maxWidth: "100%", minWidth: "100%", overflowX: "hidden" }}
+    style={{
+        maxWidth: "100%",
+        minWidth: "100%",
+        overflowX: "hidden",
+        display: "flex",
+        flexDirection: "column",
+    }}
 >
     <swiper-container
         slides-per-view={5}
@@ -64,4 +71,20 @@ import "swiper/css";
         // @ts-ignore
         Object.assign(swiperEl, params); swiperEl.initialize();
     </script>
+
+    <div
+        style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "1rem",
+        }}
+    >
+        <Button
+            href="https://g.page/r/CSvr_BPpNqMEEBM/review"
+            target="_blank"
+            size="lg"
+        >
+            Leave your review!
+        </Button>
+    </div>
 </section>

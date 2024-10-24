@@ -1,0 +1,158 @@
+---
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { FaPhoneAlt, FaCalendarAlt } from "react-icons/fa";
+---
+
+<style lang="scss">
+.hero-section {
+  padding: 2rem;
+  font-family: "Fira Sans Condensed", sans-serif;
+
+  .action-button {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    
+    &.primary {
+    //   background: var(--dark-blue);
+      color: white;
+      
+    //   &:hover {
+    //     background: darken(var(--dark-blue), 10%);
+    //   }
+    }
+    
+    &.secondary {
+      background: #ff0000;
+      color: white;
+      
+      &:hover {
+        background: darken(#ff0000, 10%);
+      }
+    }
+  }
+
+  .finance-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+
+    .highlight {
+      color: #ff0000;
+    }
+    .underline {
+      text-decoration: underline;
+    }
+  }
+
+  .contact-section {
+    text-align: center;
+    margin-top: 2rem;
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .address {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .phone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  .dealership-image {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .map-container {
+    height: 350px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+</style>
+
+<section class="hero-section">
+  <Container>
+    <Row class="justify-content-center align-items-start">
+      <Col style={{ minWidth: "min(500px, 100%)" }}>
+        <img
+          src="./images/financingreq.jpg"
+          alt="Cherokee Auto Sales"
+          class="dealership-image"
+        />
+      </Col>
+
+      <Col style={{ minWidth: "min(500px, 100%)" }}>
+        <div class="finance-heading">
+          WE <span class="highlight">CAN</span> AND <span class="highlight">WILL</span><br />
+          FINANCE <span class="highlight underline">YOU!</span>
+        </div>
+
+        <p>
+          Cherokee Auto is dedicated to providing <strong>reliable cars</strong> with 
+          financing options that <span class="highlight">suit your budget</span>! No matter your 
+          credit situation—whether you have <span class="highlight">no credit, low credit, past 
+          bankruptcies, or previous repossessions</span>—our goal is to help 
+          you find a vehicle that meets your needs.
+        </p>
+        
+        <p><strong>At Cherokee Auto, we understand that life happens.</strong></p>
+        <Button className="action-button primary" size="lg">
+            Get Pre-Approved
+        </Button>
+        
+        <Button className="action-button secondary">
+            Our Inventory
+        </Button>
+      </Col>
+    </Row>
+    <Row>
+        <Col>
+            <div class="contact-section">
+                <div class="title">COME SEE US!</div>
+                <div class="address">
+                3423 N Broadway Knoxville,<br />
+                TN 37917
+                </div>
+                <Button className="action-button secondary">
+                <FaCalendarAlt /> Book an Appointment
+                </Button>
+                <div class="phone">
+                <FaPhoneAlt /> Call us: 865-687-7100
+                </div>
+            </div>
+        </Col>
+        <Col>
+            <div class="map-container">
+                <iframe
+                title="Map of Locations"
+                class="ifEmbed"
+                frameborder="0"
+                height="100%"
+                width="100%"
+                marginheight="0"
+                marginwidth="0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA1Kn5Q5FatDiBjhEvkmjUVbudRQGH-OGA&q=3423%20North%20Broadway,Knoxville,TN,37917"
+                ></iframe>
+            </div>
+        </Col>
+    </Row>
+  </Container>
+</section>

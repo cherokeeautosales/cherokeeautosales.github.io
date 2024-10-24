@@ -1,4 +1,7 @@
 ---
+import GooglePixel from '../react/Google';
+import MetaPixel from '../react/Meta';
+
 interface Props {
 	title: string;
 	description: string;
@@ -27,7 +30,7 @@ const favicon = linkPrefix + "/images/favicon.png";
 			"@context": "https://schema.org",
 			"@type": "AutoDealer",
 			"name": "Cherokee Auto Sales TN",
-			"image": "https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/305309310_496322739171460_1001956815122140136_n.png?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Me7Ki46-erYQ7kNvgFuKcMQ&_nc_ht=scontent-ord5-1.xx&oh=00_AYBWEMg65sC0-5qJEMmxbRtVl_XUBCS_R1mKWk8GpXNvyA&oe=6646FAB3",
+			"image": "https://cherokeeautosalestn.com/images/warranty.jpg",
 			"@id": "",
 			"url": "https://cherokeeautosalestn.com",
 			"telephone": "8656877100",
@@ -65,6 +68,12 @@ const favicon = linkPrefix + "/images/favicon.png";
 			]
 		}
 	</script>
+
+	<MetaPixel client:load/>
+	<GooglePixel client:load/>
+	
+	</script>
+
 	<style lang="scss" is:global>
 		:root {
 			--max-width: 1320px;
