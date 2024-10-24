@@ -1,4 +1,4 @@
-\---
+---
 
 title: This is a test
 
@@ -6,7 +6,7 @@ description: I am testing something
 
 icon: FaAppleAlt
 
-\---
+---
 
 This is my blogpost :)
 
