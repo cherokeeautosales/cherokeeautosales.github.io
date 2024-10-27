@@ -33,6 +33,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     filePath: "",
   });
 
+  const [imgBool, setImgBool] = useState(false);
+
   const [editingVin, setEditingVin] = useState("");
   const [editedFields, setEditedFields] = useState<Partial<CarProps>>({});
 
@@ -119,7 +121,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     }
   };
 
-  const handleChange = async (field: string, value: string) => {
+  const handleChange = (field: string, value: string) => {
     setEditedFields((prevState) => ({
       ...prevState,
       [field]: value,
@@ -136,6 +138,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     const file = e.target.files ? e.target.files[0] : undefined;
     const filePath = file ? `vehicleImages/${Date.now()}_${file.name}` : "";
     const imageRef = ref(storage, filePath);
+    setImgBool(true);
 
     if (file) {
       const result = await uploadFile(imageRef, file, {
@@ -207,24 +210,29 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   };
 
   const handleAddVehicle = () => {
-    if (newVehicle.image) {
+    if (!imgBool) {
       addVehicle(newVehicle);
-      setNewVehicle({
-        stockNumber: "",
-        year: "",
-        make: "",
-        model: "",
-        vin: "",
-        mileage: "",
-        color: "",
-        cost: "",
-        date: "",
-        image: "",
-        link: "",
-        filePath: "",
-      });
-      alert("Vehicle added successfully!");
+    } else {
+      if (newVehicle.image) {
+        addVehicle(newVehicle);
+        setImgBool(false);
+        setNewVehicle({
+          stockNumber: "",
+          year: "",
+          make: "",
+          model: "",
+          vin: "",
+          mileage: "",
+          color: "",
+          cost: "",
+          date: "",
+          image: "",
+          link: "",
+          filePath: "",
+        });
+      }
     }
+    alert("Vehicle added successfully!");
   };
 
   return (
@@ -419,7 +427,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                         type="text"
                         id="editStockNumber"
                         name="editStockNumber"
-                        value={editedFields.stockNumber || vehicle.stockNumber}
+                        value={editedFields.stockNumber !== undefined ? editedFields.stockNumber : vehicle.stockNumber}
                         onChange={(e) =>
                           handleChange("stockNumber", e.target.value)
                         }
@@ -622,7 +630,9 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                         onChange={(e) => handleChange("link", e.target.value)}
                       />
                     ) : (
-                      <a href={vehicle.link} target="_blank">{vehicle.link}</a>
+                      <a href={vehicle.link} target="_blank">
+                        {vehicle.link}
+                      </a>
                     )}
                   </span>
                 </div>
