@@ -29,6 +29,8 @@ const SellForm = () => {
   const [file, setFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const MAX_FILE_SIZE = 2 * 1024 * 1024;
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -38,6 +40,12 @@ const SellForm = () => {
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
     }
+    if (file) {
+      if (file.size > MAX_FILE_SIZE) {
+          alert('File is too large. Maximum size is 2 MB.');
+          e.target.value = '';
+      }
+  }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
