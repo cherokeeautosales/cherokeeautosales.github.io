@@ -26,53 +26,53 @@ const SellForm = () => {
   });
 
   const [msg, setMsg] = useState<string>("");
-  const [file, setFile] = useState<File | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  // const [file, setFile] = useState<File | null>(null);
+  // const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const MAX_FILE_SIZE = 2 * 1024 * 1024;
+  // const MAX_FILE_SIZE = 2 * 1024 * 1024;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
-    }
-    if (file) {
-      if (file.size > MAX_FILE_SIZE) {
-          alert('File is too large. Maximum size is 2 MB.');
-          e.target.value = '';
-      }
-  }
-  };
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files && e.target.files[0]) {
+  //     setFile(e.target.files[0]);
+  //   }
+  //   if (file) {
+  //     if (file.size > MAX_FILE_SIZE) {
+  //         alert('File is too large. Maximum size is 2 MB.');
+  //         e.target.value = '';
+  //     }
+  // }
+  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    let imageUrl = "";
+    // let imageUrl = "";
 
-    if (file) {
-      try {
-        const storageRef = ref(
-          storage,
-          `sellImages/${Date.now()}_${file.name}`
-        );
-        await uploadBytes(storageRef, file);
-        imageUrl = await getDownloadURL(storageRef);
-      } catch (error) {
-        console.error("Error uploading file: ", error);
-        alert("Failed to upload image");
-        return;
-      }
-    }
+    // if (file) {
+    //   try {
+    //     const storageRef = ref(
+    //       storage,
+    //       `sellImages/${Date.now()}_${file.name}`
+    //     );
+    //     await uploadBytes(storageRef, file);
+    //     imageUrl = await getDownloadURL(storageRef);
+    //   } catch (error) {
+    //     console.error("Error uploading file: ", error);
+    //     alert("Failed to upload image");
+    //     return;
+    //   }
+    // }
 
-    try {
-      const docRef = await addDoc(collection(db, "sell"), {
-        ...formData,
-        image: imageUrl,
-      });
+    // try {
+    //   const docRef = await addDoc(collection(db, "sell"), {
+    //     ...formData,
+    //     image: imageUrl,
+    //   });
 
       const subject = "Sell Car Info Form - Cherokee Auto Sales";
       const body = `
@@ -82,7 +82,6 @@ const SellForm = () => {
       Model: ${formData.model}\n
       Mileage: ${formData.mileage}\n
       Color: ${formData.color}\n
-      Image URL: ${imageUrl}
     `.trim();
 
       const mailtoLink = `mailto:alexisdelmonico@gmail.com?subject=${encodeURIComponent(
@@ -101,14 +100,14 @@ const SellForm = () => {
         color: "",
         image: "",
       });
-      setFile(null);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
-    } catch (e) {
-      // console.error("Error adding document: ", e);
-      setMsg("Something went wrong, please try again!");
-    }
+      // setFile(null);
+      // if (fileInputRef.current) {
+      //   fileInputRef.current.value = "";
+      // }
+    // } catch (e) {
+    //   // console.error("Error adding document: ", e);
+    //   setMsg("Something went wrong, please try again!");
+    // }
   };
 
   useEffect(() => {
@@ -124,7 +123,7 @@ const SellForm = () => {
   return (
     <div style={{ width: "90%", margin: "20px auto" }}>
       <h2>Sell your car with us!</h2>
-      <p>Please fill out the form below to sell your car.</p>
+      <p>Please fill out the form below to email us about selling your car. If you have any photos of your car, please attach them to your email.</p>
       <form onSubmit={handleSubmit}>
         {msg && <div className="message">{msg}</div>}
         <div>
@@ -172,7 +171,7 @@ const SellForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        {/* <div>
           <label>Image:</label>
           <input
             type="file"
@@ -183,9 +182,9 @@ const SellForm = () => {
             onChange={handleFileChange}
             ref={fileInputRef}
           />
-        </div>
+        </div> */}
         {/* <p style={{color: '#ff7505'}}>{msg}</p> */}
-        <button type="submit">Submit</button>
+        <button type="submit">Send Email</button>
       </form>
     </div>
   );
