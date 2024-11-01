@@ -38,5 +38,5 @@ Conclusion
 
 Squeaky brakes are a common issue that can often be resolved with proper maintenance and attention. By understanding the potential causes and following these steps, you can ensure that your brakes remain effective and quiet, providing a safer and more enjoyable driving experience. Regular check-ups and prompt attention to brake issues will keep your vehicle in top shape and enhance your driving safety.
 
-If you have any questions or need assistance with your brakes, feel free to reach out. Safe driving starts with well-maintained brakes! 🚗🛠️
+If you have any questions or need assistance with your brakes, feel free to reach out. Safe driving starts with well-maintained brakes! 
 
