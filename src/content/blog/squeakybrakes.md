@@ -1,5 +1,5 @@
 ---
-title: "Squeaky Brakes?"
+title: "Do You Have Squeaky Brakes?"
 description: "Squeaky brakes are a common issue, learn what your squeaky brakes mean."
 icon: FaCarSide
 ---
