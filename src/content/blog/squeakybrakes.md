@@ -1,12 +1,8 @@
 ---
-
-Title: "Squeaky Brakes?"
-
-Description: "Squeaky brakes are a common issue, learn what your squeaky brakes mean."
-
-Icon: FaCarSide
-
-–--
+title: "Squeaky Brakes?"
+description: "Squeaky brakes are a common issue, learn what your squeaky brakes mean."
+icon: FaCarSide
+---
 
 Understanding Squeaky Brakes: Causes and Solutions
 
