@@ -76,7 +76,7 @@ export function InventoryCards() {
                     textAlign: "center",
                   }}
                 >
-                  <button onClick={toggleShowAll} style={{ width: "200px" }}>
+                  <button onClick={toggleShowAll} style={{ width: "300px", backgroundColor: "red" }}>
                     Click to see more
                   </button>
                 </div>
