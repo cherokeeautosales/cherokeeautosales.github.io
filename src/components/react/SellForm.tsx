@@ -1,9 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import { db, storage } from "../../firebase";
-import { collection, addDoc } from "firebase/firestore";
-
-import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-
+import { useEffect, useState } from "react";
 import "./react.scss";
 
 interface FormData {
@@ -12,6 +7,7 @@ interface FormData {
   model: string;
   mileage: string;
   color: string;
+  phone: string; // Added phone field
   image: string;
 }
 
@@ -22,92 +18,52 @@ const SellForm = () => {
     model: "",
     mileage: "",
     color: "",
+    phone: "", // Initialize phone state
     image: "",
   });
 
   const [msg, setMsg] = useState<string>("");
-  // const [file, setFile] = useState<File | null>(null);
-  // const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // const MAX_FILE_SIZE = 2 * 1024 * 1024;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (e.target.files && e.target.files[0]) {
-  //     setFile(e.target.files[0]);
-  //   }
-  //   if (file) {
-  //     if (file.size > MAX_FILE_SIZE) {
-  //         alert('File is too large. Maximum size is 2 MB.');
-  //         e.target.value = '';
-  //     }
-  // }
-  // };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // let imageUrl = "";
+    // Check if the phone number is filled
+    if (!formData.phone) {
+      setMsg("Please enter your phone number.");
+      return;
+    }
 
-    // if (file) {
-    //   try {
-    //     const storageRef = ref(
-    //       storage,
-    //       `sellImages/${Date.now()}_${file.name}`
-    //     );
-    //     await uploadBytes(storageRef, file);
-    //     imageUrl = await getDownloadURL(storageRef);
-    //   } catch (error) {
-    //     console.error("Error uploading file: ", error);
-    //     alert("Failed to upload image");
-    //     return;
-    //   }
-    // }
-
-    // try {
-    //   const docRef = await addDoc(collection(db, "sell"), {
-    //     ...formData,
-    //     image: imageUrl,
-    //   });
-
-      const subject = "Sell Car Info Form - Cherokee Auto Sales";
-      const body = `
-      Hi, I'd like to sell my car to you, below is the details of my car:\n
+    const subject = "Sell Car Info Form - Cherokee Auto Sales";
+    const body = `
+      Hi, I'd like to sell my car to you, below are the details of my car:\n
       Year: ${formData.year}\n
       Make: ${formData.make}\n
       Model: ${formData.model}\n
       Mileage: ${formData.mileage}\n
       Color: ${formData.color}\n
+      Phone: ${formData.phone}\n
     `.trim();
 
-      const mailtoLink = `mailto:alexisdelmonico@gmail.com?subject=${encodeURIComponent(
-        subject
-      )}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:alexisdelmonico@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
 
-      window.location.href = mailtoLink;
+    window.location.href = mailtoLink;
 
-      // console.log("Document written with ID: ", docRef.id);
-      // setMsg("Submitted! Thank you for filling out the form!");
-      setFormData({
-        year: "",
-        make: "",
-        model: "",
-        mileage: "",
-        color: "",
-        image: "",
-      });
-      // setFile(null);
-      // if (fileInputRef.current) {
-      //   fileInputRef.current.value = "";
-      // }
-    // } catch (e) {
-    //   // console.error("Error adding document: ", e);
-    //   setMsg("Something went wrong, please try again!");
-    // }
+    setFormData({
+      year: "",
+      make: "",
+      model: "",
+      mileage: "",
+      color: "",
+      phone: "", // Reset phone number field
+      image: "",
+    });
   };
 
   useEffect(() => {
@@ -171,19 +127,24 @@ const SellForm = () => {
             onChange={handleChange}
           />
         </div>
+        <div>
+          <label>Phone Number:</label>
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Your phone number"
+          />
+        </div>
         {/* <div>
           <label>Image:</label>
           <input
             type="file"
             accept="image/*"
-            // onChange={(e) => {
-            //   handleImageUpload(e);
-            // }}
             onChange={handleFileChange}
-            ref={fileInputRef}
           />
         </div> */}
-        {/* <p style={{color: '#ff7505'}}>{msg}</p> */}
         <button type="submit">Send Email</button>
       </form>
     </div>
