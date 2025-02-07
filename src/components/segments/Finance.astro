@@ -114,14 +114,36 @@ import { FaPhoneAlt, FaCalendarAlt } from "react-icons/fa";
         </p>
         
         <p><strong>At Cherokee Auto, we understand that life happens.</strong></p>
-        <Button
-          className="action-button primary"
-          size="lg"
-          target="_blank"
-          href="https://cherokeeautosalestn.neoverify.com/quick_credit"
-        >
-            Get Pre-Approved
-        </Button>
+        neo-verify {
+            height: 100%;
+        }
+
+        .neo-verify-iframe {
+            position: relative;
+            float: left;
+            width: 356px;
+            height: 100%;
+            border: none;
+
+            @media screen and (max-width: 768px) {
+                margin-left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+    .label {
+        font-size: 3rem;
+    }
+    .sublabel {
+        font-size: 2rem;
+    }
+</style>
+
+            <iframe
+                class="neo-verify-iframe"
+                src="https://cherokeeautosalestn.neoverify.com/quick_lead?referral_source=Website&"
+            ></iframe>
+
         
         <Button
           className="action-button secondary"
