@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./react.scss";
 import { IoCloseCircle } from "react-icons/io5";
 
@@ -26,31 +26,48 @@ const CarCard: React.FC<CarProps> = ({
   link,
 }) => {
   const mileageInt = parseInt(mileage);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
+    setIsModalOpen((prev) => !prev);
   };
 
+  // Use IntersectionObserver to set the background image only when visible.
   useEffect(() => {
-    if (isModalOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
+    const observerCallback: IntersectionObserverCallback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observerOptions: IntersectionObserverInit = {
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
     }
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // Lock scroll when modal is open.
+  useEffect(() => {
+    document.body.style.overflow = isModalOpen ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [isModalOpen]);
 
-  const Modal = ({
-    image,
-    onClose,
-  }: {
-    image: string;
-    onClose: () => void;
-  }) => {
+  // Modal Component – defined inside for clarity.
+  const Modal: React.FC<{ image: string; onClose: () => void }> = ({ image, onClose }) => {
     return (
       <div className="modal-container" onClick={onClose}>
         <IoCloseCircle
@@ -83,18 +100,20 @@ const CarCard: React.FC<CarProps> = ({
             }}
             onClick={onClose}
           >
-          <div
-            style={{
-              position: "absolute",
-              bottom: "0",
-              left: "0",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              color: "#fff",
-              padding: "10px",
-              width: "100%",
-              borderRadius: "0 0 8px 8px",
-            }}
-          > {year} {make} {model} </div>
+            <div
+              style={{
+                position: "absolute",
+                bottom: "0",
+                left: "0",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                color: "#fff",
+                padding: "10px",
+                width: "100%",
+                borderRadius: "0 0 8px 8px",
+              }}
+            >
+              {year} {make} {model}
+            </div>
           </div>
         </div>
         <div
@@ -131,12 +150,12 @@ const CarCard: React.FC<CarProps> = ({
   };
 
   return (
-    <div className="car-card car-wrapper">
-      {/* <a href={link} target="_blank" rel="noopener noreferrer"> */}
+    <div className="car-card car-wrapper" ref={containerRef}>
       <div
         className="car"
         style={{
-          backgroundImage: `url(${image})`,
+          // Only set the background image when the card is in view.
+          backgroundImage: isVisible ? `url(${image})` : undefined,
           backgroundSize: "contain",
           backgroundPosition: "center",
           cursor: "pointer",
@@ -147,15 +166,8 @@ const CarCard: React.FC<CarProps> = ({
           <h2>
             {year.toLowerCase()} {make.toLowerCase()} {model.toLowerCase()}
           </h2>
-          {/* <p>{color.toLowerCase()}</p> */}
-          {/* {mileageInt < 200000 ? (
-            <p>{mileage} miles</p>
-          ) : (
-            <p>One year Service Contract!</p>
-          )} */}
         </div>
       </div>
-      {/* </a> */}
       {isModalOpen && <Modal image={image} onClose={toggleModal} />}
     </div>
   );
