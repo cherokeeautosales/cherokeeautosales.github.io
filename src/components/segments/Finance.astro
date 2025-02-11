@@ -1,7 +1,8 @@
 ---
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FaPhoneAlt, FaCalendarAlt } from "react-icons/fa";
-import GetQualified from "./GetQualified";
+import GetQualified from "./GetQualified.astro";
+import Neo from "./Neo.astro";
 ---
 
 <style lang="scss">
@@ -115,16 +116,6 @@ import GetQualified from "./GetQualified";
         </p>
         
         <p><strong>At Cherokee Auto, we understand that life happens.</strong></p>
-        <!-- <Button
-          className="action-button primary"
-          size="lg"
-          target="_blank"
-          href="https://cherokeeautosalestn.neoverify.com/quick_credit"
-        >
-            Get Pre-Approved
-        </Button> -->
-
-        
         <Button
           className="action-button secondary"
           size="lg"
@@ -132,6 +123,7 @@ import GetQualified from "./GetQualified";
         >
             Our Inventory
         </Button>
+        <Neo/>
       </Col>
     </Row>
     <Row>
@@ -171,4 +163,3 @@ import GetQualified from "./GetQualified";
     </Row>
   </Container>
 </section>
-<GetQualified/>
