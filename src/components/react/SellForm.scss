@@ -1,0 +1,55 @@
+button {
+    width: 100px;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    margin-left: 0;
+  }
+  
+  input {
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+  }
+  
+  label {
+    grid-column: 1;
+    font-weight: 500;
+  }
+  
+  .message {
+    padding: 8px;
+    color: #bd5501;
+    background-color: rgba(249, 130, 32, 0.3);
+    border: 2px solid #bd5501;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  
+    input[type="checkbox"] {
+      margin-right: 10px;
+      margin-top: 5px;
+      width: auto;
+    }
+  
+    span {
+      font-size: 0.9rem;
+      line-height: 1.2;
+    }
+  
+    a {
+      color: #007bff;
+      text-decoration: underline;
+    }
+  }
+  

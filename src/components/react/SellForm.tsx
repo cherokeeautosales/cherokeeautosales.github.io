@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./react.scss";
+import "./SellForm.scss";
+
 
 interface FormData {
   year: string;
@@ -7,7 +9,8 @@ interface FormData {
   model: string;
   mileage: string;
   color: string;
-  phone: string; // Added phone field
+  phone: string;
+  optin: boolean;
   image: string;
 }
 
@@ -18,21 +21,21 @@ const SellForm = () => {
     model: "",
     mileage: "",
     color: "",
-    phone: "", // Initialize phone state
+    phone: "",
+    optin: false,
     image: "",
   });
 
   const [msg, setMsg] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, type, checked, value } = e.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Check if the phone number is filled
     if (!formData.phone) {
       setMsg("Please enter your phone number.");
       return;
@@ -47,6 +50,8 @@ const SellForm = () => {
       Mileage: ${formData.mileage}\n
       Color: ${formData.color}\n
       Phone: ${formData.phone}\n
+
+      ${formData.optin ? "I would like to receive updates from Cherokee Auto Sales via text." : "I do not want to receive updates from Cherokee Auto Sales via text."}
     `.trim();
 
     const mailtoLink = `mailto:alexisdelmonico@gmail.com?subject=${encodeURIComponent(
@@ -61,8 +66,9 @@ const SellForm = () => {
       model: "",
       mileage: "",
       color: "",
-      phone: "", // Reset phone number field
+      phone: "",
       image: "",
+      optin: false,
     });
   };
 
@@ -71,7 +77,6 @@ const SellForm = () => {
       const timer = setTimeout(() => {
         setMsg("");
       }, 30000);
-
       return () => clearTimeout(timer);
     }
   }, [msg]);
@@ -79,7 +84,10 @@ const SellForm = () => {
   return (
     <div style={{ width: "90%", margin: "20px auto" }}>
       <h2>Sell your car with us!</h2>
-      <p>Please fill out the form below to email us about selling your car. If you have any photos of your car, please attach them to your email.</p>
+      <p>
+        Please fill out the form below to email us about selling your car. If you have any
+        photos of your car, please attach them to your email.
+      </p>
       <form onSubmit={handleSubmit}>
         {msg && <div className="message">{msg}</div>}
         <div>
@@ -137,14 +145,29 @@ const SellForm = () => {
             placeholder="Your phone number"
           />
         </div>
-        {/* <div>
-          <label>Image:</label>
+        <div className="checkbox-container"
+            onClick={() => setFormData({ ...formData, optin: !formData.optin })}
+        >
           <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
+            type="checkbox"
+            name="optin"
+            checked={formData.optin}
+            onChange={handleChange}
           />
-        </div> */}
+          <span>
+            By clicking this box, you agree to receive SMS messages about financing options or
+            information regarding financing, marketing, or sales from Cherokee Auto Sales.
+            Reply STOP to opt out at anytime. For help text 865-687-7100. Message data rates may
+            apply. Messaging frequency may vary. See our privacy policy here:{" "}
+            <a
+              href="/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Privacy Policy
+            </a>.
+          </span>
+        </div>
         <button type="submit">Send Email</button>
       </form>
     </div>
