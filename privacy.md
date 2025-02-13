@@ -40,6 +40,16 @@ If you have consented to receive SMS messages, you may receive messages related 
 
 #### **4\. Standard Messaging Disclosures**
 
+### Disclosure for Opt-In to Text Messages
+
+By opting in to receive text messages from Cherokee Auto Sales, you agree to receive automated messages related to the following:
+
+ **Marketing Updates**: Receive text messages about special offers, promotions, new products, and services from Cherokee Auto.
+ **Sales Notifications**: Get information about discounts, limited-time sales, and exclusive deals.
+ **Promotions**: Receive updates about contests, sweepstakes, giveaways, and other promotional events.
+ **Billing & Payment Reminders**: Receive reminders regarding your account balance, upcoming payments, invoices, or billing inquiries.
+ **Payment Confirmation Alerts**: Get notifications confirming that a payment has been processed or completed for your account.
+
 * **Message Frequency:** Frequency of messages may vary depending on your interactions with us.  
 * **Standard Messaging Rates:** Standard messaging rates will apply, as charged by your mobile service provider.  
 * **Opt-out:** You can opt-out of receiving SMS messages at any time by texting "STOP" to the number from which you received the message.  
