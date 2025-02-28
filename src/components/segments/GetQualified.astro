@@ -1,5 +1,6 @@
 ---
 import { Row, Col } from "react-bootstrap";
+import QuickLead from "../react/QuickLead";
 ---
 
 <style lang="scss">
@@ -56,11 +57,8 @@ import { Row, Col } from "react-bootstrap";
                 Fill Out Our Application Form To Get Pre-Qualified
             </div>
         </Col>
-        <Col class="neo-verify" style={{ height: 650 }}>
-            <iframe
-                class="neo-verify-iframe"
-                src="https://cherokeeautosalestn.neoverify.com/quick_lead?referral_source=Website&"
-            ></iframe>
+        <Col class="neo-verify" style={{ height: 650, minWidth: "356px" }}>
+            <QuickLead />
         </Col>
     </Row>
 </section>

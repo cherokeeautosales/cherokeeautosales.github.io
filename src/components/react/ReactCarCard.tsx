@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./react.scss";
 import { IoCloseCircle } from "react-icons/io5";
+import QuickLead from "./QuickLead";
 
 interface CarProps {
   year: string;
@@ -136,14 +137,7 @@ const CarCard: React.FC<CarProps> = ({
           >
             Get pre-approved here!
           </p>
-          <iframe
-            style={{
-              width: "100%",
-              height: "calc(100% - 32px)",
-              borderRadius: "0 0 8px 8px",
-            }}
-            src="https://cherokeeautosalestn.neoverify.com/quick_lead?referral_source=Website&"
-          ></iframe>
+          <QuickLead />
         </div>
       </div>
     );
