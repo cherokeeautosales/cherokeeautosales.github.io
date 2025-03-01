@@ -39,8 +39,6 @@ const QuickLead: React.FC = () => {
       for (const param of KNOWN_PARAMS) {
         if (urlParams.has(param)) {
           let val = urlParams.get(param) || "";
-          // If always overriding utm_source => "Google":
-          if (param === "utm_source") val = "Google";
           newParams.set(param, val);
         }
       }
@@ -61,7 +59,6 @@ const QuickLead: React.FC = () => {
     };
     window.addEventListener("message", handleMessage);
 
-    // Cleanup
     return () => {
       window.removeEventListener("message", handleMessage);
     };

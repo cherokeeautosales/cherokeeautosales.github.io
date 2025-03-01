@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { db } from "../../firebase";
+// import { db } from "../../firebase";
 import {
   collection,
   getDocs,
@@ -24,16 +24,52 @@ export function InventoryCards() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, collectionRef));
-      const data = querySnapshot.docs.map((doc) => ({
-        ...doc.data(),
-      })) as CarProps[];
-      setVehicles(data);
-      setLoading(false);
+      if (import.meta.env.DEV) {
+        // Dummy data for development environment
+        const dummyVehicles: CarProps[] = [
+          {
+            stockNumber: "ABC123",
+            year: "2020",
+            make: "Toyota",
+            model: "Camry",
+            vin: "VIN1234567890",
+            mileage: "20000",
+            color: "Blue",
+            cost: "$20,000",
+            date: "2022-01-01",
+            image: "/images/dummy-car.jpg",
+            link: "https://example.com/car/1",
+            filePath: "vehicleImages/dummy1.jpg",
+          },
+          {
+            stockNumber: "DEF456",
+            year: "2021",
+            make: "Honda",
+            model: "Accord",
+            vin: "VIN0987654321",
+            mileage: "15000",
+            color: "Red",
+            cost: "$22,000",
+            date: "2022-02-01",
+            image: "/images/dummy-car2.jpg",
+            link: "https://example.com/car/2",
+            filePath: "vehicleImages/dummy2.jpg",
+          },
+        ];
+        setVehicles(dummyVehicles);
+        setLoading(false);
+      } else {
+        // Production: fetch from Firebase
+        const db = require("../../firebase").db;
+        const querySnapshot = await getDocs(collection(db, collectionRef));
+        const data = querySnapshot.docs.map((doc) => ({ ...doc.data() })) as CarProps[];
+        setVehicles(data);
+        setLoading(false);
+      }
     };
     fetchData();
   }, []);
-
+  
   return (
     <div>
       {loading ? (
