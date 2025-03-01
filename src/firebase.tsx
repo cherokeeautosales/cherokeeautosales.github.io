@@ -4,7 +4,6 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { firebaseConfig } from "../key.js";
 
-
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);

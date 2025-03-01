@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import { db } from "../../firebase";
+import { db } from "../../firebase";
 import {
   collection,
   getDocs,
@@ -59,8 +59,6 @@ export function InventoryCards() {
         setVehicles(dummyVehicles);
         setLoading(false);
       } else {
-        // Production: fetch from Firebase
-        const db = require("../../firebase").db;
         const querySnapshot = await getDocs(collection(db, collectionRef));
         const data = querySnapshot.docs.map((doc) => ({ ...doc.data() })) as CarProps[];
         setVehicles(data);
