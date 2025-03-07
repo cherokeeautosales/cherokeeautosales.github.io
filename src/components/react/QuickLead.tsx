@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-declare global { interface Window { dataLayer?: any[]; } }
+declare global {
+  interface Window {
+    dataLayer?: any[];
+  }
+}
 
 const QuickLead: React.FC = () => {
   const [iframeSrc, setIframeSrc] = useState<string>("");
@@ -48,19 +52,34 @@ const QuickLead: React.FC = () => {
     setIframeSrc(finalSrc);
 
     // 4) Listen for the "neoApplicationSubmitted" message
-    const handleMessage = (event: MessageEvent) => {
-      if (event.origin !== domainUrl) return;
-      if (event.data === "neoApplicationSubmitted") {
+    // const handleMessage = (event: MessageEvent) => {
+    //   if (event.origin !== domainUrl) return;
+    //   if (event.data === "neoApplicationSubmitted") {
+    //     window.dataLayer = window.dataLayer || [];
+    //     window.dataLayer.push({
+    //       event: "neoApplicationSubmitted",
+    //     });
+    //   }
+    // };
+
+    function receiveMessage(event: MessageEvent) {
+      if (event.origin !== "https://cherokeeautosalestn.neoverify.com") {
+        return;
+      }
+      if (/neoLeadSubmitted/.test(event.data)) {
+        let arr = event.data.split(": ");
+        let event_type = arr[0];
+        let neo_id = arr[1];
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: "neoApplicationSubmitted",
         });
       }
-    };
-    window.addEventListener("message", handleMessage);
+    }
+    window.addEventListener("message", receiveMessage);
 
     return () => {
-      window.removeEventListener("message", handleMessage);
+      window.removeEventListener("message", receiveMessage);
     };
   }, []);
 
