@@ -1,0 +1,14 @@
+---
+/*
+  Deprecated dynamic route.
+
+  This site is fully static. Vehicle detail navigation now uses hash routing
+  (/vehicle#<slug>), so we intentionally generate zero dynamic pages.
+
+  Keeping this file with an empty getStaticPaths prevents build errors
+  while ensuring no dynamic routes are emitted.
+*/
+export async function getStaticPaths() {
+  return [];
+}
+---

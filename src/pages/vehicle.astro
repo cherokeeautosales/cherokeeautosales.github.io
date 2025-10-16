@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+import VehicleDetail from "../components/react/VehicleDetail";
+---
+
+<Layout title="Vehicle Details">
+  <div style="padding: 20px;">
+    {/*
+      Hash-based routing:
+      Navigate to /vehicle#<slug> and the React component will read window.location.hash
+      to load the correct vehicle client-side.
+    */}
+    <VehicleDetail client:only="react" />
+  </div>
+</Layout>

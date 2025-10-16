@@ -7,10 +7,15 @@ export interface CarProps {
     image: string;
     link: string;
     vin: string;
-    stockNumber: string;
+    stockNumber?: string;
     cost: string;
     date: string;
-    filePath: string;
+    filePath?: string;
+    images?: string[];
+    filePaths?: string[];
+    primaryImageIndex?: number;
+    slug?: string;
+    order?: number;
 }
 
 type props = CarProps;
