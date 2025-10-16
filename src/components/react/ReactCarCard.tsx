@@ -135,7 +135,7 @@ const CarCard: React.FC<CarProps> = ({
                 aria-label={title}
             />
         </div>
-        {showFinanceRibbon && <div className="car-card__ribbon">FINANCE</div>}
+        {/* {showFinanceRibbon && <div className="car-card__ribbon">FINANCE</div>} */}
         <div className="car-card__banner">Buy Here Pay Here!</div>
 
         <div className="car-card__body">
