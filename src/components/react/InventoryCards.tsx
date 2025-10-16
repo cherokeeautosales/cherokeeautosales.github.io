@@ -169,7 +169,8 @@ export function InventoryCards() {
                     onClick={toggleShowAll}
                     style={{
                       width: "400px",
-                      fontSize: "40px",
+                      maxWidth: "90vw",
+                      fontSize: "32px",
                       fontWeight: "bold",
                       backgroundColor: "red",
                     }}
