@@ -162,7 +162,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
           : 0;
 
       const images = vehicle.images ?? (vehicle.image ? [vehicle.image] : []);
-      const filePaths = vehicle.filePaths ?? (vehicle.filePath ? [vehicle.filePath] : []);
+      const filePaths =
+        vehicle.filePaths ?? (vehicle.filePath ? [vehicle.filePath] : []);
       const primaryImageIndex =
         typeof vehicle.primaryImageIndex === "number"
           ? vehicle.primaryImageIndex
@@ -171,10 +172,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       const primaryImage =
         images[primaryImageIndex] ?? images[0] ?? vehicle.image ?? "";
       const primaryPath =
-        filePaths[primaryImageIndex] ??
-        filePaths[0] ??
-        vehicle.filePath ??
-        "";
+        filePaths[primaryImageIndex] ?? filePaths[0] ?? vehicle.filePath ?? "";
 
       const carDoc = doc(db, "vehicles", String(vehicle.vin));
       await setDoc(carDoc, {
@@ -206,7 +204,10 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     }
   };
 
-  const editVehicle = async (vin: string, updatedVehicle: Partial<CarProps>) => {
+  const editVehicle = async (
+    vin: string,
+    updatedVehicle: Partial<CarProps>
+  ) => {
     try {
       const rest = { ...updatedVehicle } as any;
 
@@ -216,7 +217,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
       const slug = computeSlug(merged);
       const images = merged.images ?? (merged.image ? [merged.image] : []);
-      const filePaths = merged.filePaths ?? (merged.filePath ? [merged.filePath] : []);
+      const filePaths =
+        merged.filePaths ?? (merged.filePath ? [merged.filePath] : []);
       const primaryImageIndex =
         typeof merged.primaryImageIndex === "number"
           ? merged.primaryImageIndex
@@ -225,10 +227,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       const primaryImage =
         images[primaryImageIndex] ?? images[0] ?? merged.image ?? "";
       const primaryPath =
-        filePaths[primaryImageIndex] ??
-        filePaths[0] ??
-        merged.filePath ??
-        "";
+        filePaths[primaryImageIndex] ?? filePaths[0] ?? merged.filePath ?? "";
 
       const updatedVehicleData = {
         ...rest,
@@ -245,7 +244,10 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       setVehicles((prev) => {
         const updatedVehicles = prev.map((vehicle) => {
           if (vehicle.vin === vin) {
-            return normalizeVehicle({ ...vehicle, ...updatedVehicleData }, vehicle.order ?? 0);
+            return normalizeVehicle(
+              { ...vehicle, ...updatedVehicleData },
+              vehicle.order ?? 0
+            );
           }
           return vehicle;
         });
@@ -264,7 +266,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     try {
       await deleteDoc(doc(db, "vehicles", vehicle.vin));
       // delete all images in storage (best-effort)
-      const paths = vehicle.filePaths ?? (vehicle.filePath ? [vehicle.filePath] : []);
+      const paths =
+        vehicle.filePaths ?? (vehicle.filePath ? [vehicle.filePath] : []);
       for (const p of paths) {
         if (!p) continue;
         try {
@@ -298,7 +301,9 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     const paths: string[] = [];
 
     for (const file of Array.from(files)) {
-      const filePath = `vehicleImages/${newVehicle.vin || "no-vin"}/${Date.now()}_${file.name}`;
+      const filePath = `vehicleImages/${
+        newVehicle.vin || "no-vin"
+      }/${Date.now()}_${file.name}`;
       const imageRef = ref(storage, filePath);
       await uploadFile(imageRef, file, {
         contentType: file.type || "image/jpeg",
@@ -321,7 +326,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     }));
   };
 
-  // Edit: add more images (append)
+  // Edit: add more images (append) - now auto-saves
   const handleEditAddImages = async (
     vehicle: CarProps,
     e: React.ChangeEvent<HTMLInputElement>
@@ -329,13 +334,21 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     const files = e.target.files;
     if (!files || files.length === 0) return;
 
-    const baseImages = editedFields.images ?? vehicle.images ?? (vehicle.image ? [vehicle.image] : []);
-    const basePaths = editedFields.filePaths ?? vehicle.filePaths ?? (vehicle.filePath ? [vehicle.filePath] : []);
+    const baseImages =
+      editedFields.images ??
+      vehicle.images ??
+      (vehicle.image ? [vehicle.image] : []);
+    const basePaths =
+      editedFields.filePaths ??
+      vehicle.filePaths ??
+      (vehicle.filePath ? [vehicle.filePath] : []);
     const images = [...baseImages];
     const filePaths = [...basePaths];
 
     for (const file of Array.from(files)) {
-      const filePath = `vehicleImages/${vehicle.vin}/${Date.now()}_${file.name}`;
+      const filePath = `vehicleImages/${vehicle.vin}/${Date.now()}_${
+        file.name
+      }`;
       const imageRef = ref(storage, filePath);
       await uploadFile(imageRef, file, {
         contentType: file.type || "image/jpeg",
@@ -345,16 +358,25 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       filePaths.push(filePath);
     }
 
-    setEditedFields((prev) => ({
-      ...prev,
+    // Auto-save the new images
+    await editVehicle(vehicle.vin, {
       images,
       filePaths,
-    }));
+    });
+
+    // Clear the file input
+    e.target.value = "";
   };
 
   const handleDeleteImageAt = async (vehicle: CarProps, index: number) => {
-    const baseImages = editedFields.images ?? vehicle.images ?? (vehicle.image ? [vehicle.image] : []);
-    const basePaths = editedFields.filePaths ?? vehicle.filePaths ?? (vehicle.filePath ? [vehicle.filePath] : []);
+    const baseImages =
+      editedFields.images ??
+      vehicle.images ??
+      (vehicle.image ? [vehicle.image] : []);
+    const basePaths =
+      editedFields.filePaths ??
+      vehicle.filePaths ??
+      (vehicle.filePath ? [vehicle.filePath] : []);
     const images = [...baseImages];
     const filePaths = [...basePaths];
 
@@ -369,7 +391,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     images.splice(index, 1);
     filePaths.splice(index, 1);
 
-    let primary = editedFields.primaryImageIndex ?? vehicle.primaryImageIndex ?? 0;
+    let primary =
+      editedFields.primaryImageIndex ?? vehicle.primaryImageIndex ?? 0;
     if (primary === index) {
       primary = 0;
     } else if (primary > index) {
@@ -395,7 +418,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     direction: "up" | "down"
   ) => {
     const baseImages = vehicle.images ?? (vehicle.image ? [vehicle.image] : []);
-    const basePaths = vehicle.filePaths ?? (vehicle.filePath ? [vehicle.filePath] : []);
+    const basePaths =
+      vehicle.filePaths ?? (vehicle.filePath ? [vehicle.filePath] : []);
     const images = [...baseImages];
     const filePaths = [...basePaths];
 
@@ -403,7 +427,10 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     if (target < 0 || target >= images.length) return;
 
     [images[index], images[target]] = [images[target], images[index]];
-    [filePaths[index], filePaths[target]] = [filePaths[target], filePaths[index]];
+    [filePaths[index], filePaths[target]] = [
+      filePaths[target],
+      filePaths[index],
+    ];
 
     let primary = vehicle.primaryImageIndex ?? 0;
     if (primary === index) primary = target;
@@ -645,7 +672,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
         <ul style={{ listStyle: "none", padding: 0 }}>
           {vehicles.map((vehicle, index) => {
             const isEditing = editingVin === vehicle.vin;
-            const images = vehicle.images ?? (vehicle.image ? [vehicle.image] : []);
+            const images =
+              vehicle.images ?? (vehicle.image ? [vehicle.image] : []);
             const primary = vehicle.primaryImageIndex ?? 0;
             return (
               <div className="vehicleCard" key={vehicle.vin}>
@@ -673,7 +701,9 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                       ↓ Move Down
                     </button>
                   </div>
-                  <div style={{ opacity: 0.7 }}>Order: {vehicle.order ?? index}</div>
+                  <div style={{ opacity: 0.7 }}>
+                    Order: {vehicle.order ?? index}
+                  </div>
                 </div>
 
                 <div className="vehicle-info">
@@ -690,7 +720,9 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                               ? (editedFields.stockNumber as string)
                               : vehicle.stockNumber || ""
                           }
-                          onChange={(e) => handleChange("stockNumber", e.target.value)}
+                          onChange={(e) =>
+                            handleChange("stockNumber", e.target.value)
+                          }
                         />
                       ) : (
                         vehicle.stockNumber || "-"
@@ -737,8 +769,12 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                           type="text"
                           id="editModel"
                           name="editModel"
-                          value={(editedFields.model as string) || vehicle.model}
-                          onChange={(e) => handleChange("model", e.target.value)}
+                          value={
+                            (editedFields.model as string) || vehicle.model
+                          }
+                          onChange={(e) =>
+                            handleChange("model", e.target.value)
+                          }
                         />
                       ) : (
                         vehicle.model
@@ -769,8 +805,12 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                           type="text"
                           id="editMileage"
                           name="editMileage"
-                          value={(editedFields.mileage as string) || vehicle.mileage}
-                          onChange={(e) => handleChange("mileage", e.target.value)}
+                          value={
+                            (editedFields.mileage as string) || vehicle.mileage
+                          }
+                          onChange={(e) =>
+                            handleChange("mileage", e.target.value)
+                          }
                         />
                       ) : (
                         vehicle.mileage
@@ -786,8 +826,12 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                           type="text"
                           id="editColor"
                           name="editColor"
-                          value={(editedFields.color as string) || vehicle.color}
-                          onChange={(e) => handleChange("color", e.target.value)}
+                          value={
+                            (editedFields.color as string) || vehicle.color
+                          }
+                          onChange={(e) =>
+                            handleChange("color", e.target.value)
+                          }
                         />
                       ) : (
                         vehicle.color
@@ -849,7 +893,9 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                             key={i}
                             style={{
                               border:
-                                i === primary ? "2px solid #2ba664" : "1px solid #ddd",
+                                i === primary
+                                  ? "2px solid #2ba664"
+                                  : "1px solid #ddd",
                               padding: "4px",
                               borderRadius: "6px",
                             }}
@@ -865,25 +911,39 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                               }}
                             />
                             {isEditing ? (
-                              <div style={{ display: "flex", gap: "4px", marginTop: "4px" }}>
+                              <div
+                                style={{
+                                  display: "flex",
+                                  gap: "4px",
+                                  marginTop: "4px",
+                                }}
+                              >
                                 <button
-                                  onClick={() => handleReorderImage(vehicle, i, "up")}
+                                  onClick={() =>
+                                    handleReorderImage(vehicle, i, "up")
+                                  }
                                   disabled={i === 0}
                                 >
                                   ↑
                                 </button>
                                 <button
-                                  onClick={() => handleReorderImage(vehicle, i, "down")}
+                                  onClick={() =>
+                                    handleReorderImage(vehicle, i, "down")
+                                  }
                                   disabled={i === images.length - 1}
                                 >
                                   ↓
                                 </button>
-                                <button onClick={() => handleSetPrimary(vehicle, i)}>
+                                <button
+                                  onClick={() => handleSetPrimary(vehicle, i)}
+                                >
                                   Set Primary
                                 </button>
                                 <button
                                   className="delete-image-button"
-                                  onClick={() => handleDeleteImageAt(vehicle, i)}
+                                  onClick={() =>
+                                    handleDeleteImageAt(vehicle, i)
+                                  }
                                   style={{
                                     border: "1px solid #a62b38",
                                     backgroundColor: "#eb969e",

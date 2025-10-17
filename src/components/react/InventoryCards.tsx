@@ -155,11 +155,11 @@ export function InventoryCards() {
               }}
             >
               {vehicles
-                .slice(0, showAll ? vehicles.length : 3)
+                // .slice(0, showAll ? vehicles.length : 3)
                 .map((car, index) => (
                   <CarCard key={index} {...car} />
                 ))}
-              {!showAll && (
+              {/* {!showAll && (
                 <div
                   style={{
                     textAlign: "center",
@@ -178,7 +178,7 @@ export function InventoryCards() {
                     Click to see more!
                   </button>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </>
