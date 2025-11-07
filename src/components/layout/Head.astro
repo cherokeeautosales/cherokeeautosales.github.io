@@ -70,8 +70,15 @@ const favicon = linkPrefix + "/images/favicon.png";
 
 	<MetaPixel client:load/>
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Y2HEFV07V"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config', 'G-3Y2HEFV07V');
+    </script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5SNV3YVHE"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5SNV3YVHE"></script>
     <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -87,7 +94,7 @@ const favicon = linkPrefix + "/images/favicon.png";
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-56T4X86T');
-    </script>
+    </script> -->
 
 	<style lang="scss" is:global>
 		:root {
