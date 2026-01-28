@@ -1,84 +1,101 @@
 ---
-import MetaPixel from '../react/Meta';
+import MetaPixel from "../react/Meta";
 
 interface Props {
-	title: string;
-	description: string;
-	image?: string;
+  title: string;
+  description: string;
+  image?: string;
 }
 
 const { title, description } = Astro.props;
-const linkPrefix = Astro.site + (import.meta.env.BASE_URL.slice(1,-1));
+const linkPrefix = Astro.site + import.meta.env.BASE_URL.slice(1, -1);
 const image = linkPrefix + (Astro.props.image || "/images/teaser.png");
 const favicon = linkPrefix + "/images/favicon.png";
 ---
 
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="icon" type="image/x-icon" href={favicon}/>
-	<meta property="og:url" content="https://cherokeeautosalestn.com/" />
-	<meta property="og:title" content={title} />
-	<meta property="og:description" content={description} />
-	<meta property="og:image" content={image} />
-	<meta property="og:type" content="website" />
-	<meta name="generator" content={Astro.generator} />
-	<meta name="description" content={description} />
-	<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "AutoDealer",
-			"name": "Cherokee Auto Sales TN",
-			"image": "https://cherokeeautosalestn.com/images/warranty.jpg",
-			"@id": "",
-			"url": "https://cherokeeautosalestn.com",
-			"telephone": "8656877100",
-			"priceRange": "$500-$7000",
-			"address": {
-				"@type": "PostalAddress",
-				"streetAddress": "3423 North Broadway St",
-				"addressLocality": "Knoxville",
-				"addressRegion": "TN",
-				"postalCode": "37917",
-				"addressCountry": "US"
-			},
-			"geo": {
-				"@type": "GeoCoordinates",
-				"latitude": 36.0032478,
-				"longitude": -83.9269679
-			},
-			"openingHoursSpecification": {
-				"@type": "OpeningHoursSpecification",
-				"dayOfWeek": [
-					"Monday",
-					"Tuesday",
-					"Wednesday",
-					"Thursday",
-					"Friday",
-					"Saturday"
-				],
-				"opens": "09:00",
-				"closes": "18:00"
-			},
-			"sameAs": [
-				"https://www.facebook.com/cherokeeautosales/",
-				"https://www.youtube.com/@cherokeeautosales5096",
-				"https://www.instagram.com/cherokeeautosales/?hl=af"
-			]
-		}
-	</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href={favicon} />
+  <meta property="og:url" content="https://cherokeeautosalestn.com/" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image} />
+  <meta property="og:type" content="website" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="description" content={description} />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "Cherokee Auto Sales TN",
+      "image": "https://cherokeeautosalestn.com/images/warranty.jpg",
+      "@id": "",
+      "url": "https://cherokeeautosalestn.com",
+      "telephone": "8656877100",
+      "priceRange": "$500-$7000",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3423 North Broadway St",
+        "addressLocality": "Knoxville",
+        "addressRegion": "TN",
+        "postalCode": "37917",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 36.0032478,
+        "longitude": -83.9269679
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/cherokeeautosales/",
+        "https://www.youtube.com/@cherokeeautosales5096",
+        "https://www.instagram.com/cherokeeautosales/?hl=af"
+      ]
+    }
+  </script>
 
-	<MetaPixel client:load/>
+  <MetaPixel client:load />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Y2HEFV07V"></script>
-    <script is:inline>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Y2HEFV07V"
+  ></script>
+  <script is:inline>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date()); gtag('config', 'G-3Y2HEFV07V');
-    </script>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-3Y2HEFV07V");
+  </script>
 
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5SNV3YVHE"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11003569068"
+  ></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "AW-11003569068");
+  </script>
+
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5SNV3YVHE"></script>
     <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -96,22 +113,22 @@ const favicon = linkPrefix + "/images/favicon.png";
     })(window,document,'script','dataLayer','GTM-56T4X86T');
     </script> -->
 
-	<style lang="scss" is:global>
-		:root {
-			--max-width: 1320px;
-			--red: #eb0b2d;
-			--light-blue: #0056b3;
-			--blue: #0b1eeb;
-			--dark-blue: #022759;
-		}
+  <style lang="scss" is:global>
+    :root {
+      --max-width: 1320px;
+      --red: #eb0b2d;
+      --light-blue: #0056b3;
+      --blue: #0b1eeb;
+      --dark-blue: #022759;
+    }
 
-		body {
-			position: relative;
-			margin: 0;
-			padding: 0;
-			min-height: 100vh;
-		}
-	</style>
-	<base href={import.meta.env.BASE_URL} />
-	<title>{title}</title>
+    body {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+  </style>
+  <base href={import.meta.env.BASE_URL} />
+  <title>{title}</title>
 </head>
