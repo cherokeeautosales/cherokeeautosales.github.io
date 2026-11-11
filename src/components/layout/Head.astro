@@ -1,5 +1,6 @@
 ---
 import MetaPixel from "../react/Meta";
+import { markdownPath } from '../../data/llms';
 
 interface Props {
   title: string;
@@ -11,12 +12,15 @@ const { title, description } = Astro.props;
 const linkPrefix = Astro.site + import.meta.env.BASE_URL.slice(1, -1);
 const image = linkPrefix + (Astro.props.image || "/images/teaser.png");
 const favicon = linkPrefix + "/images/favicon.png";
+const markdown = markdownPath(Astro.url.pathname, import.meta.env.BASE_URL);
 ---
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/x-icon" href={favicon} />
+  <link rel="describedby" href={`${import.meta.env.BASE_URL}llms.txt`} type="text/plain" />
+  {markdown && <link rel="alternate" type="text/markdown" href={markdown} />}
   <meta property="og:url" content="https://cherokeeautosalestn.com/" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />

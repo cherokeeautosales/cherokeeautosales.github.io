@@ -1,5 +1,20 @@
 # Astro Starter Kit: Basics
 
+## LLM content index
+
+`src/pages/llms.txt.ts` generates `/llms.txt` during the Astro build. It uses the
+configured `site` and `base` for URLs and the `blog` content collection for article
+titles, descriptions, and slugs. Adding, updating, or removing a published article
+updates the index on the next build; drafts outside that collection are excluded.
+Dealership details and curated page descriptions are maintained in the endpoint.
+`astro-llms-md` generates clean Markdown copies of public page content at build time.
+The index links to these copies; live inventory and interactive forms remain on the
+website. The plugin reads the layouts' `<main>` elements and strips forms and
+navigation. Dashboard, vehicle shell, redirect, and duplicate financing pages are
+excluded through `src/data/llms.ts`. The shared page head advertises the index and
+each available Markdown copy. The plugin's own index and full-site dump are disabled
+to keep one curated index and avoid duplicating content.
+
 ```sh
 npm create astro@latest -- --template basics
 ```

@@ -26,7 +26,7 @@ const { title, description, thumbnail } = Astro.props;
     }}
   >
     <NavBar />
-    <div
+    <main
       style={{
         flexGrow: 1,
       }}
@@ -45,7 +45,7 @@ const { title, description, thumbnail } = Astro.props;
             <slot />
           </Col>
         </Row>
-    </div>
+    </main>
     <Footer />
   </body>
 </html>
