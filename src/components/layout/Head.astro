@@ -18,6 +18,7 @@ const markdown = markdownPath(Astro.url.pathname, import.meta.env.BASE_URL);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-site-verification" content="a15QYs7MFm1U33fSadgfvbQzeH_SuqviZNDA9T6s-a4" />
   <link rel="icon" type="image/x-icon" href={favicon} />
   <link rel="describedby" href={`${import.meta.env.BASE_URL}llms.txt`} type="text/plain" />
   {markdown && <link rel="alternate" type="text/markdown" href={markdown} />}
@@ -113,24 +114,6 @@ const markdown = markdownPath(Astro.url.pathname, import.meta.env.BASE_URL);
 
     gtag("config", "AW-11003569068");
   </script>
-
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5SNV3YVHE"></script>
-    <script is:inline>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-Z5SNV3YVHE');
-    </script>
-	</script>
-
-    <script is:inline>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-56T4X86T');
-    </script> -->
 
   <style lang="scss" is:global>
     :root {
