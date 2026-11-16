@@ -6,6 +6,7 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  canonicalUrl?: string;
 }
 
 const { title, description } = Astro.props;
@@ -13,31 +14,57 @@ const linkPrefix = Astro.site + import.meta.env.BASE_URL.slice(1, -1);
 const image = linkPrefix + (Astro.props.image || "/images/teaser.png");
 const favicon = linkPrefix + "/images/favicon.png";
 const markdown = markdownPath(Astro.url.pathname, import.meta.env.BASE_URL);
+
+// Dynamic canonical and Open Graph URL
+const siteBase = "https://cherokeeautosalestn.com";
+const cleanPath = Astro.url.pathname.replace(/\/$/, "");
+const canonicalURL = Astro.props.canonicalUrl || `${siteBase}${cleanPath || "/"}`;
 ---
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- 1. Meta Title & Description -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="generator" content={Astro.generator} />
   <meta name="google-site-verification" content="a15QYs7MFm1U33fSadgfvbQzeH_SuqviZNDA9T6s-a4" />
+
+  <!-- 2. Canonical & Hreflang -->
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="alternate" hreflang="en" href={canonicalURL} />
+  <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+
+  <!-- Icons & Discovery -->
   <link rel="icon" type="image/x-icon" href={favicon} />
   <link rel="describedby" href={`${import.meta.env.BASE_URL}llms.txt`} type="text/plain" />
   {markdown && <link rel="alternate" type="text/markdown" href={markdown} />}
-  <meta property="og:url" content="https://cherokeeautosalestn.com/" />
+
+  <!-- 3. Social Media Optimization (Open Graph & Twitter Cards) -->
+  <meta property="og:site_name" content="Cherokee Auto Sales" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={image} />
-  <meta property="og:type" content="website" />
-  <meta name="generator" content={Astro.generator} />
-  <meta name="description" content={description} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={image} />
+
+  <!-- 4. Global AutoDealer Schema.org Structured Data -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "AutoDealer",
+      "@id": "https://cherokeeautosalestn.com/#dealership",
       "name": "Cherokee Auto Sales TN",
       "image": "https://cherokeeautosalestn.com/images/warranty.jpg",
-      "@id": "",
       "url": "https://cherokeeautosalestn.com",
-      "telephone": "8656877100",
+      "telephone": "+1-865-687-7100",
       "priceRange": "$500-$7000",
       "address": {
         "@type": "PostalAddress",
@@ -132,5 +159,4 @@ const markdown = markdownPath(Astro.url.pathname, import.meta.env.BASE_URL);
     }
   </style>
   <base href={import.meta.env.BASE_URL} />
-  <title>{title}</title>
 </head>

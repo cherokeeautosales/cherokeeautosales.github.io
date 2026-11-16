@@ -239,4 +239,87 @@ import Translate from "../react/Translate";
   .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   }
+
+  /* Location Dropdown Styling */
+  .location-nav-dropdown {
+    position: relative;
+
+    .dropdown-toggle {
+      color: white !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+
+      &::after {
+        display: inline-block;
+        margin-left: 0.35rem;
+        vertical-align: 0.255em;
+        content: "";
+        border-top: 0.35em solid white;
+        border-right: 0.35em solid transparent;
+        border-bottom: 0;
+        border-left: 0.35em solid transparent;
+        width: auto !important;
+        height: auto !important;
+        background: transparent !important;
+        transition: transform 0.2s ease;
+      }
+    }
+
+    &.show .dropdown-toggle::after {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.5rem 0;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+      min-width: 270px;
+      animation: fadeInDropdown 0.2s ease-in-out;
+
+      .dropdown-item {
+        color: #022759;
+        font-size: 0.92rem;
+        font-weight: 500;
+        padding: 0.65rem 1.25rem;
+        transition: all 0.2s ease;
+        display: block;
+
+        &:hover, &:focus {
+          background-color: #f1f5f9;
+          color: #eb0b2d;
+          padding-left: 1.45rem;
+        }
+
+        &::after {
+          display: none !important;
+        }
+      }
+
+      .dropdown-divider {
+        margin: 0.4rem 0;
+        border-top: 1px solid #e2e8f0;
+      }
+    }
+
+    @media (min-width: 992px) {
+      &:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
+      }
+    }
+  }
+
+  @keyframes fadeInDropdown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 </style>

@@ -3,7 +3,6 @@ export const excludedMarkdownPages = [
   'dashboard',
   'vehicle',
   'used-cars-knoxville',
-  'buy-here-pay-here-knoxville-tn',
   'blog', // This route redirects to the home page's blog section.
 ];
 

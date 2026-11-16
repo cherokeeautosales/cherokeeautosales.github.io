@@ -1,0 +1,922 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Container, Row, Col } from 'react-bootstrap';
+import { 
+  FaPhoneAlt, 
+  FaCheckCircle, 
+  FaCar, 
+  FaMapMarkerAlt, 
+  FaCreditCard, 
+  FaThumbsUp, 
+  FaLock, 
+  FaMoneyBillWave,
+  FaStar,
+  FaShieldAlt,
+  FaQuestionCircle,
+  FaClock,
+  FaArrowRight,
+  FaCalendarCheck,
+  FaIdCard,
+  FaFileInvoiceDollar,
+  FaHome
+} from 'react-icons/fa';
+
+const pageTitle = "Bad Credit Car Loans Knoxville TN | Cherokee Auto Sales";
+const pageDescription = "Get approved for bad credit car loans in Knoxville, TN. Cherokee Auto Sales welcomes bad credit, no credit & bankruptcy. Low down payments.";
+const canonicalUrl = "https://cherokeeautosalestn.com/bad-credit-car-loans-knoxville";
+
+const faqs = [
+  {
+    question: "Can I get approved for a car loan in Knoxville if I have bad credit or a low score?",
+    answer: "Yes, absolutely! At Cherokee Auto Sales, we specialize in second-chance auto financing. We do not base our approval on standard three-digit credit scores. If you have verifiable income and can demonstrate an ability to make regular payments, you can qualify for a dependable pre-owned vehicle."
+  },
+  {
+    question: "Do I need a co-signer to qualify with bad credit?",
+    answer: "In most cases, a co-signer is NOT required. Because Cherokee Auto Sales is an in-house financing dealership, we underwrite our loans directly. Having a co-signer can sometimes help expand your vehicle options or lower payments, but it is not mandatory to get approved."
+  },
+  {
+    question: "Can I trade in my old car even if I still owe money on it or have poor credit?",
+    answer: "Yes! We accept trade-ins in all conditions. Any positive equity from your trade-in can be applied directly towards your down payment, substantially lowering your initial out-of-pocket costs and monthly payments."
+  },
+  {
+    question: "Will making regular payments at Cherokee Auto Sales help me rebuild my transportation history?",
+    answer: "Yes. Establishing a consistent, on-time payment track record on an in-house auto loan provides you with dependable mobility for your job and family, while paving the way toward better future financial opportunities."
+  },
+  {
+    question: "What items do I need to bring to Cherokee Auto Sales for same-day approval?",
+    answer: "Please bring: 1) Most recent pay stubs, bank statements, or proof of government benefits, 2) Utility bill or lease agreement verifying your current address, 3) Valid Tennessee driver's license, 4) A list of five personal references with contact info, and 5) Your cash down payment or trade-in vehicle title."
+  }
+];
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AutoDealer",
+      "@id": "https://cherokeeautosalestn.com/#dealership",
+      "name": "Cherokee Auto Sales",
+      "url": "https://cherokeeautosalestn.com/",
+      "logo": "https://cherokeeautosalestn.com/images/logo.png",
+      "image": "https://cherokeeautosalestn.com/images/teaser.png",
+      "telephone": "+1-865-687-7100",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3423 North Broadway",
+        "addressLocality": "Knoxville",
+        "addressRegion": "TN",
+        "postalCode": "37917",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 36.0032478,
+        "longitude": -83.9269679
+      },
+      "hasMap": "https://www.google.com/maps/?q=3423%20North%20Broadway,Knoxville,TN,37917",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Knoxville" },
+        { "@type": "City", "name": "Fountain City" },
+        { "@type": "City", "name": "Powell" },
+        { "@type": "City", "name": "Maryville" },
+        { "@type": "City", "name": "Alcoa" },
+        { "@type": "City", "name": "Oak Ridge" }
+      ]
+    },
+    {
+      "@type": "FinancialProduct",
+      "@id": `${canonicalUrl}#loan`,
+      "name": "Bad Credit Auto Financing & Second Chance Car Loans",
+      "serviceType": "Subprime Auto Financing",
+      "provider": { "@id": "https://cherokeeautosalestn.com/#dealership" },
+      "areaServed": { "@type": "AdministrativeArea", "name": "Knox County, TN" },
+      "description": "Second chance auto loans and bad credit vehicle financing for used cars, trucks, and SUVs in Knoxville, TN.",
+      "annualPercentageRate": "Competitive In-House Rates",
+      "feesAndCommissionsSpecification": "Transparent pricing with no hidden dealer fees"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${canonicalUrl}#breadcrumb`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cherokeeautosalestn.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bad Credit Car Loans Knoxville TN",
+          "item": canonicalUrl
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonicalUrl}#faq`,
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    }
+  ]
+};
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+
+  <style lang="scss">
+    .bad-credit-page {
+      font-family: 'Poppins', sans-serif;
+      color: #1e293b;
+      overflow-x: hidden;
+
+      /* Hero Section */
+      .hero-wrapper {
+        position: relative;
+        background: 
+          linear-gradient(135deg, rgba(2, 39, 89, 0.95) 0%, rgba(11, 30, 235, 0.88) 100%),
+          url('/images/warranty.jpg') no-repeat center center / cover;
+        color: white;
+        padding: 4.5rem 0 5rem;
+        border-bottom: 5px solid #eb0b2d;
+
+        .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: rgba(235, 11, 45, 0.2);
+          border: 1px solid rgba(235, 11, 45, 0.6);
+          color: #ff8595;
+          padding: 0.4rem 1.1rem;
+          border-radius: 50px;
+          font-weight: 600;
+          font-size: 0.85rem;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          backdrop-filter: blur(8px);
+        }
+
+        .hero-title {
+          font-family: 'Fira Sans Condensed', sans-serif;
+          font-size: clamp(2.4rem, 5vw, 3.8rem);
+          font-weight: 800;
+          line-height: 1.15;
+          letter-spacing: -0.5px;
+          margin: 1rem 0;
+
+          .highlight {
+            color: #ff334b;
+            text-shadow: 0 2px 12px rgba(255, 51, 75, 0.3);
+          }
+        }
+
+        .hero-subtitle {
+          font-size: clamp(1.05rem, 2vw, 1.25rem);
+          color: #e2e8f0;
+          line-height: 1.6;
+          max-width: 680px;
+          margin-bottom: 2rem;
+        }
+
+        .cta-btn-primary {
+          background: linear-gradient(135deg, #eb0b2d 0%, #b8041f 100%);
+          color: white;
+          border: none;
+          padding: 0.95rem 2rem;
+          font-size: 1.1rem;
+          font-weight: 700;
+          border-radius: 50px;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.75rem;
+          box-shadow: 0 10px 25px rgba(235, 11, 45, 0.45);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          text-decoration: none;
+
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px rgba(235, 11, 45, 0.6);
+            color: white;
+          }
+        }
+
+        .cta-btn-secondary {
+          background: rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(10px);
+          color: white;
+          border: 1.5px solid rgba(255, 255, 255, 0.35);
+          padding: 0.95rem 1.8rem;
+          font-size: 1.1rem;
+          font-weight: 600;
+          border-radius: 50px;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.75rem;
+          transition: all 0.3s ease;
+          text-decoration: none;
+
+          &:hover {
+            background: white;
+            color: #022759;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+          }
+        }
+
+        /* Lead Card */
+        .glass-lead-card {
+          background: rgba(255, 255, 255, 0.97);
+          backdrop-filter: blur(16px);
+          border-radius: 20px;
+          padding: 2.2rem;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          color: #0f172a;
+
+          .card-header-badge {
+            display: inline-block;
+            background: #fef2f2;
+            color: #dc2626;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+          }
+
+          .credit-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.25rem 0 1.5rem;
+
+            li {
+              display: flex;
+              align-items: center;
+              gap: 0.75rem;
+              padding: 0.55rem 0;
+              font-size: 0.95rem;
+              font-weight: 500;
+              border-bottom: 1px solid #f1f5f9;
+
+              &:last-child {
+                border-bottom: none;
+              }
+            }
+          }
+        }
+      }
+
+      /* Stats Bar */
+      .stats-strip {
+        background: #021e42;
+        color: white;
+        padding: 1.25rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+        .stat-item {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 0.5rem 1rem;
+
+          .stat-icon {
+            font-size: 2rem;
+            color: #ff334b;
+          }
+
+          .stat-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1;
+            color: #ffffff;
+          }
+
+          .stat-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+        }
+      }
+
+      /* Why Choose Section */
+      .features-section {
+        padding: 5rem 0;
+        background: #f8fafc;
+
+        .section-tag {
+          color: #eb0b2d;
+          font-weight: 700;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          display: block;
+          margin-bottom: 0.5rem;
+        }
+
+        .section-heading {
+          font-family: 'Fira Sans Condensed', sans-serif;
+          font-size: clamp(2rem, 3.5vw, 2.75rem);
+          font-weight: 800;
+          color: #022759;
+          margin-bottom: 1rem;
+        }
+
+        .feature-card {
+          background: white;
+          border-radius: 18px;
+          padding: 2.25rem;
+          height: 100%;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+          position: relative;
+          overflow: hidden;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #022759, #eb0b2d);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+
+          &:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(2, 39, 89, 0.15);
+            border-color: #cbd5e1;
+
+            &::before {
+              opacity: 1;
+            }
+
+            .icon-badge {
+              transform: scale(1.1) rotate(5deg);
+            }
+          }
+
+          .icon-badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+
+            &.blue { background: #eff6ff; color: #2563eb; }
+            &.red { background: #fef2f2; color: #dc2626; }
+            &.green { background: #f0fdf4; color: #16a34a; }
+          }
+
+          h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+          }
+
+          p {
+            color: #64748b;
+            font-size: 0.98rem;
+            line-height: 1.65;
+            margin: 0;
+          }
+        }
+      }
+
+      /* Checklist Section */
+      .checklist-section {
+        padding: 5rem 0;
+        background: white;
+
+        .checklist-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 1.25rem;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          padding: 1.25rem 1.5rem;
+          border-radius: 14px;
+          margin-bottom: 1rem;
+          transition: all 0.25s ease;
+
+          &:hover {
+            border-color: #eb0b2d;
+            background: #fff5f5;
+            transform: translateX(4px);
+          }
+
+          .check-icon {
+            font-size: 1.5rem;
+            color: #eb0b2d;
+            flex-shrink: 0;
+            margin-top: 3px;
+          }
+
+          strong {
+            display: block;
+            font-size: 1.05rem;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+          }
+
+          small {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+          }
+        }
+
+        .guarantee-box {
+          background: linear-gradient(135deg, #022759 0%, #082d61 100%);
+          color: white;
+          border-radius: 20px;
+          padding: 2.75rem;
+          box-shadow: 0 20px 40px rgba(2, 39, 89, 0.25);
+        }
+      }
+
+      /* Local Showcase */
+      .local-showcase {
+        padding: 5rem 0;
+        background: linear-gradient(135deg, #021a3a 0%, #082d61 100%);
+        color: white;
+
+        .location-info-card {
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(12px);
+          border-radius: 20px;
+          padding: 2.5rem;
+          height: 100%;
+
+          .area-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0.25rem 0.25rem 0.25rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+          }
+        }
+
+        .map-frame {
+          border-radius: 20px;
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+          border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+      }
+
+      /* AEO FAQ Section */
+      .faq-section {
+        padding: 5rem 0;
+        background: #f8fafc;
+
+        .faq-item {
+          background: white;
+          border-radius: 16px;
+          border: 1px solid #e2e8f0;
+          padding: 1.75rem 2rem;
+          margin-bottom: 1.25rem;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+          transition: all 0.3s ease;
+
+          &:hover {
+            border-color: #022759;
+            box-shadow: 0 10px 20px rgba(2, 39, 89, 0.08);
+          }
+
+          .faq-q {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.85rem;
+
+            .q-icon {
+              color: #eb0b2d;
+              font-size: 1.35rem;
+              flex-shrink: 0;
+              margin-top: 2px;
+            }
+          }
+
+          .faq-a {
+            color: #475569;
+            font-size: 1rem;
+            line-height: 1.7;
+            padding-left: 2.35rem;
+            margin: 0;
+          }
+        }
+      }
+
+      /* Final CTA */
+      .final-cta {
+        background: linear-gradient(135deg, #022759 0%, #0b1eeb 100%);
+        color: white;
+        padding: 5rem 0;
+        text-align: center;
+
+        h2 {
+          font-family: 'Fira Sans Condensed', sans-serif;
+          font-size: clamp(2.2rem, 4vw, 3.4rem);
+          font-weight: 800;
+          margin-bottom: 1rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+          color: #cbd5e1;
+          max-width: 650px;
+          margin: 0 auto 2.5rem;
+        }
+
+        .cta-white-btn {
+          background: white;
+          color: #022759;
+          padding: 1rem 2.5rem;
+          font-size: 1.15rem;
+          font-weight: 800;
+          border-radius: 50px;
+          text-decoration: none;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: #eb0b2d;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(235, 11, 45, 0.4);
+          }
+        }
+      }
+    }
+  </style>
+
+  <div class="bad-credit-page">
+    <!-- Hero Section -->
+    <section class="hero-wrapper">
+      <Container>
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb mb-0" style="background: transparent; padding: 0;">
+            <li class="breadcrumb-item"><a href="/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Home</a></li>
+            <li class="breadcrumb-item active text-white" aria-current="page" style="font-size: 0.9rem;">Bad Credit Car Loans Knoxville</li>
+          </ol>
+        </nav>
+
+        <Row class="align-items-center g-5">
+          <Col lg={7}>
+            <div class="hero-badge mb-3">
+              <FaStar style={{ color: "#fbbf24" }} /> 100% Guaranteed Approval Review
+            </div>
+            <h1 class="hero-title">
+              Bad Credit Car Loans in <span class="highlight">Knoxville, TN</span>
+            </h1>
+            <p class="hero-subtitle">
+              Past financial hardships shouldn't keep you from getting to work and caring for your family. Cherokee Auto Sales provides second chance in-house auto financing on North Broadway with low down payments and honest monthly terms.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3">
+              <a href="tel:8656877100" class="cta-btn-primary">
+                <FaPhoneAlt /> Call (865) 687-7100
+              </a>
+              <a href="/buy-here-pay-here-knoxville-tn" class="cta-btn-secondary">
+                <FaMoneyBillWave /> How In-House Loans Work
+              </a>
+            </div>
+          </Col>
+
+          <Col lg={5}>
+            <div class="glass-lead-card">
+              <span class="card-header-badge">Everyone Is Welcome</span>
+              <h3 class="fw-bold mb-1" style="font-size: 1.5rem; color: #022759;">All Credit Accepted</h3>
+              <p class="text-muted small mb-0">We approve based on your current income, not credit score.</p>
+
+              <ul class="credit-list">
+                <li><FaCheckCircle className="text-success" /> <strong>Bad Credit / Low Score (Subprime)</strong></li>
+                <li><FaCheckCircle className="text-success" /> <strong>First-Time Buyers with Zero Credit</strong></li>
+                <li><FaCheckCircle className="text-success" /> <strong>Discharged Chapter 7 & 13 Bankruptcy</strong></li>
+                <li><FaCheckCircle className="text-success" /> <strong>Prior Repossessions & Medical Debt</strong></li>
+                <li><FaCheckCircle className="text-success" /> <strong>Self-Employed, SSI & Fixed Income</strong></li>
+              </ul>
+
+              <div class="d-grid gap-2">
+                <a href="https://cherokeeautosalestn.neoverify.com/quick_credit" target="_blank" class="btn btn-danger py-2 fw-bold rounded-pill">
+                  Get Pre-Approved Now
+                </a>
+                <a href="https://calendly.com/cherokeeautosales/30min" target="_blank" class="btn btn-outline-primary py-2 fw-bold rounded-pill">
+                  <FaCalendarCheck className="me-2" /> Book Financing Appointment
+                </a>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-strip">
+      <Container>
+        <Row class="justify-content-center text-center g-3">
+          <Col xs={6} md={3}>
+            <div class="stat-item justify-content-center">
+              <FaThumbsUp className="stat-icon" />
+              <div class="text-start">
+                <div class="stat-num">98%</div>
+                <div class="stat-label">Approval Rate</div>
+              </div>
+            </div>
+          </Col>
+          <Col xs={6} md={3}>
+            <div class="stat-item justify-content-center">
+              <FaCreditCard className="stat-icon text-success" />
+              <div class="text-start">
+                <div class="stat-num">No Score</div>
+                <div class="stat-label">Minimum Required</div>
+              </div>
+            </div>
+          </Col>
+          <Col xs={6} md={3}>
+            <div class="stat-item justify-content-center">
+              <FaShieldAlt className="stat-icon text-warning" />
+              <div class="text-start">
+                <div class="stat-num">Inspected</div>
+                <div class="stat-label">Quality Pre-Owned Cars</div>
+              </div>
+            </div>
+          </Col>
+          <Col xs={6} md={3}>
+            <div class="stat-item justify-content-center">
+              <FaClock className="stat-icon text-info" />
+              <div class="text-start">
+                <div class="stat-num">Same-Day</div>
+                <div class="stat-label">Drive Away Service</div>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+
+    <!-- Real Auto Financing Features -->
+    <section class="features-section">
+      <Container>
+        <Row class="justify-content-center text-center mb-5">
+          <Col lg={8}>
+            <span class="section-tag">Second Chance Financing</span>
+            <h2 class="section-heading">How We Overcome Bad Credit Obstacles</h2>
+            <p class="text-muted lead">
+              Traditional lenders use rigid algorithms. At Cherokee Auto Sales, you sit down with a friendly financing specialist who listens to your story.
+            </p>
+          </Col>
+        </Row>
+
+        <Row class="g-4">
+          <Col md={4}>
+            <div class="feature-card">
+              <div class="icon-badge blue"><FaCreditCard /></div>
+              <h3>Income-Based Approvals</h3>
+              <p>
+                We look at your take-home pay and ability to make payments today. If you have stable employment or income, you have a clear path to vehicle ownership.
+              </p>
+            </div>
+          </Col>
+
+          <Col md={4}>
+            <div class="feature-card">
+              <div class="icon-badge red"><FaLock /></div>
+              <h3>No Hidden Fine Print</h3>
+              <p>
+                What you see is what you pay. We walk you through every single dollar on your agreement, including down payment, term length, and bi-weekly payment amounts.
+              </p>
+            </div>
+          </Col>
+
+          <Col md={4}>
+            <div class="feature-card">
+              <div class="icon-badge green"><FaThumbsUp /></div>
+              <h3>Trade-In Equity Bonus</h3>
+              <p>
+                Got an old car, truck, or SUV? Bring it in! Even if it is running rough or needs repairs, we will appraise it and apply its value directly to your down payment.
+              </p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+
+    <!-- Checklist & What to Bring -->
+    <section class="checklist-section">
+      <Container>
+        <Row class="align-items-center g-5">
+          <Col lg={6}>
+            <span class="section-tag" style="color: #022759;">Fast Track Your Loan</span>
+            <h2 class="section-heading">What to Bring for 1-Hour Approval</h2>
+            <p class="text-muted mb-4">
+              Gathering these simple verification items before visiting our North Broadway lot guarantees you can test drive and drive home without delays:
+            </p>
+
+            <div class="checklist-item">
+              <FaFileInvoiceDollar className="check-icon" />
+              <div>
+                <strong>1. Verifiable Proof of Income</strong>
+                <small>Recent pay stubs, 3 months bank statements, or official benefits letters (SSI, disability, pension).</small>
+              </div>
+            </div>
+
+            <div class="checklist-item">
+              <FaHome className="check-icon" />
+              <div>
+                <strong>2. Proof of Knox County Residency</strong>
+                <small>Current electric, water, gas bill, or signed rental lease showing your current residential address.</small>
+              </div>
+            </div>
+
+            <div class="checklist-item">
+              <FaIdCard className="check-icon" />
+              <div>
+                <strong>3. Valid Tennessee Driver's License</strong>
+                <small>Government-issued driver's license in good standing allowing you to drive legally in Tennessee.</small>
+              </div>
+            </div>
+
+            <div class="checklist-item">
+              <FaMoneyBillWave className="check-icon" />
+              <div>
+                <strong>4. Down Payment or Vehicle Title</strong>
+                <small>Cash, cashier's check, or the title to your trade-in vehicle to apply toward your down payment.</small>
+              </div>
+            </div>
+          </Col>
+
+          <Col lg={6}>
+            <div class="guarantee-box">
+              <span class="badge bg-danger text-uppercase px-3 py-2 mb-3">Our Second Chance Guarantee</span>
+              <h3 class="fw-bold mb-3" style="font-size: 1.8rem;">We Work With You, Not Against You</h3>
+              <p class="text-light mb-4" style="line-height: 1.75;">
+                We have helped thousands of drivers across Knoxville, Fountain City, and Oak Ridge who thought they could never get approved for a dependable vehicle. Our goal is to get you safely behind the wheel with a payment that fits your lifestyle.
+              </p>
+
+              <div class="p-3 rounded-3 mb-4" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <FaStar style={{ color: "#fbbf24" }} />
+                  <FaStar style={{ color: "#fbbf24" }} />
+                  <FaStar style={{ color: "#fbbf24" }} />
+                  <FaStar style={{ color: "#fbbf24" }} />
+                  <FaStar style={{ color: "#fbbf24" }} />
+                  <strong class="ms-2">Real Knoxville Review</strong>
+                </div>
+                <small class="d-block text-white-50">
+                  "After being turned down by 4 other dealerships because of medical bills, Cherokee Auto Sales treated me like family and put me in a reliable SUV the same afternoon!" — Verified Customer
+                </small>
+              </div>
+
+              <a href="tel:8656877100" class="btn btn-danger btn-lg w-100 fw-bold py-3 rounded-pill shadow">
+                <FaPhoneAlt className="me-2" /> Call (865) 687-7100 for Immediate Approval
+              </a>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+
+    <!-- Local Entity / Map Showcase -->
+    <section class="local-showcase">
+      <Container>
+        <Row class="align-items-center g-5">
+          <Col lg={6}>
+            <div class="location-info-card">
+              <span class="badge bg-danger text-uppercase px-3 py-2 mb-3">North Broadway Dealership</span>
+              <h2 class="fw-bold mb-3" style="font-size: 2.2rem;">Convenient to All of Greater Knoxville</h2>
+              <p class="text-light mb-4" style="line-height: 1.7;">
+                Cherokee Auto Sales is conveniently located at 3423 North Broadway, minutes from downtown Knoxville, Interstate 640, and Fountain City:
+              </p>
+
+              <div class="mb-4">
+                <span class="area-tag"><FaMapMarkerAlt className="text-danger me-1" /> Knoxville (North & South)</span>
+                <span class="area-tag"><FaMapMarkerAlt className="text-danger me-1" /> Fountain City</span>
+                <span class="area-tag"><FaMapMarkerAlt className="text-danger me-1" /> Powell</span>
+                <span class="area-tag"><FaMapMarkerAlt className="text-danger me-1" /> Maryville</span>
+                <span class="area-tag"><FaMapMarkerAlt className="text-danger me-1" /> Alcoa</span>
+                <span class="area-tag"><FaMapMarkerAlt className="text-danger me-1" /> Oak Ridge</span>
+              </div>
+
+              <div class="border-top border-secondary pt-3 mt-4">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <FaMapMarkerAlt className="text-danger fs-4 flex-shrink-0" />
+                  <div>
+                    <strong class="d-block text-white">3423 North Broadway, Knoxville, TN 37917</strong>
+                    <small class="text-white-50">Ample customer parking & easy access</small>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                  <FaClock className="text-warning fs-4 flex-shrink-0" />
+                  <div>
+                    <strong class="d-block text-white">Monday – Saturday: 9:00 AM – 6:00 PM</strong>
+                    <small class="text-white-50">Closed Sundays</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <a href="https://maps.app.goo.gl/6fcjt2xbFEEW9UBm9" target="_blank" class="btn btn-warning fw-bold px-4 py-2 rounded-pill">
+                  Open in Google Maps <FaArrowRight className="ms-1" />
+                </a>
+              </div>
+            </div>
+          </Col>
+
+          <Col lg={6}>
+            <div class="map-frame">
+              <iframe
+                title="Cherokee Auto Sales Bad Credit Financing Dealership Location"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA1Kn5Q5FatDiBjhEvkmjUVbudRQGH-OGA&q=3423%20North%20Broadway,Knoxville,TN,37917"
+                width="100%"
+                height="420"
+                style="border: 0; display: block;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+
+    <!-- AEO FAQs -->
+    <section class="faq-section">
+      <Container>
+        <Row class="justify-content-center text-center mb-5">
+          <Col lg={8}>
+            <span class="section-tag">Direct Answers</span>
+            <h2 class="section-heading">Bad Credit Auto Loan FAQs</h2>
+            <p class="text-muted lead">
+              Everything you need to know about qualifying for an auto loan with challenged credit in Knoxville.
+            </p>
+          </Col>
+        </Row>
+
+        <Row class="justify-content-center">
+          <Col lg={9}>
+            {faqs.map((faq) => (
+              <div class="faq-item">
+                <div class="faq-q">
+                  <FaQuestionCircle className="q-icon" />
+                  <span>{faq.question}</span>
+                </div>
+                <p class="faq-a">{faq.answer}</p>
+              </div>
+            ))}
+          </Col>
+        </Row>
+      </Container>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+      <Container>
+        <h2>Your Fresh Start Starts on North Broadway</h2>
+        <p>
+          Do not let bad credit hold you back from the job and life opportunities you deserve. Get pre-approved in minutes.
+        </p>
+        <div class="d-flex justify-content-center flex-wrap gap-3">
+          <a href="tel:8656877100" class="cta-white-btn">
+            <FaPhoneAlt className="me-2" /> Call (865) 687-7100
+          </a>
+          <a href="/#inventory" class="cta-btn-secondary" style="border-color: white;">
+            <FaCar /> Browse Available Cars
+          </a>
+        </div>
+      </Container>
+    </section>
+  </div>
+</Layout>

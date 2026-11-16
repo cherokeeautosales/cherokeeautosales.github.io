@@ -6,13 +6,28 @@ import Head from "../components/layout/Head.astro";
 import NavBar from "../components/layout/NavBar.astro";
 import Footer from "../components/layout/Footer.astro";
 
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title = "Used Cars Knoxville TN | In-House Financing | Cherokee Auto",
+  description = "Knoxville's premier used car dealer. Cherokee Auto Sales offers dependable pre-owned vehicles, easy in-house financing & low down payments.",
+  image,
+  canonicalUrl,
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <Head
-    title="Cherokee Auto Sales TN"
-    description="Discover one of Knoxville, TN's premier selections of pre-owned and certified used vehicles at Cherokee Auto Sales. With our dedication to excellence, we've curated an extensive inventory featuring quality cars, pickups, vans, and SUVs."
+    title={title}
+    description={description}
+    image={image}
+    canonicalUrl={canonicalUrl}
   />
   <body
     style={{
