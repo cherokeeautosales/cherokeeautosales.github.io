@@ -147,6 +147,65 @@ const schemaData = {
       color: #1e293b;
       overflow-x: hidden;
 
+      .cta-btn-primary {
+        background: linear-gradient(135deg, #eb0b2d 0%, #b8041f 100%);
+        color: white;
+        border: none;
+        padding: 0.95rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        box-shadow: 0 10px 25px rgba(235, 11, 45, 0.45);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        text-decoration: none;
+
+        @media (max-width: 576px) {
+          width: 100%;
+          padding: 0.85rem 1.5rem;
+          font-size: 1rem;
+        }
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 14px 30px rgba(235, 11, 45, 0.6);
+          color: white;
+        }
+      }
+
+      .cta-btn-secondary {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(10px);
+        color: white;
+        border: 1.5px solid rgba(255, 255, 255, 0.35);
+        padding: 0.95rem 1.8rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+
+        @media (max-width: 576px) {
+          width: 100%;
+          padding: 0.85rem 1.5rem;
+          font-size: 1rem;
+        }
+
+        &:hover {
+          background: white;
+          color: #022759;
+          transform: translateY(-3px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+      }
+
       /* Hero Section with Glassmorphism */
       .hero-wrapper {
         position: relative;
@@ -156,6 +215,10 @@ const schemaData = {
         color: white;
         padding: 4.5rem 0 5rem;
         border-bottom: 5px solid #eb0b2d;
+
+        @media (max-width: 768px) {
+          padding: 2.75rem 0 3.5rem;
+        }
 
         .hero-badge {
           display: inline-flex;
@@ -171,15 +234,23 @@ const schemaData = {
           letter-spacing: 0.5px;
           text-transform: uppercase;
           backdrop-filter: blur(8px);
+
+          @media (max-width: 576px) {
+            font-size: 0.78rem;
+            padding: 0.35rem 0.85rem;
+            max-width: 100%;
+            white-space: normal;
+          }
         }
 
         .hero-title {
           font-family: 'Fira Sans Condensed', sans-serif;
-          font-size: clamp(2.4rem, 5vw, 3.8rem);
+          font-size: clamp(1.85rem, 5.5vw, 3.8rem);
           font-weight: 800;
-          line-height: 1.15;
+          line-height: 1.18;
           letter-spacing: -0.5px;
           margin: 1rem 0;
+          word-break: break-word;
 
           .highlight {
             color: #ff334b;
@@ -188,55 +259,14 @@ const schemaData = {
         }
 
         .hero-subtitle {
-          font-size: clamp(1.05rem, 2vw, 1.25rem);
+          font-size: clamp(1rem, 2vw, 1.25rem);
           color: #e2e8f0;
           line-height: 1.6;
           max-width: 680px;
           margin-bottom: 2rem;
-        }
 
-        .cta-btn-primary {
-          background: linear-gradient(135deg, #eb0b2d 0%, #b8041f 100%);
-          color: white;
-          border: none;
-          padding: 0.95rem 2rem;
-          font-size: 1.1rem;
-          font-weight: 700;
-          border-radius: 50px;
-          display: inline-flex;
-          align-items: center;
-          gap: 0.75rem;
-          box-shadow: 0 10px 25px rgba(235, 11, 45, 0.45);
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          text-decoration: none;
-
-          &:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 30px rgba(235, 11, 45, 0.6);
-            color: white;
-          }
-        }
-
-        .cta-btn-secondary {
-          background: rgba(255, 255, 255, 0.12);
-          backdrop-filter: blur(10px);
-          color: white;
-          border: 1.5px solid rgba(255, 255, 255, 0.35);
-          padding: 0.95rem 1.8rem;
-          font-size: 1.1rem;
-          font-weight: 600;
-          border-radius: 50px;
-          display: inline-flex;
-          align-items: center;
-          gap: 0.75rem;
-          transition: all 0.3s ease;
-          text-decoration: none;
-
-          &:hover {
-            background: white;
-            color: #022759;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+          @media (max-width: 768px) {
+            margin-bottom: 1.5rem;
           }
         }
 
@@ -249,6 +279,12 @@ const schemaData = {
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
           border: 1px solid rgba(255, 255, 255, 0.8);
           color: #0f172a;
+
+          @media (max-width: 768px) {
+            padding: 1.5rem 1.25rem;
+            border-radius: 16px;
+            margin-top: 1rem;
+          }
 
           .card-header-badge {
             display: inline-block;
@@ -268,12 +304,23 @@ const schemaData = {
 
             li {
               display: flex;
-              align-items: center;
+              align-items: flex-start;
               gap: 0.75rem;
               padding: 0.55rem 0;
               font-size: 0.95rem;
               font-weight: 500;
               border-bottom: 1px solid #f1f5f9;
+
+              @media (max-width: 576px) {
+                font-size: 0.88rem;
+                gap: 0.65rem;
+                padding: 0.45rem 0;
+              }
+
+              svg {
+                flex-shrink: 0;
+                margin-top: 3px;
+              }
 
               &:last-child {
                 border-bottom: none;
@@ -290,11 +337,43 @@ const schemaData = {
         padding: 1.25rem 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
+        @media (max-width: 768px) {
+          padding: 1rem 0;
+        }
+
         .stat-item {
           display: flex;
           align-items: center;
           gap: 1rem;
           padding: 0.5rem 1rem;
+
+          @media (max-width: 767px) {
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            gap: 0.25rem;
+            padding: 0.5rem 0.25rem;
+
+            .stat-icon {
+              font-size: 1.6rem;
+              margin-bottom: 0.15rem;
+            }
+
+            .stat-num {
+              font-size: 1.25rem;
+            }
+
+            .stat-label {
+              font-size: 0.72rem;
+              letter-spacing: 0;
+              line-height: 1.2;
+              text-align: center;
+            }
+
+            .stat-text-wrap {
+              text-align: center !important;
+            }
+          }
 
           .stat-icon {
             font-size: 2rem;
@@ -322,6 +401,10 @@ const schemaData = {
         padding: 5rem 0;
         background: #f8fafc;
 
+        @media (max-width: 768px) {
+          padding: 3rem 0;
+        }
+
         .section-tag {
           color: #eb0b2d;
           font-weight: 700;
@@ -334,10 +417,11 @@ const schemaData = {
 
         .section-heading {
           font-family: 'Fira Sans Condensed', sans-serif;
-          font-size: clamp(2rem, 3.5vw, 2.75rem);
+          font-size: clamp(1.65rem, 3.5vw, 2.75rem);
           font-weight: 800;
           color: #022759;
           margin-bottom: 1rem;
+          line-height: 1.2;
         }
 
         .feature-card {
@@ -347,7 +431,6 @@ const schemaData = {
           height: 100%;
           border: 1px solid #e2e8f0;
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
           position: relative;
           overflow: hidden;
 
@@ -363,17 +446,31 @@ const schemaData = {
             transition: opacity 0.3s ease;
           }
 
-          &:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px -10px rgba(2, 39, 89, 0.15);
-            border-color: #cbd5e1;
+          @media (max-width: 768px) {
+            padding: 1.5rem 1.25rem;
+            border-radius: 16px;
+            margin-bottom: 1.25rem;
 
             &::before {
-              opacity: 1;
+              display: none !important;
             }
+          }
 
-            .icon-badge {
-              transform: scale(1.1) rotate(5deg);
+          @media (hover: hover) and (pointer: fine) {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+            &:hover {
+              transform: translateY(-8px);
+              box-shadow: 0 20px 30px -10px rgba(2, 39, 89, 0.15);
+              border-color: #cbd5e1;
+
+              &::before {
+                opacity: 1;
+              }
+
+              .icon-badge {
+                transform: scale(1.1) rotate(5deg);
+              }
             }
           }
 
@@ -388,6 +485,13 @@ const schemaData = {
             margin-bottom: 1.5rem;
             transition: transform 0.3s ease;
 
+            @media (max-width: 768px) {
+              width: 50px;
+              height: 50px;
+              font-size: 1.4rem;
+              margin-bottom: 1rem;
+            }
+
             &.blue { background: #eff6ff; color: #2563eb; }
             &.red { background: #fef2f2; color: #dc2626; }
             &.green { background: #f0fdf4; color: #16a34a; }
@@ -398,6 +502,10 @@ const schemaData = {
             font-weight: 700;
             color: #0f172a;
             margin-bottom: 0.75rem;
+
+            @media (max-width: 768px) {
+              font-size: 1.2rem;
+            }
           }
 
           p {
@@ -405,6 +513,11 @@ const schemaData = {
             font-size: 0.98rem;
             line-height: 1.65;
             margin: 0;
+
+            @media (max-width: 768px) {
+              font-size: 0.92rem;
+              line-height: 1.55;
+            }
           }
         }
       }
@@ -414,10 +527,19 @@ const schemaData = {
         padding: 5rem 0;
         background: white;
 
+        @media (max-width: 768px) {
+          padding: 3rem 0;
+        }
+
         .step-card {
           text-align: center;
           padding: 2rem 1.5rem;
           position: relative;
+
+          @media (max-width: 768px) {
+            padding: 1.25rem 0.75rem;
+            margin-bottom: 1.25rem;
+          }
 
           .step-number {
             width: 70px;
@@ -433,6 +555,13 @@ const schemaData = {
             justify-content: center;
             box-shadow: 0 10px 20px rgba(2, 39, 89, 0.25);
             border: 4px solid #f1f5f9;
+
+            @media (max-width: 768px) {
+              width: 56px;
+              height: 56px;
+              font-size: 1.4rem;
+              margin-bottom: 1rem;
+            }
           }
 
           h4 {
@@ -440,6 +569,10 @@ const schemaData = {
             font-weight: 700;
             color: #0f172a;
             margin-bottom: 0.75rem;
+
+            @media (max-width: 768px) {
+              font-size: 1.15rem;
+            }
           }
 
           p {
@@ -447,6 +580,10 @@ const schemaData = {
             font-size: 0.95rem;
             line-height: 1.6;
             margin: 0;
+
+            @media (max-width: 768px) {
+              font-size: 0.9rem;
+            }
           }
         }
       }
@@ -457,6 +594,10 @@ const schemaData = {
         background: linear-gradient(135deg, #021a3a 0%, #082d61 100%);
         color: white;
 
+        @media (max-width: 768px) {
+          padding: 3rem 0;
+        }
+
         .location-info-card {
           background: rgba(255, 255, 255, 0.08);
           border: 1px solid rgba(255, 255, 255, 0.15);
@@ -464,6 +605,18 @@ const schemaData = {
           border-radius: 20px;
           padding: 2.5rem;
           height: 100%;
+
+          @media (max-width: 768px) {
+            padding: 1.5rem 1.25rem;
+            border-radius: 16px;
+          }
+
+          .showcase-title {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+          }
 
           .area-tag {
             display: inline-block;
@@ -474,6 +627,11 @@ const schemaData = {
             font-size: 0.85rem;
             margin: 0.25rem 0.25rem 0.25rem 0;
             border: 1px solid rgba(255, 255, 255, 0.15);
+
+            @media (max-width: 576px) {
+              font-size: 0.78rem;
+              padding: 0.3rem 0.65rem;
+            }
           }
         }
 
@@ -482,6 +640,16 @@ const schemaData = {
           overflow: hidden;
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
           border: 2px solid rgba(255, 255, 255, 0.2);
+
+          iframe {
+            display: block;
+            width: 100%;
+            height: 420px;
+
+            @media (max-width: 768px) {
+              height: 280px;
+            }
+          }
         }
       }
 
@@ -490,6 +658,10 @@ const schemaData = {
         padding: 5rem 0;
         background: #f8fafc;
 
+        @media (max-width: 768px) {
+          padding: 3rem 0;
+        }
+
         .faq-item {
           background: white;
           border-radius: 16px;
@@ -497,11 +669,20 @@ const schemaData = {
           padding: 1.75rem 2rem;
           margin-bottom: 1.25rem;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-          transition: all 0.3s ease;
 
-          &:hover {
-            border-color: #022759;
-            box-shadow: 0 10px 20px rgba(2, 39, 89, 0.08);
+          @media (max-width: 768px) {
+            padding: 1.25rem 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+          }
+
+          @media (hover: hover) and (pointer: fine) {
+            transition: all 0.3s ease;
+
+            &:hover {
+              border-color: #022759;
+              box-shadow: 0 10px 20px rgba(2, 39, 89, 0.08);
+            }
           }
 
           .faq-q {
@@ -513,11 +694,21 @@ const schemaData = {
             color: #0f172a;
             margin-bottom: 0.85rem;
 
+            @media (max-width: 768px) {
+              font-size: 1.02rem;
+              gap: 0.65rem;
+              margin-bottom: 0.5rem;
+            }
+
             .q-icon {
               color: #eb0b2d;
               font-size: 1.35rem;
               flex-shrink: 0;
               margin-top: 2px;
+
+              @media (max-width: 768px) {
+                font-size: 1.15rem;
+              }
             }
           }
 
@@ -527,6 +718,13 @@ const schemaData = {
             line-height: 1.7;
             padding-left: 2.35rem;
             margin: 0;
+
+            @media (max-width: 768px) {
+              padding-left: 0;
+              font-size: 0.92rem;
+              line-height: 1.6;
+              margin-top: 0.5rem;
+            }
           }
         }
       }
@@ -539,11 +737,16 @@ const schemaData = {
         text-align: center;
         position: relative;
 
+        @media (max-width: 768px) {
+          padding: 3rem 0;
+        }
+
         h2 {
           font-family: 'Fira Sans Condensed', sans-serif;
-          font-size: clamp(2.2rem, 4vw, 3.4rem);
+          font-size: clamp(1.75rem, 4.5vw, 3.4rem);
           font-weight: 800;
           margin-bottom: 1rem;
+          line-height: 1.2;
         }
 
         p {
@@ -551,6 +754,11 @@ const schemaData = {
           color: #fecdd3;
           max-width: 650px;
           margin: 0 auto 2.5rem;
+
+          @media (max-width: 768px) {
+            font-size: 1rem;
+            margin-bottom: 1.75rem;
+          }
         }
 
         .cta-white-btn {
@@ -563,12 +771,52 @@ const schemaData = {
           text-decoration: none;
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
           transition: all 0.3s ease;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          @media (max-width: 576px) {
+            width: 100%;
+            padding: 0.85rem 1.5rem;
+            font-size: 1rem;
+          }
 
           &:hover {
             background: #022759;
             color: white;
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+          }
+        }
+
+        .cta-btn-secondary {
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(10px);
+          color: white;
+          border: 2px solid rgba(255, 255, 255, 0.8);
+          padding: 1rem 2.2rem;
+          font-size: 1.15rem;
+          font-weight: 700;
+          border-radius: 50px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.6rem;
+          text-decoration: none;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: white;
+            color: #b8041f;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+          }
+
+          @media (max-width: 576px) {
+            width: 100%;
+            padding: 0.85rem 1.5rem;
+            font-size: 1rem;
           }
         }
       }
@@ -586,7 +834,7 @@ const schemaData = {
           </ol>
         </nav>
 
-        <Row class="align-items-center g-5">
+        <Row class="align-items-center g-4 g-lg-5">
           <Col lg={7}>
             <div class="hero-badge mb-3">
               <FaStar style={{ color: "#fbbf24" }} /> East Tennessee's Trusted In-House Lender
@@ -598,7 +846,7 @@ const schemaData = {
               Get guaranteed credit consideration and drive away today! Cherokee Auto Sales on North Broadway offers honest in-house financing, low down payments, and inspected pre-owned cars for drivers across Knoxville, Knox County, and Fountain City.
             </p>
 
-            <div class="d-flex flex-wrap gap-3">
+            <div class="d-flex flex-column flex-sm-row flex-wrap gap-3">
               <a href="tel:8656877100" class="cta-btn-primary">
                 <FaPhoneAlt /> Call (865) 687-7100
               </a>
@@ -639,11 +887,11 @@ const schemaData = {
     <!-- Stats Bar -->
     <section class="stats-strip">
       <Container>
-        <Row class="justify-content-center text-center g-3">
+        <Row class="justify-content-center text-center g-2 g-md-3">
           <Col xs={6} md={3}>
             <div class="stat-item justify-content-center">
               <FaStar className="stat-icon" />
-              <div class="text-start">
+              <div class="stat-text-wrap text-start">
                 <div class="stat-num">4.8★</div>
                 <div class="stat-label">Google Rating</div>
               </div>
@@ -652,7 +900,7 @@ const schemaData = {
           <Col xs={6} md={3}>
             <div class="stat-item justify-content-center">
               <FaCheckCircle className="stat-icon text-success" />
-              <div class="text-start">
+              <div class="stat-text-wrap text-start">
                 <div class="stat-num">100%</div>
                 <div class="stat-label">In-House Approvals</div>
               </div>
@@ -661,7 +909,7 @@ const schemaData = {
           <Col xs={6} md={3}>
             <div class="stat-item justify-content-center">
               <FaClock className="stat-icon text-warning" />
-              <div class="text-start">
+              <div class="stat-text-wrap text-start">
                 <div class="stat-num">&lt; 1 Hr</div>
                 <div class="stat-label">Fast Drive Away</div>
               </div>
@@ -670,7 +918,7 @@ const schemaData = {
           <Col xs={6} md={3}>
             <div class="stat-item justify-content-center">
               <FaExchangeAlt className="stat-icon text-info" />
-              <div class="text-start">
+              <div class="stat-text-wrap text-start">
                 <div class="stat-num">Trade-Ins</div>
                 <div class="stat-label">Accepted In Any Shape</div>
               </div>
@@ -693,8 +941,8 @@ const schemaData = {
           </Col>
         </Row>
 
-        <Row class="g-4">
-          <Col md={4}>
+        <div class="row g-4">
+          <div class="col-12 col-md-4">
             <div class="feature-card">
               <div class="icon-badge red"><FaHandshake /></div>
               <h3>Direct In-House Loans</h3>
@@ -702,9 +950,9 @@ const schemaData = {
                 We are the bank. Your loan is financed, serviced, and supported directly by Cherokee Auto Sales. No third-party loan brokers or hidden surcharges.
               </p>
             </div>
-          </Col>
+          </div>
 
-          <Col md={4}>
+          <div class="col-12 col-md-4">
             <div class="feature-card">
               <div class="icon-badge blue"><FaShieldAlt /></div>
               <h3>Inspected & Tested Inventory</h3>
@@ -712,9 +960,9 @@ const schemaData = {
                 Every sedan, pickup truck, SUV, and family van undergoes a rigorous multi-point mechanical inspection. Drive off our lot with complete peace of mind.
               </p>
             </div>
-          </Col>
+          </div>
 
-          <Col md={4}>
+          <div class="col-12 col-md-4">
             <div class="feature-card">
               <div class="icon-badge green"><FaFileAlt /></div>
               <h3>Custom Payday Schedules</h3>
@@ -722,8 +970,8 @@ const schemaData = {
                 Match your vehicle payments to your payroll schedule—weekly, bi-weekly, or monthly. Pay easily via our online portal, phone, or in person.
               </p>
             </div>
-          </Col>
-        </Row>
+          </div>
+        </div>
       </Container>
     </section>
 
@@ -740,33 +988,33 @@ const schemaData = {
           </Col>
         </Row>
 
-        <Row class="g-4">
-          <Col md={4}>
+        <div class="row g-4">
+          <div class="col-12 col-md-4">
             <div class="step-card">
               <div class="step-number">01</div>
               <h4>Pick Your Favorite Car</h4>
               <p>Browse our extensive online inventory of pre-owned cars, trucks, and SUVs. Take a test drive around North Broadway.</p>
             </div>
-          </Col>
-          <Col md={4}>
+          </div>
+          <div class="col-12 col-md-4">
             <div class="step-card">
               <div class="step-number">02</div>
               <h4>Verify Income & Residence</h4>
               <p>Bring simple documentation: your recent pay stubs, local utility bill, driver's license, and down payment or trade-in.</p>
             </div>
-          </Col>
-          <Col md={4}>
+          </div>
+          <div class="col-12 col-md-4">
             <div class="step-card">
               <div class="step-number">03</div>
               <h4>Sign & Drive Home</h4>
               <p>Review your simple, transparent monthly payment agreement. Get the keys in hand and drive home the very same day!</p>
             </div>
-          </Col>
-        </Row>
+          </div>
+        </div>
 
-        <div class="text-center mt-5">
+        <div class="text-center mt-4 mt-md-5">
           <a href="tel:8656877100" class="cta-btn-primary">
-            <FaPhoneAlt /> Call Our Knoxville Team: (865) 687-7100
+            <FaPhoneAlt className="me-2" /> Call (865) 687-7100
           </a>
         </div>
       </Container>
@@ -775,11 +1023,11 @@ const schemaData = {
     <!-- Local Showcase / Entity Map -->
     <section class="local-showcase">
       <Container>
-        <Row class="align-items-center g-5">
+        <Row class="align-items-center g-4 g-lg-5">
           <Col lg={6}>
             <div class="location-info-card">
               <span class="badge bg-danger text-uppercase px-3 py-2 mb-3">Convenient Knoxville Location</span>
-              <h2 class="fw-bold mb-3" style="font-size: 2.2rem;">Serving All of Knox County & East Tennessee</h2>
+              <h2 class="showcase-title fw-bold mb-3">Serving All of Knox County & East Tennessee</h2>
               <p class="text-light mb-4" style="line-height: 1.7;">
                 Located on bustling North Broadway, Cherokee Auto Sales is easily accessible from I-640, Broadway, and Tazewell Pike. We proudly serve our neighbors from:
               </p>
@@ -811,7 +1059,7 @@ const schemaData = {
               </div>
 
               <div class="mt-4">
-                <a href="https://maps.app.goo.gl/6fcjt2xbFEEW9UBm9" target="_blank" class="btn btn-warning fw-bold px-4 py-2 rounded-pill">
+                <a href="https://maps.app.goo.gl/6fcjt2xbFEEW9UBm9" target="_blank" class="btn btn-warning fw-bold px-4 py-2 rounded-pill d-inline-flex align-items-center justify-content-center w-100 w-sm-auto">
                   Get Turn-By-Turn Directions <FaArrowRight className="ms-1" />
                 </a>
               </div>
@@ -871,12 +1119,12 @@ const schemaData = {
         <p>
           Speak with our compassionate financing team today. We approve you based on where you are going, not where you have been.
         </p>
-        <div class="d-flex justify-content-center flex-wrap gap-3">
+        <div class="d-flex justify-content-center flex-column flex-sm-row flex-wrap gap-3">
           <a href="tel:8656877100" class="cta-white-btn">
             <FaPhoneAlt className="me-2" /> Call (865) 687-7100
           </a>
-          <a href="/#inventory" class="cta-btn-secondary" style="border-color: white;">
-            <FaCar /> Browse Cars Online
+          <a href="/#inventory" class="cta-btn-secondary">
+            <FaCar className="me-2" /> Browse Cars Online
           </a>
         </div>
       </Container>
